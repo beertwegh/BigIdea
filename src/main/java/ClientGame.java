@@ -1,4 +1,4 @@
-public class ClientGame {
+public class ClientGame implements IGame{
 
 	private Question question;
 

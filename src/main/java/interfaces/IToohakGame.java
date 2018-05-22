@@ -1,5 +1,7 @@
-import javafx.scene.input.MouseEvent;
+package interfaces;
 
+
+import Models.*;
 public interface IToohakGame {
 
 	/**

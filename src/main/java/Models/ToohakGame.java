@@ -1,3 +1,7 @@
+package Models;
+
+import interfaces.IGame;
+
 public class ToohakGame {
 
     private boolean host;
@@ -10,7 +14,7 @@ public class ToohakGame {
      * @param email
      */
     public void registerPlayer(String username, String password, String email) {
-        // TODO - implement ToohakGame.registerPlayer
+        // TODO - implement Models.ToohakGame.registerPlayer
         throw new UnsupportedOperationException();
     }
 
@@ -19,7 +23,7 @@ public class ToohakGame {
      * @param password
      */
     public void login(String useremail, String password) {
-        // TODO - implement ToohakGame.login
+        // TODO - implement Models.ToohakGame.login
         throw new UnsupportedOperationException();
     }
 
@@ -42,7 +46,7 @@ public class ToohakGame {
     }
 
     public void refreshLobbies() {
-        // TODO - implement ToohakGame.refreshLobbies
+        // TODO - implement Models.ToohakGame.refreshLobbies
         throw new UnsupportedOperationException();
     }
 
@@ -50,7 +54,7 @@ public class ToohakGame {
      * @param level
      */
     public void createLobby(Level level) {
-        // TODO - implement ToohakGame.createLobby
+        // TODO - implement Models.ToohakGame.createLobby
         throw new UnsupportedOperationException();
     }
 
@@ -58,7 +62,7 @@ public class ToohakGame {
      * @param answer
      */
     public void answerQuestion(Answer answer) {
-        // TODO - implement ToohakGame.answerQuestion
+        // TODO - implement Models.ToohakGame.answerQuestion
         throw new UnsupportedOperationException();
     }
 

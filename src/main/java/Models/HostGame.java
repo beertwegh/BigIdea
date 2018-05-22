@@ -1,3 +1,7 @@
+package Models;
+
+import interfaces.IGame;
+
 import java.util.ArrayList;
 
 public class HostGame implements IGame {

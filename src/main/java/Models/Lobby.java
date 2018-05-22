@@ -1,3 +1,5 @@
+package Models;
+
 import java.util.ArrayList;
 
 public class Lobby {
@@ -10,7 +12,7 @@ public class Lobby {
 	 * @param host
 	 */
 	public Lobby(User host) {
-		// TODO - implement Lobby.Lobby
+		// TODO - implement Models.Lobby.Models.Lobby
 		throw new UnsupportedOperationException();
 	}
 
@@ -19,7 +21,7 @@ public class Lobby {
 	 * @param user
 	 */
 	public void addUser(User user) {
-		// TODO - implement Lobby.addUser
+		// TODO - implement Models.Lobby.addUser
 		throw new UnsupportedOperationException();
 	}
 

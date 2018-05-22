@@ -1,3 +1,5 @@
+package Models;
+
 public class Answer {
 
 	private String text;

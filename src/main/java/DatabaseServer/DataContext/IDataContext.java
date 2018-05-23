@@ -11,5 +11,5 @@ public interface IDataContext {
 
     void save(Object item);
 
-    List<Object> findAll();
+    List findAll();
 }

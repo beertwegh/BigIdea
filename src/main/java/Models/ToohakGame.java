@@ -1,8 +1,9 @@
 package Models;
 
 import interfaces.IGame;
+import interfaces.IToohakGame;
 
-public class ToohakGame {
+public class ToohakGame implements IToohakGame{
 
     private boolean host;
     private Lobby lobbies;
@@ -22,7 +23,7 @@ public class ToohakGame {
      * @param useremail
      * @param password
      */
-    public void login(String useremail, String password) {
+    public boolean login(String useremail, String password) {
         // TODO - implement Models.ToohakGame.login
         throw new UnsupportedOperationException();
     }
@@ -56,6 +57,10 @@ public class ToohakGame {
     public void createLobby(Level level) {
         // TODO - implement Models.ToohakGame.createLobby
         throw new UnsupportedOperationException();
+    }
+
+    public void answerQuestion(Question question) {
+
     }
 
     /**

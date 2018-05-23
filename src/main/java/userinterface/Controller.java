@@ -4,20 +4,27 @@ import interfaces.IToohakGame;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import Models.*;
 
 public class Controller {
 
 
     public TextField tbUserEmail;
     public TextField tbPassword;
-    public IToohakGame game;
+    public IToohakGame game = new ToohakGame();
 
     public void login() {
-        if (tbUserEmail.getText().trim().equals("") || tbPassword.getText().trim().equals("")) {
+        String useremail = tbUserEmail.getText();
+        String password = tbPassword.getText();
+        if (useremail.trim().equals("") || password.trim().equals("")) {
             showMessage("Please fill in all fields!");
-        } else
-            showMessage("tet");
+        } else {
+            if (game.login(useremail, password)) {
+
+            }
+        }
     }
+
 
     public void showMessage(final String message) {
         Platform.runLater(new Runnable() {

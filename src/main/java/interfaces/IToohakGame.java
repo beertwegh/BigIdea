@@ -17,7 +17,7 @@ public interface IToohakGame {
 	 * @param useremail
 	 * @param password
 	 */
-	void login(String useremail, String password);
+	boolean login(String useremail, String password);
 
 	/**
 	 * 

@@ -2,6 +2,10 @@ package userinterface;
 
 import DatabaseServer.DataContext.CredentialsDataContext;
 import DatabaseServer.DataContext.IDataContext;
+import DatabaseServer.Repositories.IRepository;
+import DatabaseServer.Repositories.IUserRepository;
+import DatabaseServer.Repositories.UserRepository;
+import Models.User;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -31,8 +35,8 @@ public class ToohakApplication extends Application {
 
     public static void main(String[] args) {
         //  launch(args);
-        IDataContext dataContext = new CredentialsDataContext();
-        dataContext.findAll();
+        IUserRepository repo = new UserRepository(new CredentialsDataContext());
+        repo.save(new User("test", "tester@gmail.com", "testpsswd"));
     }
 
 

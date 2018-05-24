@@ -1,31 +1,34 @@
 package DatabaseServer.Repositories;
 
 import DatabaseServer.DataContext.CredentialsDataContext;
+import DatabaseServer.DataContext.IDataContext;
 import DatabaseServer.Specifiables.Specifiable;
+import Models.User;
 
 import java.util.List;
 
-public class UserRepository implements IRepository {
+public class UserRepository implements IUserRepository {
 
-    public UserRepository(IRepository dataContext) {
+    private IDataContext dataContext;
+
+    public UserRepository(IDataContext dataContext) {
         this.dataContext = dataContext;
     }
 
-    private IRepository dataContext;
-
-    public Object findOne(int id) {
+    public User findOne(int id) {
         return null;
     }
 
-    public Object findOne(Specifiable specifiable) {
+    public User findOne(Specifiable specifiable) {
         return null;
     }
 
-    public void save(Object item) {
-
+    @Override
+    public void save(User user) {
+        dataContext.save(user);
     }
 
-    public List<Object> findAll() {
-        return null;
+    public List<User> findAll() {
+        return dataContext.findAll();
     }
 }

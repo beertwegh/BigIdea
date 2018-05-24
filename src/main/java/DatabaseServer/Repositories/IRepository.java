@@ -4,12 +4,12 @@ import DatabaseServer.Specifiables.Specifiable;
 
 import java.util.List;
 
-public interface IRepository {
-    Object findOne(int id);
+public interface IRepository<T> {
+    T findOne(int id);
 
-    Object findOne(Specifiable specifiable);
+    T findOne(Specifiable specifiable);
 
-    void save(Object item);
+    void save(T item);
 
-    List<Object> findAll();
+    List<T> findAll();
 }

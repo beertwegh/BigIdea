@@ -1,6 +1,7 @@
 package DatabaseServer.Repositories;
 
 import DatabaseServer.DataContext.CredentialsDataContext;
+import DatabaseServer.DataContext.ICredentialsDataContext;
 import DatabaseServer.DataContext.IDataContext;
 import DatabaseServer.Specifiables.Specifiable;
 import Models.User;
@@ -9,18 +10,15 @@ import java.util.List;
 
 public class UserRepository implements IUserRepository {
 
-    private IDataContext dataContext;
+    private ICredentialsDataContext dataContext;
 
-    public UserRepository(IDataContext dataContext) {
+    public UserRepository(ICredentialsDataContext dataContext) {
         this.dataContext = dataContext;
     }
 
-    public User findOne(int id) {
-        return null;
-    }
 
     public User findOne(Specifiable specifiable) {
-        return null;
+        return dataContext.findOne(specifiable);
     }
 
     @Override

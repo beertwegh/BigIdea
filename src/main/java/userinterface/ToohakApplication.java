@@ -5,6 +5,8 @@ import DatabaseServer.DataContext.IDataContext;
 import DatabaseServer.Repositories.IRepository;
 import DatabaseServer.Repositories.IUserRepository;
 import DatabaseServer.Repositories.UserRepository;
+import DatabaseServer.Specifiables.Specifiable;
+import DatabaseServer.Specifiables.UserSpecifiable;
 import Models.User;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -34,9 +36,8 @@ public class ToohakApplication extends Application {
 
 
     public static void main(String[] args) {
-        //  launch(args);
-        IUserRepository repo = new UserRepository(new CredentialsDataContext());
-        repo.save(new User("test", "tester@gmail.com", "testpsswd"));
+          launch(args);
+
     }
 
 

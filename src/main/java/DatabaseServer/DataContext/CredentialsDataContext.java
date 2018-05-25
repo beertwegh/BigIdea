@@ -7,19 +7,37 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CredentialsDataContext extends AbstractDataContext implements IDataContext<User> {
-    public Object findOne(int id) {
+public class CredentialsDataContext extends AbstractDataContext implements ICredentialsDataContext {
+
+    @Override
+    public User findOne(Specifiable specifiable) {
+        try {
+            connection = DriverManager.getConnection(connString);
+            queryString = "SELECT id, username, email, password, hs.score FROM Credentials c LEFT JOIN HighScore hs ON c.id = hs.CredentialsId WHERE " + specifiable.getSpecifiable() + " = ?";
+            PreparedStatement stmt = connection.prepareStatement(queryString);
+            stmt.setString(1, specifiable.getParameter());
+            ResultSet rset = stmt.executeQuery();
+            if (!rset.next()) {
+                return null;
+            } else {
+                rset.first();
+                User user = new User(rset.getInt("id"), rset.getString("username"), rset.getString("email"), rset.getInt("hs.score"), rset.getString("password"));
+                connection.close();
+                return user;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+        }
         return null;
+
     }
 
-    public Object findOne(Specifiable specifiable) {
-        return null;
-    }
-
+    @Override
     public void save(User user) {
         try {
             connection = DriverManager.getConnection(connString);
-            queryString = "insert into Credentials (username, email, password) values (?, ?, ?)";
+            queryString = "INSERT INTO Credentials (username, email, password) VALUES (?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(queryString);
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());
@@ -31,11 +49,12 @@ public class CredentialsDataContext extends AbstractDataContext implements IData
         }
     }
 
+    @Override
     public List<User> findAll() {
-        List<User> all = new ArrayList<User>();
+        List<User> all = new ArrayList<>();
         try {
             connection = DriverManager.getConnection(connString);
-            queryString = "select id, username, email, hs.score from Credentials c left join HighScore hs on c.id = hs.CredentialsId";
+            queryString = "SELECT id, username, email, hs.score FROM Credentials c LEFT JOIN HighScore hs ON c.id = hs.CredentialsId";
             Statement stmt = connection.createStatement();
             ResultSet rset = stmt.executeQuery(queryString);
             while (rset.next()) {
@@ -52,5 +71,10 @@ public class CredentialsDataContext extends AbstractDataContext implements IData
         } finally {
         }
         return null;
+    }
+
+    @Override
+    public void delete(Specifiable specifiable) {
+
     }
 }

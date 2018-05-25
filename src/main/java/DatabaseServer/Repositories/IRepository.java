@@ -5,7 +5,6 @@ import DatabaseServer.Specifiables.Specifiable;
 import java.util.List;
 
 public interface IRepository<T> {
-    T findOne(int id);
 
     T findOne(Specifiable specifiable);
 

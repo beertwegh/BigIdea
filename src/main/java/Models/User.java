@@ -9,6 +9,17 @@ public class User {
     private int score;
     private String password;
 
+    public User(int id, String username, String email, Integer score, String password) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        if (score == null)
+            this.score = 0;
+        else
+            this.score = score;
+        this.password = password;
+    }
+
     public User(int id, String username, String email, int score) {
         this.id = id;
         this.username = username;

@@ -1,4 +1,5 @@
-package DatabaseServer.REST;
+package DatabaseServer.rest;
+import DatabaseServer.rest.services.AccountService;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -13,7 +14,7 @@ public class RestService {
         ServletHolder jerseyServlet = context.addServlet(ServletContainer.class, "/*");
         jerseyServlet.setInitOrder(0);
         jerseyServlet.setInitParameter("jersey.config.server.provider.classnames",
-                LoginResponse.class.getCanonicalName());
+                AccountService.class.getCanonicalName());
         try {
             jettyServer.start();
             jettyServer.join();

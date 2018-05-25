@@ -1,6 +1,6 @@
-package DatabaseServer.Repositories;
+package DatabaseServer.repositories;
 
-import DatabaseServer.Specifiables.Specifiable;
+import DatabaseServer.speicifiables.Specifiable;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
 package DatabaseServer.rest.handlers;
 
 import DatabaseServer.rest.response.*;
-import DatabaseServer.Repositories.IUserRepository;
+import DatabaseServer.repositories.IUserRepository;
 import DatabaseServer.rest.request.*;
-import DatabaseServer.Specifiables.UserSpecifiable;
+import DatabaseServer.speicifiables.UserSpecifiable;
 import Models.User;
 
 public class AccountHandler implements IAccountHandler {
@@ -23,6 +23,15 @@ public class AccountHandler implements IAccountHandler {
         } else if (!(user.getPassword()).equals(data.getPassword())) {
             return new Reply(Status.NoAccess, "Your login credentials were incorrect");
         }
-        return new Reply(Status.Ok, "succeeded");
+        return new Reply(Status.Ok, "Login successful");
     }
+
+    @Override
+    public Reply register(Register data) {
+        User user = new User(data.getUsername(), data.getEmail(), data.getPassword());
+        repository.save(user);
+        return new Reply(Status.Ok, "Account has been made");
+    }
+
+
 }

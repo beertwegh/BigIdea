@@ -1,6 +1,6 @@
-package DatabaseServer.DataContext;
+package DatabaseServer.datacontext;
 
-import DatabaseServer.Specifiables.Specifiable;
+import DatabaseServer.speicifiables.Specifiable;
 import Models.User;
 
 import java.sql.*;
@@ -73,8 +73,4 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
         return null;
     }
 
-    @Override
-    public void delete(Specifiable specifiable) {
-
-    }
 }

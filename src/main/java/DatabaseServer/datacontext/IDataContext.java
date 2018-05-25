@@ -1,6 +1,6 @@
-package DatabaseServer.DataContext;
+package DatabaseServer.datacontext;
 
-import DatabaseServer.Specifiables.Specifiable;
+import DatabaseServer.speicifiables.Specifiable;
 
 import java.util.List;
 
@@ -11,7 +11,5 @@ public interface IDataContext<T> {
     void save(T item);
 
     List<T> findAll();
-
-    void delete(Specifiable specifiable);
 
 }

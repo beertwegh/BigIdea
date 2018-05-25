@@ -7,4 +7,6 @@ import DatabaseServer.rest.request.*;
 public interface IAccountHandler {
     Reply login(Login data);
 
+    Reply register(Register data);
+
 }

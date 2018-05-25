@@ -1,9 +1,7 @@
-package DatabaseServer.Repositories;
+package DatabaseServer.repositories;
 
-import DatabaseServer.DataContext.CredentialsDataContext;
-import DatabaseServer.DataContext.ICredentialsDataContext;
-import DatabaseServer.DataContext.IDataContext;
-import DatabaseServer.Specifiables.Specifiable;
+import DatabaseServer.datacontext.ICredentialsDataContext;
+import DatabaseServer.speicifiables.Specifiable;
 import Models.User;
 
 import java.util.List;

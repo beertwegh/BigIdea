@@ -1,4 +1,4 @@
-package DatabaseServer.Repositories;
+package DatabaseServer.repositories;
 
 import Models.User;
 

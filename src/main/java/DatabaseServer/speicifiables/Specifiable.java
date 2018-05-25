@@ -1,4 +1,4 @@
-package DatabaseServer.Specifiables;
+package DatabaseServer.speicifiables;
 
 public interface Specifiable<T> {
 

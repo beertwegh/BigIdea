@@ -1,4 +1,4 @@
-package DatabaseServer.DataContext;
+package DatabaseServer.datacontext;
 
 import Models.User;
 

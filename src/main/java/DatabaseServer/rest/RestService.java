@@ -1,11 +1,16 @@
 package DatabaseServer.rest;
 
 import DatabaseServer.datacontext.CredentialsDataContext;
+import DatabaseServer.datacontext.HighScoreDataContext;
+import DatabaseServer.repositories.HighScoreRepository;
 import DatabaseServer.repositories.UserRepository;
 import DatabaseServer.rest.handlers.AccountHandler;
+import DatabaseServer.rest.handlers.HighScoreHandler;
 import DatabaseServer.rest.handlers.IAccountHandler;
+import DatabaseServer.rest.handlers.IHighScoreHandler;
 import DatabaseServer.rest.services.AccountService;
 import DatabaseServer.rest.services.HighScoreService;
+import DatabaseServer.rest.services.QuestionService;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -25,13 +30,14 @@ public class RestService {
         jerseyServlet.setInitOrder(0);
         IAccountHandler accountHandler = new AccountHandler(new UserRepository(new CredentialsDataContext()));
         AccountService.setHandler(accountHandler);
+        IHighScoreHandler highScoreHandler = new HighScoreHandler(new HighScoreRepository(new HighScoreDataContext()));
+        HighScoreService.setHandler(highScoreHandler);
 
         // Tells the Jersey Servlet which REST service/class to load.
-        Map<String, String> services = new HashMap<>();
-        services.put("jersey.config.server.provider.classnames",
-                AccountService.class.getCanonicalName());
-        services.put("jersey.config.server.provider.classnames", HighScoreService.class.getCanonicalName());
-        jerseyServlet.setInitParameters(services);
+        String services = HighScoreService.class.getCanonicalName() + "," +
+                AccountService.class.getCanonicalName() + "," + QuestionService.class.getCanonicalName();
+
+        jerseyServlet.setInitParameter("jersey.config.server.provider.classnames", services);
         try {
             jettyServer.start();
             jettyServer.join();

@@ -28,7 +28,7 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
             Statement stmt = connection.createStatement();
             ResultSet rset = stmt.executeQuery(queryString);
             while (rset.next()) {
-                Question question = new Question(rset.getString("text"), getAnswer(rset.getInt("id")));
+                Question question = new Question(rset.getString("text"), getAnswers(rset.getInt("id")));
                 all.add(question);
             }
             connection.close();
@@ -40,7 +40,7 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
         return null;
     }
 
-    private List<Answer> getAnswer(int questionId) {
+    private List<Answer> getAnswers(int questionId) {
         try {
             List<Answer> answers = new ArrayList<>();
             Connection connection2 = DriverManager.getConnection(connString);

@@ -51,10 +51,7 @@ public class ToohakGame implements IToohakGame{
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * @param level
-     */
-    public void createLobby(Level level) {
+    public void createLobby() {
         // TODO - implement Models.ToohakGame.createLobby
         throw new UnsupportedOperationException();
     }

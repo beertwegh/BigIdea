@@ -33,11 +33,8 @@ public interface IToohakGame {
 
 	void refreshLobbies();
 
-	/**
-	 * 
-	 * @param level
-	 */
-	void createLobby(Level level);
+
+	void createLobby();
 
 	/**
 	 * 

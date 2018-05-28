@@ -1,10 +1,10 @@
 package userinterface;
 
+import client.ToohakGame;
 import interfaces.IToohakGame;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import Models.*;
 
 public class Controller {
 

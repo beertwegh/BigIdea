@@ -1,4 +1,4 @@
-package databaseServer.rest.request;
+package shared.request;
 
 public class Register {
     private String email;

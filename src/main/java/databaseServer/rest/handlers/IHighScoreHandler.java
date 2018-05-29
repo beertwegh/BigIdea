@@ -1,6 +1,6 @@
 package databaseServer.rest.handlers;
 
-import databaseServer.rest.request.SetHighScore;
+import shared.request.SetHighScore;
 import databaseServer.rest.response.Reply;
 
 public interface IHighScoreHandler {

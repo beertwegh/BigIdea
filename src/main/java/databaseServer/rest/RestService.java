@@ -2,8 +2,10 @@ package databaseServer.rest;
 
 import databaseServer.datacontext.CredentialsDataContext;
 import databaseServer.datacontext.HighScoreDataContext;
+import databaseServer.datacontext.LobbyDataContext;
 import databaseServer.datacontext.QuestionDataContext;
 import databaseServer.repositories.HighScoreRepository;
+import databaseServer.repositories.LobbyRepository;
 import databaseServer.repositories.QuestionRepository;
 import databaseServer.repositories.UserRepository;
 import databaseServer.rest.handlers.*;
@@ -31,6 +33,8 @@ public class RestService {
         HighScoreService.setHandler(highScoreHandler);
         IQuestionHandler questionHandler = new QuestionHandler((new QuestionRepository(new QuestionDataContext())));
         QuestionService.setHandler(questionHandler);
+        ILobbyHandler lobbyHandler = new LobbyHandler(new LobbyRepository(new LobbyDataContext()));
+        LobbyService.setHandler(lobbyHandler);
         // Tells the Jersey Servlet which REST service/class to load.
         String services = HighScoreService.class.getCanonicalName() + "," +
                 AccountService.class.getCanonicalName() + "," + QuestionService.class.getCanonicalName() + "," + LobbyService.class.getCanonicalName();

@@ -45,7 +45,6 @@ public class LobbyService {
         Lobby lobby = gson.fromJson(data, Lobby.class);
         Reply reply = handler.chooseLobby(lobby);
         return Response.status(reply.getStatus().getCode()).entity(reply.getMessage()).build();
-
     }
 }
 

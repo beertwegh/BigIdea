@@ -4,8 +4,8 @@ import databaseServer.rest.response.*;
 import databaseServer.repositories.IUserRepository;
 import databaseServer.speicifiables.UserSpecifiable;
 import Models.User;
-import shared.request.Login;
-import shared.request.Register;
+import shared.restrequest.Login;
+import shared.restrequest.Register;
 
 public class AccountHandler implements IAccountHandler {
     private IUserRepository repository;
@@ -24,7 +24,7 @@ public class AccountHandler implements IAccountHandler {
         } else if (!(user.getPassword()).equals(data.getPassword())) {
             return new Reply(Status.NoAccess, "Your login credentials were incorrect");
         }
-        return new Reply(Status.Ok, "LoginAction successful");
+        return new Reply(Status.Ok, "Login successful");
     }
 
     @Override

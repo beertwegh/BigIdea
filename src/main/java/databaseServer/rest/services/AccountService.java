@@ -3,8 +3,8 @@ package databaseServer.rest.services;
 import databaseServer.rest.response.*;
 import databaseServer.rest.handlers.IAccountHandler;
 import com.google.gson.Gson;
-import shared.request.Login;
-import shared.request.Register;
+import shared.restrequest.Login;
+import shared.restrequest.Register;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;

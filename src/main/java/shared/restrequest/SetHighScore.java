@@ -1,4 +1,4 @@
-package shared.request;
+package shared.restrequest;
 
 public class SetHighScore {
     private int id;

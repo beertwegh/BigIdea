@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.Controller">
    <children>
       <TextField id="tbUserEmail" fx:id="tbUserEmail" layoutX="392.0" layoutY="25.0" promptText="Username / E-mail" />
-      <TextField fx:id="tbPassword" accessibleRole="PASSWORD_FIELD" layoutX="392.0" layoutY="66.0" promptText="Password" />
-      <Button layoutX="514.0" layoutY="112.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <PasswordField fx:id="tbPassword" accessibleRole="PASSWORD_FIELD" layoutX="392.0" layoutY="66.0" promptText="Password" />
+      <Button fx:id="btnLogin" layoutX="514.0" layoutY="112.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <Button fx:id="btnRegister" layoutX="429.0" layoutY="112.0" mnemonicParsing="false" onAction="#btnRegisterClicked" text="Register" />
+      <TextField fx:id="tbRegisterEmail" layoutX="392.0" layoutY="169.0" promptText="Email" visible="false" />
+      <Button fx:id="btnRegisterConfirm" layoutX="514.0" layoutY="209.0" mnemonicParsing="false" onAction="#btnRegisterConfirmClicked" text="Confirm" visible="false" />
+      <Button fx:id="btnHostLobby" layoutX="27.0" layoutY="112.0" mnemonicParsing="false" onAction="#btnHostLobbyClicked" prefHeight="158.0" prefWidth="161.0" text="Host a lobby" visible="false" />
+      <Button fx:id="btnJoinLobby" layoutX="205.0" layoutY="112.0" mnemonicParsing="false" onAction="#btnJoinLobbyClicked" prefHeight="158.0" prefWidth="161.0" text="Join a lobby" visible="false" />
+      <ListView fx:id="lobbyList" layoutX="27.0" layoutY="43.0" prefHeight="305.0" prefWidth="342.0" visible="false" />
+      <TextField fx:id="tbIp" layoutX="48.0" layoutY="66.0" promptText="ip address:port" visible="false" />
+      <TextField fx:id="tbLobbyName" layoutX="48.0" layoutY="112.0" promptText="Name for lobby" visible="false" />
+      <Button fx:id="btnCreateLobby" layoutX="130.0" layoutY="154.0" mnemonicParsing="false" onAction="#btnCreateLobbyClicked" text="Create lobby" visible="false" />
+      <Button fx:id="btnStartGame" layoutX="34.0" layoutY="225.0" mnemonicParsing="false" onAction="#btnStartGameClicked" prefHeight="130.0" prefWidth="215.0" text="Button" />
+      <ListView fx:id="lbPlayersInLobby" layoutX="42.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

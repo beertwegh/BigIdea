@@ -1,4 +1,4 @@
-package client.restActions;
+package restClient.restActions;
 
 import com.google.gson.Gson;
 import org.apache.http.HttpEntity;
@@ -9,12 +9,10 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import shared.request.Login;
-import shared.request.Register;
 
 import java.io.IOException;
 
-public abstract class AccountAction<T> {
+public abstract class BaseAction<T> {
 
 
     public String baseMethod(T data, String query) {

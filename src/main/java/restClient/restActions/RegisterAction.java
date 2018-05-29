@@ -1,8 +1,8 @@
-package client.restActions;
+package restClient.restActions;
 
-import shared.request.Register;
+import shared.restrequest.Register;
 
-public class RegisterAction extends AccountAction<Register> {
+public class RegisterAction extends BaseAction<Register> {
 
     String query = "http://localhost:8090/account/register";
 

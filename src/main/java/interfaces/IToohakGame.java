@@ -2,44 +2,44 @@ package interfaces;
 
 
 import Models.*;
+
+import java.util.List;
+
 public interface IToohakGame {
 
-	/**
-	 * 
-	 * @param username
-	 * @param password
-	 * @param email
-	 */
-	void registerPlayer(String username, String password, String email);
+    /**
+     * @param username
+     * @param password
+     * @param email
+     */
+    String registerPlayer(String username, String password, String email);
 
-	/**
-	 * 
-	 * @param useremail
-	 * @param password
-	 */
-	boolean login(String useremail, String password);
+    /**
+     * @param useremail
+     * @param password
+     */
+    String login(String useremail, String password);
 
-	/**
-	 * 
-	 * @param host
-	 */
-	void chooseHostOrClient(boolean host);
+    /**
+     * @param host
+     */
+    void chooseHostOrClient(boolean host);
 
-	/**
-	 * 
-	 * @param lobby
-	 */
-	void selectLobby(Lobby lobby);
+    /**
+     * @param lobby
+     */
+    void selectLobby(Lobby lobby);
 
-	void refreshLobbies();
+    List<Lobby> refreshLobbies();
 
 
-	void createLobby();
+    boolean createLobby(Lobby lobby);
 
-	/**
-	 * 
-	 * @param question
-	 */
-	void answerQuestion(Question question);
+    /**
+     * @param question
+     */
+    void answerQuestion(Question question);
+
+    void startGame();
 
 }

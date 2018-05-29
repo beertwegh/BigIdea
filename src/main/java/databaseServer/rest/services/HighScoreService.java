@@ -1,7 +1,7 @@
 package databaseServer.rest.services;
 
 import databaseServer.rest.handlers.IHighScoreHandler;
-import shared.request.SetHighScore;
+import shared.restrequest.SetHighScore;
 import databaseServer.rest.response.Reply;
 import com.google.gson.Gson;
 

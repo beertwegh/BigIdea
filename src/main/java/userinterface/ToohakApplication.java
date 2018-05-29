@@ -1,14 +1,10 @@
 package userinterface;
 
-import Models.Question;
-import client.restActions.GetQuestions;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.util.List;
 
 
 public class ToohakApplication extends Application {

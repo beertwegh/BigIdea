@@ -2,8 +2,8 @@ package databaseServer.rest.handlers;
 
 
 import databaseServer.rest.response.*;
-import shared.request.Login;
-import shared.request.Register;
+import shared.restrequest.Login;
+import shared.restrequest.Register;
 
 public interface IAccountHandler {
     Reply login(Login data);

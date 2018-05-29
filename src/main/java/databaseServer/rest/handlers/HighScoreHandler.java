@@ -1,7 +1,7 @@
 package databaseServer.rest.handlers;
 
 import databaseServer.repositories.IHighScoreRepository;
-import shared.request.SetHighScore;
+import shared.restrequest.SetHighScore;
 import databaseServer.rest.response.Reply;
 import databaseServer.rest.response.Status;
 

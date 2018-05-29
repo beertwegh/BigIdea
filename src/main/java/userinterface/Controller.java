@@ -75,7 +75,6 @@ public class Controller {
         } else {
             String result = game.registerPlayer(username, password, email);
             if (result.equals("Account has been made")) {
-
                 tbRegisterEmail.setVisible(false);
                 tbUserEmail.setPromptText("Username/email");
                 btnRegisterConfirm.setVisible(false);
@@ -93,6 +92,9 @@ public class Controller {
         game.chooseHostOrClient(true);
         tbIp.setVisible(true);
         tbLobbyName.setVisible(true);
+        btnCreateLobby.setVisible(true);
+        btnHostLobby.setVisible(false);
+        btnJoinLobby.setVisible(false);
     }
 
     public void btnJoinLobbyClicked() {

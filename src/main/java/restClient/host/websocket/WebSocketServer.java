@@ -24,7 +24,7 @@ public class WebSocketServer {
         // Setup the basic application "context" for this application at "/"
         // This is also known as the handler tree (in jetty speak)
         ServletContextHandler webSocketContext = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        webSocketContext.setContextPath("/");
+        webSocketContext.setContextPath("/toohak");
         webSocketServer.setHandler(webSocketContext);
 
         try {

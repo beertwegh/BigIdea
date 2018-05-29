@@ -4,6 +4,7 @@ import databaseServer.rest.response.*;
 import databaseServer.repositories.IUserRepository;
 import databaseServer.speicifiables.UserSpecifiable;
 import Models.User;
+import shared.Logging.Logger;
 import shared.restrequest.Login;
 import shared.restrequest.Register;
 
@@ -30,8 +31,14 @@ public class AccountHandler implements IAccountHandler {
     @Override
     public Reply register(Register data) {
         User user = new User(data.getUsername(), data.getEmail(), data.getPassword());
-        repository.save(user);
-        return new Reply(Status.Ok, "Account has been made");
+        try {
+            repository.save(user);
+            return new Reply(Status.Ok, "Account has been made");
+
+        } catch (Exception ex) {
+            Logger.getInstance().log(ex);
+            return new Reply(Status.Error, "something went wrong");
+        }
     }
 
 

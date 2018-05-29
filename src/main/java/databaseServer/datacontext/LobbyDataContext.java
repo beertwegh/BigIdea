@@ -53,7 +53,7 @@ public class LobbyDataContext extends AbstractDataContext implements ILobbyDataC
         List<Lobby> all = new ArrayList<>();
         try {
             connection = DriverManager.getConnection(connString);
-            queryString = "SELECT id, text, ip FROM Lobby";
+            queryString = "SELECT id, name, ip FROM Lobby";
             Statement stmt = connection.createStatement();
             ResultSet rset = stmt.executeQuery(queryString);
             while (rset.next()) {

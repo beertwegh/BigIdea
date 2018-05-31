@@ -1,5 +1,6 @@
 package databaseServer.rest.handlers;
 
+import com.google.gson.Gson;
 import databaseServer.rest.response.*;
 import databaseServer.repositories.IUserRepository;
 import databaseServer.speicifiables.UserSpecifiable;
@@ -25,7 +26,7 @@ public class AccountHandler implements IAccountHandler {
         } else if (!(user.getPassword()).equals(data.getPassword())) {
             return new Reply(Status.NoAccess, "Your login credentials were incorrect");
         }
-        return new Reply(Status.Ok, "Login successful");
+        return new Reply(Status.Ok, "Login successful" + user.getId());
     }
 
     @Override

@@ -39,4 +39,5 @@ public class LobbyHandler implements ILobbyHandler
         }
         return new Reply(Status.NotFound, "Lobby doesn't exist");
     }
+
 }

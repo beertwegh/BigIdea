@@ -22,7 +22,7 @@ public class ToohakGame implements IToohakGame {
 
     private IGame game;
     private Controller application;
-
+    private User user;
 
     public ToohakGame(Controller application) {
         this.application = application;

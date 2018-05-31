@@ -63,7 +63,7 @@ public class ServerWebSocket implements IServerWebSocket {
             sendTo(session, "No message found");
             return;
         }
-        messageHandler.handleMessage(message, session);
+        messageHandler.handleMessage(message, session.getId());
     }
 
 

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import shared.Logging.Logger;
+import shared.websocket.interfaces.Action;
 import shared.websocket.interfaces.IMessageHandler;
 import shared.websocket.interfaces.Message;
 
@@ -23,7 +24,7 @@ public class ServerMessageHandler implements IMessageHandler {
             Logger.getInstance().log(ex);
         }
         switch (message.getAction()) {
-            case "AnswerQuestion":
+            case ANSWERQUESTION:
                 break;
 
         }

@@ -33,7 +33,7 @@ public interface IToohakGame {
     List<Lobby> refreshLobbies();
 
 
-    boolean createLobby(Lobby lobby);
+    String createLobby(Lobby lobby);
 
     /**
      * @param question

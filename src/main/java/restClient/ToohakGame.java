@@ -4,6 +4,8 @@ import Models.Answer;
 import Models.Lobby;
 import Models.Question;
 import Models.User;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 import restClient.host.*;
 import restClient.player.ClientGame;
 import restClient.player.IClientGame;
@@ -11,6 +13,7 @@ import restClient.restActions.LoginAction;
 import restClient.restActions.RegisterAction;
 import interfaces.IGame;
 import interfaces.IToohakGame;
+import shared.Logging.Logger;
 import shared.restrequest.Login;
 import shared.restrequest.Register;
 import userinterface.Controller;
@@ -22,7 +25,11 @@ public class ToohakGame implements IToohakGame {
 
     private IGame game;
     private Controller application;
+    private User user;
 
+    public User getUser() {
+        return user;
+    }
 
     public ToohakGame(Controller application) {
         this.application = application;
@@ -44,7 +51,15 @@ public class ToohakGame implements IToohakGame {
      */
     public String login(String useremail, String password) {
         LoginAction action = new LoginAction();
-        return action.login(new Login(useremail, password));
+        String result = action.login(new Login(useremail, password));
+        Gson gson = new Gson();
+        try {
+            this.user = gson.fromJson(result, User.class);
+            return "Login successful";
+        } catch (Exception ex) {
+            Logger.getInstance().log(ex);
+        }
+        return result;
     }
 
     /**
@@ -54,7 +69,7 @@ public class ToohakGame implements IToohakGame {
         if (host) {
             game = new HostGame(this);
         } else {
-            game = new ClientGame();
+            game = new ClientGame(this);
         }
     }
 

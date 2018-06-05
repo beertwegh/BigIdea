@@ -14,7 +14,7 @@ import javax.websocket.server.ServerEndpointConfig;
 public class WebSocketServer {
     public static void startWebSocketServer(ServerWebSocket socket) {
 
-        IMessageHandler messageHandler = new ServerMessageHandler();
+        IMessageHandler messageHandler = new ServerMessageHandler(socket.getGame());
         socket.setMessageHandler(messageHandler);
         Server webSocketServer = new Server();
         ServerConnector connector = new ServerConnector(webSocketServer);

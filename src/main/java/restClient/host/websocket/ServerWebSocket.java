@@ -28,6 +28,10 @@ public class ServerWebSocket implements IServerWebSocket {
 
     private IHostGame game;
 
+    public IHostGame getGame() {
+        return game;
+    }
+
     public ServerWebSocket(IHostGame game) {
         this.game = game;
     }
@@ -48,7 +52,6 @@ public class ServerWebSocket implements IServerWebSocket {
     @OnOpen
     public void onConnect(Session session) {
         sessions.add(session);
-
     }
 
     @OnMessage
@@ -63,7 +66,7 @@ public class ServerWebSocket implements IServerWebSocket {
             sendTo(session, "No message found");
             return;
         }
-        messageHandler.handleMessage(message, session);
+        messageHandler.handleMessage(message, session.getId());
     }
 
 

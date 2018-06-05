@@ -1,58 +1,43 @@
 package restClient.host.websocket;
 
+import Models.User;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import restClient.host.IHostGame;
 import shared.Logging.Logger;
 import shared.websocket.interfaces.IMessageHandler;
 import shared.websocket.interfaces.Message;
-import shared.websocket.interfaces.actions.StartGame;
-
-import javax.websocket.Session;
-import java.io.IOException;
+import shared.websocket.interfaces.actions.AnswerQuestion;
 
 public class ServerMessageHandler implements IMessageHandler {
 
+    public IHostGame game;
+
+    public ServerMessageHandler(IHostGame game) {
+        this.game = game;
+    }
+
     @Override
-    public void handleMessage(String json, Session session) {
+    public void handleMessage(String json, String sessionId) {
         Gson gson = new Gson();
         Message message = null;
-
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObject = jsonParser.parse(json).getAsJsonObject();
-
         try {
             message = gson.fromJson(jsonObject, Message.class);
         } catch (Exception ex) {
             Logger.getInstance().log(ex);
-            sendMessage(new Message("error", ex.getMessage()), session);
         }
         switch (message.getAction()) {
-            case "StartGame":
-                message.parseData(StartGame.class);
-
+            case "AnswerQuestion":
+                message.parseData(AnswerQuestion.class);
+                answerQuestion(sessionId, (AnswerQuestion) message.getData());
+                break;
         }
     }
 
-
-
-
-
-
-
-    private void sendMessage(Message message, Session session) {
-        Gson json = new GsonBuilder().create();
-
-        if (message == null || session == null) {
-            throw new IllegalArgumentException("Message or session can't be null");
-        }
-        try {
-            String jsonToSend = json.toJson(message);
-            session.getBasicRemote().sendText(jsonToSend);
-            System.out.println("Send message to " + session.getId() + " with: \"" + jsonToSend + "\"");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void answerQuestion(String sessionId, AnswerQuestion data) {
+        game.processAnswerQuestion(new User(null,null,null), data.getAnswer());
     }
 }

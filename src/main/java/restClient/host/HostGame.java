@@ -4,15 +4,19 @@ import Models.Lobby;
 import Models.Question;
 import Models.User;
 import com.google.gson.Gson;
+import databaseServer.rest.services.QuestionService;
 import interfaces.IToohakGame;
 import restClient.ToohakGame;
 import restClient.host.websocket.ServerWebSocket;
 import restClient.host.websocket.WebSocketServer;
 import restClient.restActions.GetQuestions;
+import restClient.restActions.SaveLobby;
+import restClient.restActions.GetQuestions;
 import shared.Logging.Logger;
+import shared.websocket.interfaces.Action;
 import shared.MultipleChoice;
 import shared.websocket.interfaces.Message;
-import shared.websocket.interfaces.actions.NextRound;
+import shared.websocket.interfaces.NextRound;
 
 import java.util.ArrayList;
 
@@ -34,7 +38,7 @@ public class HostGame implements IHostGame {
     public void nextRound() {
         if (questions.get(count) != null) {
             NextRound nextRound = new NextRound();
-            Message message = new Message("NextRound", nextRound);
+            Message message = new Message(Action.NEXTROUND);
             Gson gson = new Gson();
             String json = gson.toJson(message);
             socket.broadcast(json);

@@ -10,4 +10,5 @@ public interface ILobbyHandler {
     Reply createLobby(Lobby lobby);
 
     Reply chooseLobby(Lobby lobby);
+
 }

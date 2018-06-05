@@ -1,6 +1,5 @@
 package restClient;
 
-import Models.Answer;
 import Models.Lobby;
 import Models.Question;
 import Models.User;
@@ -17,7 +16,6 @@ import shared.Logging.Logger;
 import shared.restrequest.Login;
 import shared.restrequest.Register;
 import userinterface.Controller;
-import userinterface.ToohakApplication;
 
 import java.util.List;
 
@@ -25,6 +23,7 @@ public class ToohakGame implements IToohakGame {
 
     private IGame game;
     private Controller application;
+    private User user;
     private User user;
 
     public User getUser() {
@@ -85,7 +84,7 @@ public class ToohakGame implements IToohakGame {
     }
 
     @Override
-    public boolean createLobby(Lobby lobby) {
+    public String createLobby(Lobby lobby) {
         return ((HostGame) game).createLobby(lobby);
     }
 

@@ -6,7 +6,7 @@ import interfaces.IGame;
 import shared.MultipleChoice;
 
 public interface IHostGame extends IGame {
-    boolean createLobby(Lobby lobby);
+    String createLobby(Lobby lobby);
 
     void startGame();
 

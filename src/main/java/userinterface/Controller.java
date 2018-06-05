@@ -2,12 +2,17 @@ package userinterface;
 
 import Models.Lobby;
 import Models.User;
+import databaseServer.repositories.UserRepository;
 import interfaces.IToohakGame;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import restClient.ToohakGame;
+import shared.Logging.Logger;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class Controller {
 
@@ -36,13 +41,14 @@ public class Controller {
         } else {
             String loginResult = game.login(useremail, password);
             showMessage(loginResult);
-            if (loginResult.equals("Login successful")) {
+            if (loginResult.contains("Login successful")) {
                 btnLogin.setVisible(false);
                 tbUserEmail.setVisible(false);
                 tbPassword.setVisible(false);
                 btnHostLobby.setVisible(true);
                 btnJoinLobby.setVisible(true);
                 btnRegister.setVisible(false);
+
             }
         }
     }
@@ -107,7 +113,14 @@ public class Controller {
         if (tbLobbyName.getText().trim().equals("") || tbIp.getText().trim().equals("")) {
             showMessage("Please fill in all fields!");
         } else {
-            if (game.createLobby(new Lobby(tbIp.getText(), tbLobbyName.getText()))) {
+            InetAddress ownIP = null;
+            try {
+                ownIP = InetAddress.getLocalHost();
+            } catch (UnknownHostException e) {
+                Logger.getInstance().log(e);
+            }
+            String ip = ownIP.getHostAddress();
+            if (game.createLobby(new Lobby(ip + ":" + tbIp.getText(), tbLobbyName.getText()))) {
                 tbLobbyName.setVisible(false);
                 tbIp.setVisible(false);
                 btnCreateLobby.setVisible(false);

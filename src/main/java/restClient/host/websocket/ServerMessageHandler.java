@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import restClient.host.IHostGame;
 import shared.Logging.Logger;
+import shared.websocket.interfaces.Action;
 import shared.websocket.interfaces.IMessageHandler;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.AnswerQuestion;
@@ -30,14 +31,9 @@ public class ServerMessageHandler implements IMessageHandler {
             Logger.getInstance().log(ex);
         }
         switch (message.getAction()) {
-            case "AnswerQuestion":
-                message.parseData(AnswerQuestion.class);
-                answerQuestion(sessionId, (AnswerQuestion) message.getData());
+            case ANSWERQUESTION:
                 break;
-        }
-    }
 
-    private void answerQuestion(String sessionId, AnswerQuestion data) {
-        game.processAnswerQuestion(new User(null,null,null), data.getAnswer());
+        }
     }
 }

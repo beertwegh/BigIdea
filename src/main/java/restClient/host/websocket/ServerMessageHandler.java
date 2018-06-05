@@ -23,8 +23,10 @@ public class ServerMessageHandler implements IMessageHandler {
     public void handleMessage(String json, String sessionId) {
         Gson gson = new Gson();
         Message message = null;
+
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObject = jsonParser.parse(json).getAsJsonObject();
+
         try {
             message = gson.fromJson(jsonObject, Message.class);
         } catch (Exception ex) {

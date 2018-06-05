@@ -24,7 +24,6 @@ public class ToohakGame implements IToohakGame {
     private IGame game;
     private Controller application;
     private User user;
-    private User user;
 
     public User getUser() {
         return user;

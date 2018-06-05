@@ -63,7 +63,7 @@ public class ClientWebSocket implements IClientWebSocket {
             throw new NullPointerException("messageHandler is null");
         }
         if (!message.isEmpty()) {
-            handler.handleMessage(message, session);
+            handler.handleMessage(message, session.getId());
         }
     }
 

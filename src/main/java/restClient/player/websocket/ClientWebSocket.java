@@ -1,5 +1,6 @@
 package restClient.player.websocket;
 
+import Models.User;
 import com.google.gson.Gson;
 import jersey.repackaged.com.google.common.collect.ImmutableSetMultimap;
 import shared.Logging.LogLevel;
@@ -44,6 +45,7 @@ public class ClientWebSocket implements IClientWebSocket {
     @OnOpen
     public void onWebSocketConnect(Session session) {
         this.session = session;
+
     }
 
     @OnMessage

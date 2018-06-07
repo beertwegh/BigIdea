@@ -3,6 +3,8 @@ package shared.websocket.interfaces;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import shared.websocket.interfaces.actions.Action;
+import shared.websocket.interfaces.actions.IAction;
 
 public class Message {
     private Action action;

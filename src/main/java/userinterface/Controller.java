@@ -150,7 +150,6 @@ public class Controller {
 
     //endregion
 
-
     public void showMessage(final String message) {
         Platform.runLater(new Runnable() {
             public void run() {

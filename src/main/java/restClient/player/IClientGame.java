@@ -1,9 +1,8 @@
 package restClient.player;
 
-import Models.Answer;
 import Models.Lobby;
-import Models.MultipleChoice;
 import interfaces.IGame;
+import shared.MultipleChoice;
 
 import java.util.List;
 

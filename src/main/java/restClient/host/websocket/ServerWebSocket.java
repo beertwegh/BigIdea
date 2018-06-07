@@ -13,13 +13,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
+import java.util.Map;
 
 @ServerEndpoint(value = "/toohak/")
 @Singleton
 public class ServerWebSocket implements IServerWebSocket {
 
     private static ArrayList<Session> sessions = new ArrayList<>();
-    private static HashMap<Integer, User> userSessions = new HashMap<>();
 
     private static IMessageHandler messageHandler;
 

@@ -2,6 +2,7 @@ package interfaces;
 
 
 import Models.*;
+import shared.MultipleChoice;
 
 import java.util.List;
 
@@ -18,8 +19,9 @@ public interface IToohakGame {
 
     void joinLobby(Lobby lobby);
 
-    void answerQuestion(Question question);
+    void answerQuestion(MultipleChoice multipleChoice);
 
     void startGame();
 
+    User getUser();
 }

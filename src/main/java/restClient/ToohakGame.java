@@ -1,8 +1,6 @@
 package restClient;
 
-import Models.Lobby;
-import Models.Question;
-import Models.User;
+import Models.*;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import restClient.host.*;
@@ -13,6 +11,7 @@ import restClient.restActions.RegisterAction;
 import interfaces.IGame;
 import interfaces.IToohakGame;
 import shared.Logging.Logger;
+import shared.MultipleChoice;
 import shared.restrequest.Login;
 import shared.restrequest.Register;
 import userinterface.Controller;
@@ -33,20 +32,11 @@ public class ToohakGame implements IToohakGame {
         this.application = application;
     }
 
-    /**
-     * @param username
-     * @param password
-     * @param email
-     */
     public String registerPlayer(String username, String password, String email) {
         RegisterAction action = new RegisterAction();
         return action.register(new Register(email, username, password));
     }
 
-    /**
-     * @param useremail
-     * @param password
-     */
     public String login(String useremail, String password) {
         LoginAction action = new LoginAction();
         String result = action.login(new Login(useremail, password));
@@ -60,9 +50,6 @@ public class ToohakGame implements IToohakGame {
         return result;
     }
 
-    /**
-     * @param host
-     */
     public void chooseHostOrClient(boolean host) {
         if (host) {
             game = new HostGame(this);
@@ -85,8 +72,9 @@ public class ToohakGame implements IToohakGame {
         ((IClientGame) game).joinLobby(lobby);
     }
 
-    public void answerQuestion(Question question) {
-//todo
+    @Override
+    public void answerQuestion(MultipleChoice answer) {
+        ((IClientGame) game).sendAnswer(answer);
     }
 
     @Override

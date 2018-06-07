@@ -11,9 +11,9 @@ import restClient.host.websocket.WebSocketServer;
 import restClient.restActions.GetQuestions;
 import restClient.restActions.SaveLobby;
 import shared.MultipleChoice;
-import shared.websocket.interfaces.Action;
+import shared.websocket.interfaces.actions.Action;
 import shared.websocket.interfaces.Message;
-import shared.websocket.interfaces.NextRound;
+import shared.websocket.interfaces.actions.NextRound;
 
 import java.util.ArrayList;
 

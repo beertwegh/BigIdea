@@ -9,6 +9,8 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import restClient.ToohakGame;
+import restClient.player.ClientGame;
+import restClient.player.websocket.ClientWebSocket;
 import shared.Logging.Logger;
 
 import java.net.InetAddress;
@@ -31,8 +33,11 @@ public class Controller {
     public Button btnCreateLobby;
     public ListView<User> lbPlayersInLobby;
     public Button btnStartGame;
+    public Button btnJoinSelectedLobby;
     public IToohakGame game = new ToohakGame(this);
 
+
+    //region Authentication
     public void login() {
         String useremail = tbUserEmail.getText();
         String password = tbPassword.getText();
@@ -53,24 +58,6 @@ public class Controller {
         }
     }
 
-    public void showMessage(final String message) {
-        Platform.runLater(new Runnable() {
-            public void run() {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Toohak");
-                alert.setHeaderText("Message");
-                alert.setContentText(message);
-                alert.showAndWait();
-            }
-        });
-    }
-
-    public void btnRegisterClicked() {
-        tbRegisterEmail.setVisible(true);
-        tbUserEmail.setPromptText("Username");
-        btnRegisterConfirm.setVisible(true);
-        btnLogin.setVisible(false);
-    }
 
     public void btnRegisterConfirmClicked() {
         String username = tbUserEmail.getText();
@@ -94,6 +81,34 @@ public class Controller {
         }
     }
 
+    public void btnRegisterClicked() {
+        tbRegisterEmail.setVisible(true);
+        tbUserEmail.setPromptText("Username");
+        btnRegisterConfirm.setVisible(true);
+        btnLogin.setVisible(false);
+    }
+//endregion
+
+    //region Client/Player
+
+    public void btnJoinLobbyClicked() {
+        game.chooseHostOrClient(false);
+        lobbyList.setItems(FXCollections.observableArrayList(game.refreshLobbies()));
+    }
+
+    public void btnJoinSelectedLobbyClicked() {
+        if (lobbyList.getSelectionModel().getSelectedItem() == null) {
+            showMessage("Please select a lobby");
+        } else {
+            game.joinLobby(lobbyList.getSelectionModel().getSelectedItem());
+            lobbyList.setVisible(false);
+            btnJoinSelectedLobby.setVisible(false);
+        }
+    }
+
+    //endregion
+
+    //region Server/Host
     public void btnHostLobbyClicked() {
         game.chooseHostOrClient(true);
         tbIp.setVisible(true);
@@ -101,11 +116,6 @@ public class Controller {
         btnCreateLobby.setVisible(true);
         btnHostLobby.setVisible(false);
         btnJoinLobby.setVisible(false);
-    }
-
-    public void btnJoinLobbyClicked() {
-        game.chooseHostOrClient(false);
-        lobbyList.setItems(FXCollections.observableArrayList(game.refreshLobbies()));
     }
 
     public void btnCreateLobbyClicked() {
@@ -120,7 +130,7 @@ public class Controller {
                 Logger.getInstance().log(e);
             }
             String ip = ownIP.getHostAddress();
-            if (game.createLobby(new Lobby(ip + ":" + tbIp.getText(), tbLobbyName.getText()))) {
+            if ((game.createLobby(new Lobby(ip + ":" + tbIp.getText(), tbLobbyName.getText()))).equals("Lobby has been added")) {
                 tbLobbyName.setVisible(false);
                 tbIp.setVisible(false);
                 btnCreateLobby.setVisible(false);
@@ -136,5 +146,20 @@ public class Controller {
 
     public void btnStartGameClicked() {
 
+    }
+
+    //endregion
+
+
+    public void showMessage(final String message) {
+        Platform.runLater(new Runnable() {
+            public void run() {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Toohak");
+                alert.setHeaderText("Message");
+                alert.setContentText(message);
+                alert.showAndWait();
+            }
+        });
     }
 }

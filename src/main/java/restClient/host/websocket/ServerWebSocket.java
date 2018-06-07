@@ -1,20 +1,25 @@
 package restClient.host.websocket;
 
-import restClient.host.IHostGame;
+import Models.User;
+import restClient.host.HostGame;
 import shared.Logging.LogLevel;
 import shared.Logging.Logger;
 import shared.websocket.interfaces.IMessageHandler;
 
+import javax.inject.Singleton;
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
 
 @ServerEndpoint(value = "/toohak/")
+@Singleton
 public class ServerWebSocket implements IServerWebSocket {
 
     private static ArrayList<Session> sessions = new ArrayList<>();
-
+    private static HashMap<Integer, User> userSessions = new HashMap<>();
 
     private static IMessageHandler messageHandler;
 
@@ -26,13 +31,13 @@ public class ServerWebSocket implements IServerWebSocket {
         ServerWebSocket.messageHandler = messageHandler;
     }
 
-    private IHostGame game;
+    private HostGame game;
 
-    public IHostGame getGame() {
+    public HostGame getGame() {
         return game;
     }
 
-    public ServerWebSocket(IHostGame game) {
+    public ServerWebSocket(HostGame game) {
         this.game = game;
     }
 

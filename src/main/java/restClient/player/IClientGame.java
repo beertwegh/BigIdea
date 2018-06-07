@@ -13,5 +13,6 @@ public interface IClientGame extends IGame {
 
     List<Lobby> refreshLobbies();
 
+    void joinLobby(Lobby lobby);
 
 }

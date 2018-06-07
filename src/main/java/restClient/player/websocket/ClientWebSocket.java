@@ -10,18 +10,11 @@ import javax.websocket.*;
 import java.io.IOException;
 import java.net.URI;
 
+@ClientEndpoint
 public class ClientWebSocket implements IClientWebSocket {
 
     private Session session;
     private IMessageHandler handler;
-    private static ClientWebSocket instance = null;
-
-    public static ClientWebSocket getInstance() {
-        if (instance == null) {
-            instance = new ClientWebSocket();
-        }
-        return instance;
-    }
 
     @Override
     public void start(String ip) {

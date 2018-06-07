@@ -71,20 +71,18 @@ public class ToohakGame implements IToohakGame {
         }
     }
 
-    /**
-     * @param lobby
-     */
-    public void selectLobby(Lobby lobby) {
-//todo
-    }
-
     public List<Lobby> refreshLobbies() {
         return ((IClientGame) game).refreshLobbies();
     }
 
     @Override
     public String createLobby(Lobby lobby) {
-        return ((HostGame) game).createLobby(lobby);
+        return ((IHostGame) game).createLobby(lobby);
+    }
+
+    @Override
+    public void joinLobby(Lobby lobby) {
+        ((IClientGame) game).joinLobby(lobby);
     }
 
     public void answerQuestion(Question question) {
@@ -93,7 +91,7 @@ public class ToohakGame implements IToohakGame {
 
     @Override
     public void startGame() {
-        ((HostGame) game).startGame();
+        ((IHostGame) game).startGame();
     }
 
     public void addToLobbyList(User user) {

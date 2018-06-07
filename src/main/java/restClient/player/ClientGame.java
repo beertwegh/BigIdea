@@ -13,8 +13,6 @@ import java.util.List;
 
 public class ClientGame implements IClientGame {
 
-    private Question question;
-
     private IToohakGame game;
 
     private ClientWebSocket socket;
@@ -27,7 +25,7 @@ public class ClientGame implements IClientGame {
 
     @Override
     public void sendAnswer(MultipleChoice answer) {
-
+        messageGenerator.answerQuestion(answer);
     }
 
 

@@ -4,6 +4,7 @@ import Models.User;
 import shared.MultipleChoice;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.Action;
+import shared.websocket.interfaces.actions.AnswerQuestion;
 import shared.websocket.interfaces.actions.IntroduceUser;
 
 public class ClientMessageGenerator implements IClientMessageGenerator {
@@ -21,7 +22,9 @@ public class ClientMessageGenerator implements IClientMessageGenerator {
     }
 
     @Override
-    public void answerQuestion(MultipleChoice multipleChoice) {
-
+    public void answerQuestion(MultipleChoice answer) {
+        AnswerQuestion answerQuestion = new AnswerQuestion(answer);
+        Message message = new Message(Action.ANSWERQUESTION, answerQuestion);
+        socket.send(message);
     }
 }

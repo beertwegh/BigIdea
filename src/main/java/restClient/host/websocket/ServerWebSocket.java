@@ -62,11 +62,9 @@ public class ServerWebSocket implements IServerWebSocket {
     @OnMessage
     public void onText(String message, Session session) {
         System.out.println("[Received] From : " + session.getId() + " | Content  : " + message);
-
         if (messageHandler == null) {
             throw new NullPointerException("No messageHandler found");
         }
-
         if (message.isEmpty()) {
             sendTo(session, "No message found");
             return;

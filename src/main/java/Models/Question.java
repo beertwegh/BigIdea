@@ -12,4 +12,8 @@ public class Question {
         this.text = text;
         this.answers = answers;
     }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
 }

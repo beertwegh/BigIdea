@@ -5,6 +5,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.Controller">
     <children>
@@ -23,5 +24,25 @@
         <Button fx:id="btnStartGame" layoutX="34.0" layoutY="225.0" mnemonicParsing="false" onAction="#btnStartGameClicked" prefHeight="130.0" prefWidth="215.0" text="Start game" visible="false" />
         <ListView fx:id="lbPlayersInLobby" layoutX="42.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" visible="false" />
       <Button fx:id="btnJoinSelectedLobby" layoutX="300.0" layoutY="362.0" mnemonicParsing="false" onAction="#btnJoinSelectedLobbyClicked" text="Join" visible="false" />
+      <Button fx:id="btnA" layoutX="48.0" layoutY="59.0" mnemonicParsing="false" onAction="#btnApressed" prefHeight="130.0" prefWidth="144.0" text="A">
+         <font>
+            <Font size="60.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnD" layoutX="214.0" layoutY="205.0" mnemonicParsing="false" onAction="#btnDpressed" prefHeight="130.0" prefWidth="144.0" text="D">
+         <font>
+            <Font size="60.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnB" layoutX="214.0" layoutY="59.0" mnemonicParsing="false" onAction="#btnBpressed" prefHeight="130.0" prefWidth="144.0" text="B">
+         <font>
+            <Font size="60.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnC" layoutX="48.0" layoutY="205.0" mnemonicParsing="false" onAction="#btnCpressed" prefHeight="130.0" prefWidth="144.0" text="C">
+         <font>
+            <Font size="60.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

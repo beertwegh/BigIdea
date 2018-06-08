@@ -14,6 +14,7 @@ import restClient.host.IHostGame;
 import restClient.player.ClientGame;
 import restClient.player.websocket.ClientWebSocket;
 import shared.Logging.Logger;
+import shared.MultipleChoice;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -112,6 +113,25 @@ public class Controller {
         //TODO
     }
 
+    public void btnApressed() {
+        answerQuestion(MultipleChoice.A);
+    }
+
+    public void btnBpressed() {
+        answerQuestion(MultipleChoice.B);
+    }
+
+    public void btnCpressed() {
+        answerQuestion(MultipleChoice.C);
+    }
+
+    public void btnDpressed() {
+        answerQuestion(MultipleChoice.D);
+    }
+
+    private void answerQuestion(MultipleChoice answer) {
+        game.answerQuestion(answer);
+    }
     //endregion
 
     //region Server/Host
@@ -171,4 +191,6 @@ public class Controller {
             }
         });
     }
+
+
 }

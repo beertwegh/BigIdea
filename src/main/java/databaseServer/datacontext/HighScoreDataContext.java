@@ -23,4 +23,3 @@ public class HighScoreDataContext extends AbstractDataContext implements IHighSc
         }
     }
 }
-

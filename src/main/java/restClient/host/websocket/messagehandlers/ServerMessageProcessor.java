@@ -52,6 +52,4 @@ public class ServerMessageProcessor implements IMessageProcessor {
     private User getUserBySessionId(String sessionId) {
         return userSessions.get(sessionId);
     }
-
-
 }

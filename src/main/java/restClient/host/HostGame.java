@@ -11,7 +11,9 @@ import restClient.host.websocket.ServerWebSocket;
 import restClient.host.websocket.WebSocketServer;
 import restClient.restActions.GetQuestions;
 import restClient.restActions.SaveLobby;
+import restClient.restActions.SetHighScoreAction;
 import shared.MultipleChoice;
+import shared.restrequest.SetHighScore;
 
 import java.util.ArrayList;
 
@@ -76,8 +78,11 @@ public class HostGame implements IHostGame {
 
     @Override
     public void processAnswerQuestion(User user, MultipleChoice answer) {
-//TODO
+        boolean correct = questions.get(count).getAnswers().get(answer.getValue()).isCorrect();
+        if (correct) {
+            messageGenerator.replyAnswerQuestion(true, user);
+            SetHighScoreAction action = new SetHighScoreAction();
+            action.setHighScore(new SetHighScore(user.getId(), user.getScore() + 10));
+        }
     }
-
-
 }

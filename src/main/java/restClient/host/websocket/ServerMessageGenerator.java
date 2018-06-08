@@ -1,5 +1,6 @@
 package restClient.host.websocket;
 
+import Models.User;
 import com.google.gson.Gson;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.Action;
@@ -27,5 +28,10 @@ public class ServerMessageGenerator implements IServerMessageGenerator {
     @Override
     public void endGame() {
         socket.broadcast("game has ended");
+    }
+
+    @Override
+    public void replyAnswerQuestion(boolean correct, User user) {
+        //TODO
     }
 }

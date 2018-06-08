@@ -14,7 +14,6 @@ public class AnswerQuestionMessageHandler{
     }
 
     public void handleMessage(Message message, User user) {
-
         AnswerQuestion answerQuestion = (AnswerQuestion) message.getData();
         game.processAnswerQuestion(user, answerQuestion.getAnswer());
     }

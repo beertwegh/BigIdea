@@ -1,12 +1,11 @@
 package restClient.host.websocket.messagehandlers;
 
 import Models.User;
-import org.eclipse.jetty.server.Server;
 import restClient.host.HostGame;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.AnswerQuestion;
 
-public class AnswerQuestionMessageHandler {
+public class AnswerQuestionMessageHandler{
 
     private HostGame game;
 

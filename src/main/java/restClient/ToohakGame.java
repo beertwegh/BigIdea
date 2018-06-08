@@ -28,6 +28,15 @@ public class ToohakGame implements IToohakGame {
         return user;
     }
 
+    @Override
+    public void processNextRound(IGame game) {
+        if (game instanceof IHostGame) {
+            application.processNextRoundHost();
+        } else {
+            application.processNextRoundClient();
+        }
+    }
+
     public ToohakGame(Controller application) {
         this.application = application;
     }

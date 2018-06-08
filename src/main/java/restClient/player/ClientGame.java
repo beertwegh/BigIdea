@@ -46,6 +46,6 @@ public class ClientGame implements IClientGame {
 
     @Override
     public void nextRound() {
-
+        game.processNextRound(this);
     }
 }

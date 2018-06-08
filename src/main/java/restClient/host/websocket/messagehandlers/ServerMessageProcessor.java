@@ -4,24 +4,21 @@ import Models.User;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import databaseServer.datacontext.CredentialsDataContext;
-import databaseServer.repositories.UserRepository;
 import restClient.host.HostGame;
 import shared.Logging.Logger;
-import shared.websocket.interfaces.IMessageHandler;
+import shared.websocket.interfaces.IMessageProcessor;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.AnswerQuestion;
 import shared.websocket.interfaces.actions.IntroduceUser;
 
-import javax.websocket.Session;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ServerMessageHandler implements IMessageHandler {
+public class ServerMessageProcessor implements IMessageProcessor {
 
     public HostGame game;
 
-    public ServerMessageHandler(HostGame game) {
+    public ServerMessageProcessor(HostGame game) {
         this.game = game;
     }
 

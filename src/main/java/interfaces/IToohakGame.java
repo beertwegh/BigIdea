@@ -24,4 +24,6 @@ public interface IToohakGame {
     void startGame();
 
     User getUser();
+
+    void processNextRound(IGame game);
 }

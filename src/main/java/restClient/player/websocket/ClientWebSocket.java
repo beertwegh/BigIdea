@@ -1,11 +1,9 @@
 package restClient.player.websocket;
 
-import Models.User;
 import com.google.gson.Gson;
-import jersey.repackaged.com.google.common.collect.ImmutableSetMultimap;
 import shared.Logging.LogLevel;
 import shared.Logging.Logger;
-import shared.websocket.interfaces.IMessageHandler;
+import shared.websocket.interfaces.IMessageProcessor;
 
 import javax.websocket.*;
 import java.io.IOException;
@@ -15,7 +13,7 @@ import java.net.URI;
 public class ClientWebSocket implements IClientWebSocket {
 
     private Session session;
-    private IMessageHandler handler;
+    private IMessageProcessor handler;
 
     @Override
     public void start(String ip) {
@@ -38,7 +36,7 @@ public class ClientWebSocket implements IClientWebSocket {
         }
     }
 
-    public void setMessageHandler(IMessageHandler handler) {
+    public void setMessageHandler(IMessageProcessor handler) {
         this.handler = handler;
     }
 

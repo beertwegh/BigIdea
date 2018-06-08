@@ -4,9 +4,9 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
-import restClient.host.websocket.messagehandlers.ServerMessageHandler;
+import restClient.host.websocket.messagehandlers.ServerMessageProcessor;
 import shared.Logging.Logger;
-import shared.websocket.interfaces.IMessageHandler;
+import shared.websocket.interfaces.IMessageProcessor;
 
 import javax.websocket.server.ServerContainer;
 import javax.websocket.server.ServerEndpoint;
@@ -15,7 +15,7 @@ import javax.websocket.server.ServerEndpointConfig;
 public class WebSocketServer {
     public static void startWebSocketServer(ServerWebSocket socket) {
 
-        IMessageHandler messageHandler = new ServerMessageHandler(socket.getGame());
+        IMessageProcessor messageHandler = new ServerMessageProcessor(socket.getGame());
         socket.setMessageHandler(messageHandler);
         Server webSocketServer = new Server();
         ServerConnector connector = new ServerConnector(webSocketServer);

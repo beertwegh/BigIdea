@@ -3,12 +3,14 @@ package userinterface;
 import Models.Lobby;
 import Models.User;
 import databaseServer.repositories.UserRepository;
+import interfaces.IGame;
 import interfaces.IToohakGame;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import restClient.ToohakGame;
+import restClient.host.IHostGame;
 import restClient.player.ClientGame;
 import restClient.player.websocket.ClientWebSocket;
 import shared.Logging.Logger;
@@ -106,9 +108,14 @@ public class Controller {
         }
     }
 
+    public void processNextRoundClient() {
+        //TODO
+    }
+
     //endregion
 
     //region Server/Host
+
     public void btnHostLobbyClicked() {
         game.chooseHostOrClient(true);
         tbIp.setVisible(true);
@@ -145,9 +152,12 @@ public class Controller {
     }
 
     public void btnStartGameClicked() {
-
+        game.startGame();
     }
 
+    public void processNextRoundHost() {
+        //TODO
+    }
     //endregion
 
     public void showMessage(final String message) {

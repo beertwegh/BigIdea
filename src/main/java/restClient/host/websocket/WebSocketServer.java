@@ -13,13 +13,13 @@ import javax.websocket.server.ServerEndpoint;
 import javax.websocket.server.ServerEndpointConfig;
 
 public class WebSocketServer {
-    public static void startWebSocketServer(ServerWebSocket socket) {
+    public static void startWebSocketServer(ServerWebSocket socket, int port) {
 
         IMessageProcessor messageHandler = new ServerMessageProcessor(socket.getGame());
         socket.setMessageHandler(messageHandler);
         Server webSocketServer = new Server();
         ServerConnector connector = new ServerConnector(webSocketServer);
-        connector.setPort(9090);
+        connector.setPort(port);
         webSocketServer.addConnector(connector);
 
         // Setup the basic application "context" for this application at "/"

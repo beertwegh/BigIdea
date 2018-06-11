@@ -111,6 +111,7 @@ public class Controller {
         lobbyList.setVisible(true);
         btnJoinLobby.setVisible(false);
         btnHostLobby.setVisible(false);
+        btnJoinSelectedLobby.setVisible(true);
     }
 
     public void processAnswerCorrect() {

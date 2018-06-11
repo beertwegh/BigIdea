@@ -19,7 +19,8 @@ public class ClientWebSocket implements IClientWebSocket {
     public void start(String ip) {
         try {
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
-            container.connectToServer(this, new URI(ip));
+            String uri = "ws://" + ip + "/toohak/";
+            container.connectToServer(this, new URI(uri));
         } catch (Exception ex) {
             Logger.getInstance().log(ex);
         }

@@ -59,7 +59,10 @@ public class HostGame implements IHostGame {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                WebSocketServer.startWebSocketServer(socket);
+                String[] split = lobby.getIp().split(":");
+                String portString = split[1];
+                int port = Integer.parseInt(portString);
+                WebSocketServer.startWebSocketServer(socket, port);
             }
         });
         thread.start();

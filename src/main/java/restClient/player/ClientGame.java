@@ -42,7 +42,7 @@ public class ClientGame implements IClientGame {
         socket.setMessageHandler(new ClientMessageProcessor(this));
         messageGenerator = new ClientMessageGenerator(socket);
         socket.start(lobby.getIp());
-        messageGenerator.introducePlayer(game.getUser());
+        //   messageGenerator.introducePlayer(game.getUser());
     }
 
     @Override

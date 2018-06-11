@@ -32,6 +32,7 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
                 all.add(question);
             }
             connection.close();
+            rset.close();
             return all;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,6 +55,7 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
                 answers.add(new Answer(text, correct));
             }
             connection2.close();
+            rset.close();
             return answers;
         } catch (SQLException e) {
             e.printStackTrace();

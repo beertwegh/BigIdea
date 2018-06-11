@@ -22,6 +22,7 @@ public class LobbyDataContext extends AbstractDataContext implements ILobbyDataC
                 rset.first();
                 Lobby lobby = new Lobby(rset.getInt("id"), rset.getString("ip"), rset.getString("name"));
                 connection.close();
+                rset.close();
                 return lobby;
             }
         } catch (SQLException e) {
@@ -42,6 +43,7 @@ public class LobbyDataContext extends AbstractDataContext implements ILobbyDataC
             stmt.setString(2, item.getIp());
             stmt.executeUpdate();
             connection.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -63,6 +65,7 @@ public class LobbyDataContext extends AbstractDataContext implements ILobbyDataC
                 all.add(new Lobby(id, ip, name));
             }
             connection.close();
+            rset.close();
             return all;
         } catch (SQLException e) {
             e.printStackTrace();

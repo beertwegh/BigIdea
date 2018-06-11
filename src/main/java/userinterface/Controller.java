@@ -195,7 +195,10 @@ public class Controller {
             } catch (UnknownHostException e) {
                 Logger.getInstance().log(e);
             }
-            String ip = ownIP.getHostAddress();
+            String ip = null;
+            if (ownIP != null) {
+                ip = ownIP.getHostAddress();
+            }
             if ((game.createLobby(new Lobby(ip + ":" + tbIp.getText(), tbLobbyName.getText()))).equals("Lobby has been added")) {
                 tbLobbyName.setVisible(false);
                 tbIp.setVisible(false);

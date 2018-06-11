@@ -43,8 +43,6 @@ public class RestService {
         try {
             jettyServer.start();
             jettyServer.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

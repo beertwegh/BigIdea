@@ -7,6 +7,7 @@ import restClient.player.IClientGame;
 import shared.Logging.Logger;
 import shared.websocket.interfaces.IMessageProcessor;
 import shared.websocket.interfaces.Message;
+import shared.websocket.interfaces.actions.ReplyAnswerQuestion;
 
 public class ClientMessageProcessor implements IMessageProcessor {
     private IClientGame game;
@@ -14,6 +15,7 @@ public class ClientMessageProcessor implements IMessageProcessor {
     public ClientMessageProcessor(IClientGame game) {
         this.game = game;
     }
+
     @Override
     public void handleMessage(String json, String sessionId) {
         Gson gson = new Gson();
@@ -27,8 +29,13 @@ public class ClientMessageProcessor implements IMessageProcessor {
         }
         switch (message.getAction()) {
             case NEXTROUND:
-                NextRoundMessageHandler handler = new NextRoundMessageHandler(game);
-                handler.nextRound();
+                NextRoundMessageHandler nextRoundMessageHandler = new NextRoundMessageHandler(game);
+                nextRoundMessageHandler.nextRound();
+                break;
+            case REPLYANSWERQUESTION:
+                ReplyAnswerQuestion reply = gson.fromJson(message.getContent(), ReplyAnswerQuestion.class);
+                ReplyAnswerQuestionMessageHandler replyAnswerQuestionMessageHandler = new ReplyAnswerQuestionMessageHandler(game);
+                replyAnswerQuestionMessageHandler.handleReply(reply.isCorrect());
                 break;
         }
     }

@@ -1,6 +1,8 @@
 package restClient.host.websocket;
 
+import Models.User;
 import restClient.host.HostGame;
+import restClient.host.websocket.messagehandlers.ServerMessageProcessor;
 import shared.Logging.LogLevel;
 import shared.Logging.Logger;
 import shared.websocket.interfaces.IMessageProcessor;
@@ -48,6 +50,12 @@ public class ServerWebSocket implements IServerWebSocket {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void sendToUser(User user, String message) {
+        String sessionId = ((ServerMessageProcessor) messageHandler).getSessionIdByUser(user);
+        sendTo(getSessionFromId(sessionId), message);
     }
 
     @OnOpen

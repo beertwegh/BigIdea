@@ -1,6 +1,8 @@
 package restClient.host.websocket.messagehandlers;
 
 import Models.User;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -22,7 +24,7 @@ public class ServerMessageProcessor implements IMessageProcessor {
         this.game = game;
     }
 
-    private static Map<String, User> userSessions = new HashMap<>();
+    private static BiMap<String, User> userSessions = HashBiMap.create();
 
     @Override
     public void handleMessage(String json, String sessionId) {
@@ -47,6 +49,10 @@ public class ServerMessageProcessor implements IMessageProcessor {
                 userSessions.put(sessionId, ((IntroduceUser) message.getData()).getUser());
                 break;
         }
+    }
+
+    public String getSessionIdByUser(User user) {
+        return userSessions.inverse().get(user);
     }
 
     private User getUserBySessionId(String sessionId) {

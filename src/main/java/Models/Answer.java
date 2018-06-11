@@ -13,4 +13,9 @@ public class Answer {
     public boolean isCorrect() {
         return correct;
     }
+
+    @Override
+    public String toString() {
+        return text;
+    }
 }

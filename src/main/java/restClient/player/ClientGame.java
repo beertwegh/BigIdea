@@ -6,6 +6,7 @@ import interfaces.IToohakGame;
 import restClient.player.websocket.ClientMessageGenerator;
 import restClient.player.websocket.ClientWebSocket;
 import restClient.player.websocket.IClientMessageGenerator;
+import restClient.player.websocket.messagehandlers.ClientMessageProcessor;
 import restClient.restActions.GetLobbies;
 import shared.MultipleChoice;
 
@@ -38,14 +39,24 @@ public class ClientGame implements IClientGame {
     @Override
     public void joinLobby(Lobby lobby) {
         socket = new ClientWebSocket();
+        socket.setMessageHandler(new ClientMessageProcessor(this));
         messageGenerator = new ClientMessageGenerator(socket);
         socket.start(lobby.getIp());
         messageGenerator.introducePlayer(game.getUser());
+    }
 
+    @Override
+    public void startGame() {
+        game.processStartGame();
     }
 
     @Override
     public void nextRound() {
         game.processNextRound(this);
+    }
+
+    @Override
+    public void processAnswerReply(boolean correct) {
+        game.processAnswerReply(correct);
     }
 }

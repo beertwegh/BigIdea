@@ -28,24 +28,26 @@ public class ToohakGame implements IToohakGame {
         return user;
     }
 
+    public ToohakGame(Controller application) {
+        this.application = application;
+    }
+
     @Override
     public void processNextRound(IGame game) {
         if (game instanceof IHostGame) {
-            application.processNextRoundHost();
+            application.processNextRoundHost(((HostGame) game).getQuestions().get(((HostGame) game).getCount()));
         } else {
             application.processNextRoundClient();
         }
     }
 
-    public ToohakGame(Controller application) {
-        this.application = application;
-    }
-
+    @Override
     public String registerPlayer(String username, String password, String email) {
         RegisterAction action = new RegisterAction();
         return action.register(new Register(email, username, password));
     }
 
+    @Override
     public String login(String useremail, String password) {
         LoginAction action = new LoginAction();
         String result = action.login(new Login(useremail, password));
@@ -59,6 +61,7 @@ public class ToohakGame implements IToohakGame {
         return result;
     }
 
+    @Override
     public void chooseHostOrClient(boolean host) {
         if (host) {
             game = new HostGame(this);
@@ -67,6 +70,7 @@ public class ToohakGame implements IToohakGame {
         }
     }
 
+    @Override
     public List<Lobby> refreshLobbies() {
         return ((IClientGame) game).refreshLobbies();
     }
@@ -87,8 +91,22 @@ public class ToohakGame implements IToohakGame {
     }
 
     @Override
+    public void processAnswerReply(boolean correct) {
+        if (correct) {
+            application.processAnswerCorrect();
+        } else {
+            application.processAnswerWrong();
+        }
+    }
+
+    @Override
     public void startGame() {
         ((IHostGame) game).startGame();
+    }
+
+    @Override
+    public void processStartGame() {
+        ((IClientGame)game).startGame();
     }
 
     public void addToLobbyList(User user) {

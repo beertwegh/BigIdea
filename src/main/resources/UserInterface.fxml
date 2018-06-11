@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -24,25 +25,34 @@
         <Button fx:id="btnStartGame" layoutX="34.0" layoutY="225.0" mnemonicParsing="false" onAction="#btnStartGameClicked" prefHeight="130.0" prefWidth="215.0" text="Start game" visible="false" />
         <ListView fx:id="lbPlayersInLobby" layoutX="42.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" visible="false" />
       <Button fx:id="btnJoinSelectedLobby" layoutX="300.0" layoutY="362.0" mnemonicParsing="false" onAction="#btnJoinSelectedLobbyClicked" text="Join" visible="false" />
-      <Button fx:id="btnA" layoutX="48.0" layoutY="59.0" mnemonicParsing="false" onAction="#btnApressed" prefHeight="130.0" prefWidth="144.0" text="A">
+      <Button fx:id="btnA" layoutX="48.0" layoutY="59.0" mnemonicParsing="false" onAction="#btnApressed" prefHeight="130.0" prefWidth="144.0" text="A" visible="false">
          <font>
             <Font size="60.0" />
          </font>
       </Button>
-      <Button fx:id="btnD" layoutX="214.0" layoutY="205.0" mnemonicParsing="false" onAction="#btnDpressed" prefHeight="130.0" prefWidth="144.0" text="D">
+      <Button fx:id="btnD" layoutX="214.0" layoutY="205.0" mnemonicParsing="false" onAction="#btnDpressed" prefHeight="130.0" prefWidth="144.0" text="D" visible="false">
          <font>
             <Font size="60.0" />
          </font>
       </Button>
-      <Button fx:id="btnB" layoutX="214.0" layoutY="59.0" mnemonicParsing="false" onAction="#btnBpressed" prefHeight="130.0" prefWidth="144.0" text="B">
+      <Button fx:id="btnB" layoutX="214.0" layoutY="59.0" mnemonicParsing="false" onAction="#btnBpressed" prefHeight="130.0" prefWidth="144.0" text="B" visible="false">
          <font>
             <Font size="60.0" />
          </font>
       </Button>
-      <Button fx:id="btnC" layoutX="48.0" layoutY="205.0" mnemonicParsing="false" onAction="#btnCpressed" prefHeight="130.0" prefWidth="144.0" text="C">
+      <Button fx:id="btnC" layoutX="48.0" layoutY="205.0" mnemonicParsing="false" onAction="#btnCpressed" prefHeight="130.0" prefWidth="144.0" text="C" visible="false">
          <font>
             <Font size="60.0" />
          </font>
       </Button>
+      <Label fx:id="lblQuestion" layoutX="73.0" layoutY="66.0" prefHeight="21.0" prefWidth="239.0" textAlignment="CENTER" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblA" layoutX="66.0" layoutY="185.0" prefHeight="31.0" prefWidth="144.0" text="Answer 1" visible="false" />
+      <Label fx:id="lblD" layoutX="357.0" layoutY="281.0" prefHeight="31.0" prefWidth="144.0" text="Answer 4" visible="false" />
+      <Label fx:id="lblC" layoutX="357.0" layoutY="190.0" prefHeight="31.0" prefWidth="144.0" text="Answer 3" visible="false" />
+      <Label fx:id="lblB" layoutX="66.0" layoutY="281.0" prefHeight="31.0" prefWidth="144.0" text="Answer 2" visible="false" />
     </children>
 </AnchorPane>

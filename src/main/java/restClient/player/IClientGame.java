@@ -15,5 +15,7 @@ public interface IClientGame extends IGame {
     void joinLobby(Lobby lobby);
 
 
+    void startGame();
 
+    void processAnswerReply(boolean correct);
 }

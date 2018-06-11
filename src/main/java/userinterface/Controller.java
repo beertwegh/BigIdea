@@ -1,6 +1,7 @@
 package userinterface;
 
 import Models.Lobby;
+import Models.Question;
 import Models.User;
 import databaseServer.repositories.UserRepository;
 import interfaces.IGame;
@@ -37,6 +38,16 @@ public class Controller {
     public ListView<User> lbPlayersInLobby;
     public Button btnStartGame;
     public Button btnJoinSelectedLobby;
+    public Button btnA;
+    public Button btnB;
+    public Button btnC;
+    public Button btnD;
+    public Label lblA;
+    public Label lblB;
+    public Label lblC;
+    public Label lblD;
+    public Label lblQuestion;
+
     public IToohakGame game = new ToohakGame(this);
 
 
@@ -97,6 +108,17 @@ public class Controller {
     public void btnJoinLobbyClicked() {
         game.chooseHostOrClient(false);
         lobbyList.setItems(FXCollections.observableArrayList(game.refreshLobbies()));
+        lobbyList.setVisible(true);
+        btnJoinLobby.setVisible(false);
+        btnHostLobby.setVisible(false);
+    }
+
+    public void processAnswerCorrect() {
+        showMessage("Correct! You've scored 10 points!");
+    }
+
+    public void processAnswerWrong() {
+        showMessage("Wrong! Next time better!");
     }
 
     public void btnJoinSelectedLobbyClicked() {
@@ -110,7 +132,7 @@ public class Controller {
     }
 
     public void processNextRoundClient() {
-        //TODO
+        toggleChoiceButtons(true);
     }
 
     public void btnApressed() {
@@ -130,7 +152,23 @@ public class Controller {
     }
 
     private void answerQuestion(MultipleChoice answer) {
+        toggleChoiceButtons(false);
         game.answerQuestion(answer);
+    }
+
+    private void toggleChoiceButtons(boolean enabled) {
+        btnA.setDisable(!enabled);
+        btnB.setDisable(!enabled);
+        btnC.setDisable(!enabled);
+        btnD.setDisable(!enabled);
+    }
+
+    public void processStartGameClient() {
+        btnA.setVisible(true);
+        btnB.setVisible(true);
+        btnC.setVisible(true);
+        btnD.setVisible(true);
+
     }
     //endregion
 
@@ -173,10 +211,19 @@ public class Controller {
 
     public void btnStartGameClicked() {
         game.startGame();
+        lblQuestion.setVisible(true);
+        lblA.setVisible(true);
+        lblB.setVisible(true);
+        lblC.setVisible(true);
+        lblD.setVisible(true);
     }
 
-    public void processNextRoundHost() {
-        //TODO
+    public void processNextRoundHost(Question question) {
+        lblQuestion.setText(question.getText());
+        btnA.setText(question.getAnswers().get(0).toString());
+        btnB.setText(question.getAnswers().get(1).toString());
+        btnC.setText(question.getAnswers().get(2).toString());
+        btnD.setText(question.getAnswers().get(3).toString());
     }
     //endregion
 
@@ -191,6 +238,4 @@ public class Controller {
             }
         });
     }
-
-
 }

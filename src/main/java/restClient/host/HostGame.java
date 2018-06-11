@@ -25,6 +25,14 @@ public class HostGame implements IHostGame {
     IToohakGame game;
     private IServerMessageGenerator messageGenerator;
 
+    public ArrayList<Question> getQuestions() {
+        return questions;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
     public HostGame(IToohakGame game) {
         this.game = game;
         GetQuestions getQuestions = new GetQuestions();
@@ -44,7 +52,6 @@ public class HostGame implements IHostGame {
             gameEnded();
         }
     }
-
 
     @Override
     public String createLobby(Lobby lobby) {

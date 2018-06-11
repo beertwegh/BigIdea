@@ -16,4 +16,8 @@ public class Question {
     public List<Answer> getAnswers() {
         return answers;
     }
+
+    public String getText() {
+        return text;
+    }
 }

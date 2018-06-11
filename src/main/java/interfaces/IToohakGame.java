@@ -21,9 +21,13 @@ public interface IToohakGame {
 
     void answerQuestion(MultipleChoice multipleChoice);
 
+    void processAnswerReply(boolean correct);
+
     void startGame();
 
     User getUser();
 
     void processNextRound(IGame game);
+
+    void processStartGame();
 }

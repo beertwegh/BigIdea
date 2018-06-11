@@ -28,6 +28,10 @@ public class ClientMessageProcessor implements IMessageProcessor {
             Logger.getInstance().log(ex);
         }
         switch (message.getAction()) {
+            case STARTGAME:
+                StartGameMessageHandler startGameMessageHandler = new StartGameMessageHandler(game);
+                startGameMessageHandler.startGame();
+                break;
             case NEXTROUND:
                 NextRoundMessageHandler nextRoundMessageHandler = new NextRoundMessageHandler(game);
                 nextRoundMessageHandler.nextRound();

@@ -18,7 +18,9 @@ public class ServerMessageGenerator implements IServerMessageGenerator {
 
     @Override
     public void startGame() {
-        socket.broadcast("Game is starting");
+        Message message = new Message(Action.STARTGAME);
+        String json = gson.toJson(message);
+        socket.broadcast(json);
     }
 
     @Override

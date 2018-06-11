@@ -23,7 +23,8 @@ public class AccountHandler implements IAccountHandler {
             user = repository.findOne(UserSpecifiable.getbyUsername(data.getUseremail()));
             if (user == null)
                 return new Reply(Status.NotFound, "Player doesn't exist");
-        } else if (!(user.getPassword()).equals(data.getPassword())) {
+        }
+        if (!(user.getPassword()).equals(data.getPassword())) {
             return new Reply(Status.NoAccess, "Your login credentials were incorrect");
         }
         Gson gson = new Gson();

@@ -200,6 +200,8 @@ public class Controller {
                 tbLobbyName.setVisible(false);
                 tbIp.setVisible(false);
                 btnCreateLobby.setVisible(false);
+                lbPlayersInLobby.setVisible(true);
+                btnStartGame.setVisible(true);
             } else {
                 showMessage("Something went wrong, please try again!");
             }
@@ -212,19 +214,22 @@ public class Controller {
 
     public void btnStartGameClicked() {
         game.startGame();
+        lbPlayersInLobby.setVisible(false);
+        btnStartGame.setVisible(false);
         lblQuestion.setVisible(true);
         lblA.setVisible(true);
         lblB.setVisible(true);
         lblC.setVisible(true);
         lblD.setVisible(true);
+
     }
 
     public void processNextRoundHost(Question question) {
         lblQuestion.setText(question.getText());
-        btnA.setText(question.getAnswers().get(0).toString());
-        btnB.setText(question.getAnswers().get(1).toString());
-        btnC.setText(question.getAnswers().get(2).toString());
-        btnD.setText(question.getAnswers().get(3).toString());
+        lblA.setText(question.getAnswers().get(0).toString());
+        lblB.setText(question.getAnswers().get(1).toString());
+        lblC.setText(question.getAnswers().get(2).toString());
+        lblD.setText(question.getAnswers().get(3).toString());
     }
     //endregion
 

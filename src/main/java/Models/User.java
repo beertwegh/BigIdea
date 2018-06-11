@@ -56,4 +56,9 @@ public class User {
     public int getScore() {
         return score;
     }
+
+    @Override
+    public String toString() {
+        return username;
+    }
 }

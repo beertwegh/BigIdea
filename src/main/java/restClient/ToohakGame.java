@@ -2,7 +2,6 @@ package restClient;
 
 import Models.*;
 import com.google.gson.Gson;
-import com.google.gson.JsonParser;
 import restClient.host.*;
 import restClient.player.ClientGame;
 import restClient.player.IClientGame;
@@ -106,7 +105,7 @@ public class ToohakGame implements IToohakGame {
 
     @Override
     public void processStartGame() {
-        ((IClientGame)game).startGame();
+        application.processStartGameClient();
     }
 
     public void addToLobbyList(User user) {

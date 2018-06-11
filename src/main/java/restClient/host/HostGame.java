@@ -46,8 +46,8 @@ public class HostGame implements IHostGame {
     public void nextRound() {
         if (questions.get(count) != null) {
             messageGenerator.nextRound();
-            count++;
             game.processNextRound(this);
+            count++;
         } else {
             gameEnded();
         }

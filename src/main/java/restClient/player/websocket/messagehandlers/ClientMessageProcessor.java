@@ -27,6 +27,10 @@ public class ClientMessageProcessor implements IMessageProcessor {
         } catch (Exception ex) {
             Logger.getInstance().log(ex);
         }
+
+        if (message == null) {
+            throw new IllegalArgumentException("message can't be null");
+        }
         switch (message.getAction()) {
             case STARTGAME:
                 StartGameMessageHandler startGameMessageHandler = new StartGameMessageHandler(game);

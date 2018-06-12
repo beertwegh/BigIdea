@@ -16,15 +16,16 @@ public class LobbyDataContext extends AbstractDataContext implements ILobbyDataC
             queryString = "SELECT id, name, ip FROM Lobby WHERE " + specifiable.getSpecifiable() + " = ?";
             PreparedStatement stmt = connection.prepareStatement(queryString);
             stmt.setString(1, specifiable.getParameter());
-            ResultSet rset = stmt.executeQuery();
-            if (!rset.next()) {
-                return null;
-            } else {
-                rset.first();
-                Lobby lobby = new Lobby(rset.getInt("id"), rset.getString("ip"), rset.getString("name"));
-                connection.close();
-                rset.close();
-                return lobby;
+            try (ResultSet rset = stmt.executeQuery()) {
+                if (!rset.next()) {
+                    return null;
+                } else {
+                    rset.first();
+                    Lobby lobby = new Lobby(rset.getInt("id"), rset.getString("ip"), rset.getString("name"));
+                    connection.close();
+                    rset.close();
+                    return lobby;
+                }
             }
         } catch (SQLException e) {
             Logger.getInstance().log(e);

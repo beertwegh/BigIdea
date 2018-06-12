@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class ServerMessageProcessor implements IMessageProcessor {
 
-    public HostGame game;
+    private HostGame game;
 
     public ServerMessageProcessor(HostGame game) {
         this.game = game;

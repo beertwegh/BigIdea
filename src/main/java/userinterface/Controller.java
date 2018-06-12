@@ -9,6 +9,7 @@ import interfaces.IToohakGame;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import restClient.ToohakGame;
 import restClient.host.IHostGame;
@@ -22,33 +23,56 @@ import java.net.UnknownHostException;
 
 public class Controller {
 
+    @FXML
+    private TextField tbUserEmail;
+    @FXML
+    private Button btnLogin;
+    @FXML
+    private PasswordField tbPassword;
+    @FXML
+    private TextField tbRegisterEmail;
+    @FXML
+    private Button btnRegisterConfirm;
+    @FXML
+    private Button btnJoinLobby;
+    @FXML
+    private Button btnHostLobby;
+    @FXML
+    private Button btnRegister;
+    @FXML
+    private ListView<Lobby> lobbyList;
+    @FXML
+    private TextField tbIp;
+    @FXML
+    private TextField tbLobbyName;
+    @FXML
+    private Button btnCreateLobby;
+    @FXML
+    private ListView<User> lbPlayersInLobby;
+    @FXML
+    private Button btnStartGame;
+    @FXML
+    private Button btnJoinSelectedLobby;
+    @FXML
+    private Button btnA;
+    @FXML
+    private Button btnB;
+    @FXML
+    private Button btnC;
+    @FXML
+    private Button btnD;
+    @FXML
+    private Label lblA;
+    @FXML
+    private Label lblB;
+    @FXML
+    private Label lblC;
+    @FXML
+    private Label lblD;
+    @FXML
+    private Label lblQuestion;
 
-    public TextField tbUserEmail;
-    public Button btnLogin;
-    public PasswordField tbPassword;
-    public TextField tbRegisterEmail;
-    public Button btnRegisterConfirm;
-    public Button btnJoinLobby;
-    public Button btnHostLobby;
-    public Button btnRegister;
-    public ListView<Lobby> lobbyList;
-    public TextField tbIp;
-    public TextField tbLobbyName;
-    public Button btnCreateLobby;
-    public ListView<User> lbPlayersInLobby;
-    public Button btnStartGame;
-    public Button btnJoinSelectedLobby;
-    public Button btnA;
-    public Button btnB;
-    public Button btnC;
-    public Button btnD;
-    public Label lblA;
-    public Label lblB;
-    public Label lblC;
-    public Label lblD;
-    public Label lblQuestion;
-
-    public IToohakGame game = new ToohakGame(this);
+    private IToohakGame game = new ToohakGame(this);
 
 
     //region Authentication

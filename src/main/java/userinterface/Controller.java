@@ -110,6 +110,7 @@ public class Controller {
                 tbUserEmail.setPromptText("Username/email");
                 btnRegisterConfirm.setVisible(false);
                 btnLogin.setVisible(true);
+
                 showMessage(result + ". You can now log in");
                 tbUserEmail.clear();
                 tbRegisterEmail.clear();

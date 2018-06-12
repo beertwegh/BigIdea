@@ -6,9 +6,14 @@ public class Register {
     private String password;
 
     public Register(String email, String username, String password) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
+        if (email != null && username != null && password != null) {
+            this.email = email;
+            this.username = username;
+            this.password = password;
+        }
+        else{
+            throw new IllegalArgumentException("Please fill in all fields!");
+        }
     }
 
     public String getEmail() {

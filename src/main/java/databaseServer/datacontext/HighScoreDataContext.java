@@ -14,10 +14,11 @@ public class HighScoreDataContext extends AbstractDataContext implements IHighSc
     public void updateScore(int userId, int score) {
         try {
             Connection connection = DriverManager.getConnection(connString);
-            queryString = "UPDATE HighScore SET Score = ? WHERE CredentialsId = ?";
+            queryString = "INSERT INTO HighScore (CredentialsId, Score) VALUES (?, ?) ON DUPLICATE KEY UPDATE Score = ?";
             PreparedStatement stmt = connection.prepareStatement(queryString);
-            stmt.setInt(1, score);
-            stmt.setInt(2, userId);
+            stmt.setInt(1, userId);
+            stmt.setInt(2, score);
+            stmt.setInt(3, score);
             stmt.executeUpdate();
             connection.close();
         } catch (SQLException e) {

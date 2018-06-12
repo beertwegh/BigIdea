@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class HostGame implements IHostGame {
 
     private ArrayList<Question> questions;
-    private int count;
+    private int round;
     ServerWebSocket socket;
     IToohakGame game;
     private IServerMessageGenerator messageGenerator;
@@ -29,25 +29,25 @@ public class HostGame implements IHostGame {
         return questions;
     }
 
-    public int getCount() {
-        return count;
+    public int getRound() {
+        return round;
     }
 
     public HostGame(IToohakGame game) {
         this.game = game;
         GetQuestions getQuestions = new GetQuestions();
         questions = (ArrayList<Question>) getQuestions.getQuestions();
-        count = 0;
+        round = 0;
         socket = new ServerWebSocket(this);
         messageGenerator = new ServerMessageGenerator(socket);
     }
 
     @Override
     public void nextRound() {
-        if (questions.get(count) != null) {
+        if (questions.get(round) != null) {
             messageGenerator.nextRound();
             game.processNextRound(this);
-            count++;
+            round++;
         } else {
             gameEnded();
         }
@@ -88,7 +88,7 @@ public class HostGame implements IHostGame {
 
     @Override
     public void processAnswerQuestion(User user, MultipleChoice answer) {
-        boolean correct = questions.get(count).getAnswers().get(answer.getValue()).isCorrect();
+        boolean correct = questions.get(round - 1).getAnswers().get(answer.getValue()).isCorrect();
         if (correct) {
             messageGenerator.replyAnswerQuestion(true, user);
             SetHighScoreAction action = new SetHighScoreAction();

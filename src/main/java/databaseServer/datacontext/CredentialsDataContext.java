@@ -17,22 +17,21 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
             queryString = "SELECT id, username, email, password, hs.score FROM Credentials c LEFT JOIN HighScore hs ON c.id = hs.CredentialsId WHERE " + specifiable.getSpecifiable() + " = ?";
             PreparedStatement stmt = connection.prepareStatement(queryString);
             stmt.setString(1, specifiable.getParameter());
-            ResultSet rset = stmt.executeQuery();
-            if (!rset.next()) {
-                rset.close();
-                return null;
+            try (ResultSet rset = stmt.executeQuery()) {
+                if (!rset.next()) {
+                    rset.close();
+                    return null;
 
-            } else {
-                rset.first();
-                User user = new User(rset.getInt("id"), rset.getString("username"), rset.getString("email"), rset.getInt("hs.score"), rset.getString("password"));
-                connection.close();
-                rset.close();
-                return user;
+                } else {
+                    rset.first();
+                    User user = new User(rset.getInt("id"), rset.getString("username"), rset.getString("email"), rset.getInt("hs.score"), rset.getString("password"));
+                    connection.close();
+                    rset.close();
+                    return user;
+                }
             }
         } catch (SQLException e) {
             Logger.getInstance().log(e);
-        } finally {
-
         }
         return null;
 

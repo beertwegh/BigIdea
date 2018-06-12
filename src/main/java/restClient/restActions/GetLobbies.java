@@ -31,16 +31,12 @@ public class GetLobbies {
     public List<Lobby> getLobbies() {
 
         final String query = "http://localhost:8090/lobby/getAll";
-        System.out.println("[Query] : " + query);
-
         HttpGet httpGet = new HttpGet(query);
         List<Lobby> lobbies = null;
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
              CloseableHttpResponse response = httpClient.execute(httpGet)) {
-            System.out.println("[Status Line] : " + response.getStatusLine());
             HttpEntity entity = response.getEntity();
             final String entityString = EntityUtils.toString(entity);
-            System.out.println("[Entity] : " + entityString);
             Gson gson = new Gson();
             Response jsonResponse = gson.fromJson(entityString, Response.class);
             lobbies = jsonResponse.getLobbies();

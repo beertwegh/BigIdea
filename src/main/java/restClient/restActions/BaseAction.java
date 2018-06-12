@@ -9,6 +9,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import shared.Logging.Logger;
 
 import java.io.IOException;
 
@@ -17,8 +18,6 @@ public abstract class BaseAction<T> {
 
     public String baseMethod(T data, String query) {
 
-        System.out.println("[Query] : " + query);
-        // Perform the query
         HttpPost httpPost = new HttpPost(query);
         Gson gson = new Gson();
         String json = gson.toJson(data);
@@ -26,14 +25,11 @@ public abstract class BaseAction<T> {
         httpPost.setEntity(stringEntity);
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
              CloseableHttpResponse response = httpClient.execute(httpPost)) {
-            System.out.println("[Status Line] : " + response.getStatusLine());
             HttpEntity entity = response.getEntity();
             final String entityString = EntityUtils.toString(entity);
-            System.out.println("[Entity] : " + entityString);
             return entityString;
         } catch (IOException e) {
-            // Evil, pure evil this solution: ....
-            System.out.println("IOException : " + e.toString());
+            Logger.getInstance().log(e);
         }
         return null;
     }

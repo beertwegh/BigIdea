@@ -19,7 +19,9 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
             stmt.setString(1, specifiable.getParameter());
             ResultSet rset = stmt.executeQuery();
             if (!rset.next()) {
+                rset.close();
                 return null;
+
             } else {
                 rset.first();
                 User user = new User(rset.getInt("id"), rset.getString("username"), rset.getString("email"), rset.getInt("hs.score"), rset.getString("password"));

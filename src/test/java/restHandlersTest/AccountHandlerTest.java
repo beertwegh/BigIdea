@@ -6,7 +6,6 @@ import databaseServer.rest.handlers.AccountHandler;
 import databaseServer.rest.handlers.IAccountHandler;
 import databaseServer.rest.response.Reply;
 import databaseServer.rest.response.Status;
-import jdk.net.SocketFlow;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -28,7 +27,7 @@ public class AccountHandlerTest {
     @Test
     public void testRegister() {
         Reply reply = handler.register(new Register("test@gmail.com", "usertest", "passtest"));
-        Assert.assertEquals(Status.Ok, reply.getStatus());
+        Assert.assertEquals(Status.OK, reply.getStatus());
     }
 
     @Test

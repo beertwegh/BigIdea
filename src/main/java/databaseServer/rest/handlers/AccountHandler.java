@@ -22,14 +22,14 @@ public class AccountHandler implements IAccountHandler {
         if (user == null) {
             user = repository.findOne(UserSpecifiable.getbyUsername(data.getUseremail()));
             if (user == null)
-                return new Reply(Status.NotFound, "Player doesn't exist");
+                return new Reply(Status.NOTFOUND, "Player doesn't exist");
         }
         if (!(user.getPassword()).equals(data.getPassword())) {
-            return new Reply(Status.NoAccess, "Your login credentials were incorrect");
+            return new Reply(Status.NOACCESS, "Your login credentials were incorrect");
         }
         Gson gson = new Gson();
         String json = gson.toJson(user);
-        return new Reply(Status.Ok, json);
+        return new Reply(Status.OK, json);
     }
 
     @Override
@@ -37,11 +37,11 @@ public class AccountHandler implements IAccountHandler {
         User user = new User(data.getUsername(), data.getEmail(), data.getPassword());
         try {
             repository.save(user);
-            return new Reply(Status.Ok, "Account has been made");
+            return new Reply(Status.OK, "Account has been made");
 
         } catch (Exception ex) {
             Logger.getInstance().log(ex);
-            return new Reply(Status.Error, "something went wrong");
+            return new Reply(Status.ERROR, "something went wrong");
         }
     }
 

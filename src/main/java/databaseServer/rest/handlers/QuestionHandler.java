@@ -20,6 +20,6 @@ public class QuestionHandler implements IQuestionHandler {
         questionResponse.setQuestions(repository.findAll());
         Gson gson = new Gson();
         String json = gson.toJson(questionResponse);
-        return new Reply(Status.Ok, json);
+        return new Reply(Status.OK, json);
     }
 }

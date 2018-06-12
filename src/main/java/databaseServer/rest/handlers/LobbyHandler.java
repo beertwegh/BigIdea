@@ -23,21 +23,21 @@ public class LobbyHandler implements ILobbyHandler
         response.setLobbies(repository.findAll());
         Gson gson = new Gson();
         String jsonResponse = gson.toJson(response);
-        return new Reply(Status.Ok, jsonResponse);
+        return new Reply(Status.OK, jsonResponse);
     }
 
     @Override
     public Reply createLobby(Lobby lobby) {
         repository.save(lobby);
-        return new Reply(Status.Ok, "Lobby has been added");
+        return new Reply(Status.OK, "Lobby has been added");
     }
 
     @Override
     public Reply chooseLobby(Lobby lobby) {
         if (repository.findOne(LobbySpecifiable.getByIp(lobby.getIp())) != null) {
-            return new Reply(Status.Ok, "Connect to lobby");
+            return new Reply(Status.OK, "Connect to lobby");
         }
-        return new Reply(Status.NotFound, "Lobby doesn't exist");
+        return new Reply(Status.NOTFOUND, "Lobby doesn't exist");
     }
 
 }

@@ -23,6 +23,7 @@ import java.net.UnknownHostException;
 
 public class Controller {
 
+    private final String emptyFieldsMsg = "Please fill in all fields!";
     @FXML
     private TextField tbUserEmail;
     @FXML
@@ -71,7 +72,6 @@ public class Controller {
     private Label lblD;
     @FXML
     private Label lblQuestion;
-
     private IToohakGame game = new ToohakGame(this);
 
 
@@ -80,7 +80,7 @@ public class Controller {
         String useremail = tbUserEmail.getText();
         String password = tbPassword.getText();
         if (useremail.trim().equals("") || password.trim().equals("")) {
-            showMessage("Please fill in all fields!");
+            showMessage(emptyFieldsMsg);
         } else {
             String loginResult = game.login(useremail, password);
             showMessage(loginResult);
@@ -102,7 +102,7 @@ public class Controller {
         String password = tbPassword.getText();
         String email = tbRegisterEmail.getText();
         if (username.trim().equals("") || password.trim().equals("") || email.trim().equals("")) {
-            showMessage("Please fill in all fields!");
+            showMessage(emptyFieldsMsg);
         } else {
             String result = game.registerPlayer(username, password, email);
             if (result.equals("Account has been made")) {
@@ -212,7 +212,7 @@ public class Controller {
     public void btnCreateLobbyClicked() {
 
         if (tbLobbyName.getText().trim().equals("") || tbIp.getText().trim().equals("")) {
-            showMessage("Please fill in all fields!");
+            showMessage(emptyFieldsMsg);
         } else {
             InetAddress ownIP = null;
             try {

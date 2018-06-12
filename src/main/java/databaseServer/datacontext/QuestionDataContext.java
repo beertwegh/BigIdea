@@ -17,7 +17,7 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
 
     @Override
     public void save(Question item) {
-
+        throw new UnsupportedOperationException("Not a feature");
     }
 
     @Override

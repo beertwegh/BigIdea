@@ -15,6 +15,6 @@ public class HighScoreHandler implements IHighScoreHandler {
     @Override
     public Reply setHighScore(SetHighScore data) {
         repository.updateScore(data.getId(), data.getScore());
-        return new Reply(Status.Ok, "Score has been updated");
+        return new Reply(Status.OK, "Score has been updated");
     }
 }

@@ -52,6 +52,8 @@ public class ServerMessageProcessor implements IMessageProcessor {
                 userSessions.put(sessionId, ((IntroduceUser) message.getData()).getUser());
                 game.processPlayerJoined(((IntroduceUser) message.getData()).getUser());
                 break;
+            default:
+                break;
         }
     }
 

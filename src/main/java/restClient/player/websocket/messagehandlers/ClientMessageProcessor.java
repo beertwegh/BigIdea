@@ -45,6 +45,8 @@ public class ClientMessageProcessor implements IMessageProcessor {
                 ReplyAnswerQuestionMessageHandler replyAnswerQuestionMessageHandler = new ReplyAnswerQuestionMessageHandler(game);
                 replyAnswerQuestionMessageHandler.handleReply(reply.isCorrect());
                 break;
+            default:
+                break;
         }
     }
 }

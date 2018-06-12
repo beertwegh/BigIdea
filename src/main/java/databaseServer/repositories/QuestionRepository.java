@@ -20,7 +20,7 @@ public class QuestionRepository implements IQuestionRepository {
 
     @Override
     public void save(Question item) {
-
+        throw new UnsupportedOperationException("Not a feature");
     }
 
     @Override

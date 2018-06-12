@@ -47,17 +47,19 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
             List<Answer> answers = new ArrayList<>();
             Connection connection2 = DriverManager.getConnection(connString);
             String query2 = "SELECT text, correct FROM Answer WHERE questionId = ?";
-            PreparedStatement stmt = connection2.prepareStatement(query2);
-            stmt.setInt(1, questionId);
-            ResultSet rset = stmt.executeQuery();
-            while (rset.next()) {
-                String text = rset.getString("text");
-                boolean correct = rset.getBoolean("correct");
-                answers.add(new Answer(text, correct));
+            try (PreparedStatement stmt = connection2.prepareStatement(query2)) {
+                stmt.setInt(1, questionId);
+                try (ResultSet rset = stmt.executeQuery()) {
+                    while (rset.next()) {
+                        String text = rset.getString("text");
+                        boolean correct = rset.getBoolean("correct");
+                        answers.add(new Answer(text, correct));
+                    }
+                    connection2.close();
+                    rset.close();
+                    return answers;
+                }
             }
-            connection2.close();
-            rset.close();
-            return answers;
         } catch (SQLException e) {
             Logger.getInstance().log(e);
         }

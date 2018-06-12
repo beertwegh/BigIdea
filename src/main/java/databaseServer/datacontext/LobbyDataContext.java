@@ -58,16 +58,17 @@ public class LobbyDataContext extends AbstractDataContext implements ILobbyDataC
             connection = DriverManager.getConnection(connString);
             queryString = "SELECT id, name, ip FROM Lobby";
             Statement stmt = connection.createStatement();
-            ResultSet rset = stmt.executeQuery(queryString);
-            while (rset.next()) {
-                int id = rset.getInt("id");
-                String name = rset.getString("name");
-                String ip = rset.getString("ip");
-                all.add(new Lobby(id, ip, name));
+            try (ResultSet rset = stmt.executeQuery(queryString)) {
+                while (rset.next()) {
+                    int id = rset.getInt("id");
+                    String name = rset.getString("name");
+                    String ip = rset.getString("ip");
+                    all.add(new Lobby(id, ip, name));
+                }
+                connection.close();
+                rset.close();
+                return all;
             }
-            connection.close();
-            rset.close();
-            return all;
         } catch (SQLException e) {
             Logger.getInstance().log(e);
         } finally {

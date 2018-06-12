@@ -2,6 +2,7 @@ package databaseServer.datacontext;
 
 import databaseServer.speicifiables.Specifiable;
 import Models.User;
+import shared.Logging.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
                 return user;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getInstance().log(e);
         } finally {
 
         }
@@ -47,7 +48,7 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
             stmt.executeUpdate();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getInstance().log(e);
         }
     }
 
@@ -69,7 +70,7 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
             connection.close();
             return all;
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getInstance().log(e);
         } finally {
         }
         return null;

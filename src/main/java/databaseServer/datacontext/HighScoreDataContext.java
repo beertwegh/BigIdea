@@ -1,6 +1,8 @@
 package databaseServer.datacontext;
 
 
+import shared.Logging.Logger;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,7 +21,7 @@ public class HighScoreDataContext extends AbstractDataContext implements IHighSc
             stmt.executeUpdate();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getInstance().log(e);
         }
     }
 }

@@ -2,6 +2,7 @@ package databaseServer.datacontext;
 
 import Models.Lobby;
 import databaseServer.speicifiables.Specifiable;
+import shared.Logging.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class LobbyDataContext extends AbstractDataContext implements ILobbyDataC
                 return lobby;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getInstance().log(e);
         } finally {
         }
         return null;
@@ -45,7 +46,7 @@ public class LobbyDataContext extends AbstractDataContext implements ILobbyDataC
             connection.close();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getInstance().log(e);
         }
     }
 
@@ -68,7 +69,7 @@ public class LobbyDataContext extends AbstractDataContext implements ILobbyDataC
             rset.close();
             return all;
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getInstance().log(e);
         } finally {
         }
         return null;

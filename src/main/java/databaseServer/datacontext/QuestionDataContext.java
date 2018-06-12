@@ -3,6 +3,7 @@ package databaseServer.datacontext;
 import databaseServer.speicifiables.Specifiable;
 import Models.Answer;
 import Models.Question;
+import shared.Logging.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
             rset.close();
             return all;
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getInstance().log(e);
         } finally {
         }
         return null;
@@ -58,7 +59,7 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
             rset.close();
             return answers;
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getInstance().log(e);
         }
         return null;
     }

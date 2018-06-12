@@ -47,7 +47,7 @@ public class ServerWebSocket implements IServerWebSocket {
         try {
             session.getBasicRemote().sendText(message);
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.getInstance().log(e);
         }
     }
 

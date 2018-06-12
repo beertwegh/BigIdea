@@ -1,5 +1,7 @@
 package Utilities;
 
+import shared.Logging.Logger;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -18,7 +20,7 @@ public class Hashing {
             }
             generatedPassword = sb.toString();
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            Logger.getInstance().log(e);
         }
         return generatedPassword;
     }

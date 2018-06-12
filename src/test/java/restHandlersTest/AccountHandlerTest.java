@@ -11,7 +11,11 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.xml.sax.SAXException;
 import shared.restrequest.Register;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 
 public class AccountHandlerTest {
     private IAccountHandler handler;
@@ -20,7 +24,7 @@ public class AccountHandlerTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Before
-    public void init() {
+    public void init() throws IOException, SAXException, ParserConfigurationException {
         handler = new AccountHandler(new UserRepository(new CredentialsDataContext()));
     }
 

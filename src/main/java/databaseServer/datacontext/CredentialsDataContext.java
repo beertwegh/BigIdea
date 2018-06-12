@@ -2,13 +2,20 @@ package databaseServer.datacontext;
 
 import databaseServer.speicifiables.Specifiable;
 import Models.User;
+import org.xml.sax.SAXException;
 import shared.Logging.Logger;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CredentialsDataContext extends AbstractDataContext implements ICredentialsDataContext {
+
+    public CredentialsDataContext() throws ParserConfigurationException, IOException, SAXException {
+        super();
+    }
 
     @Override
     public User findOne(Specifiable specifiable) {

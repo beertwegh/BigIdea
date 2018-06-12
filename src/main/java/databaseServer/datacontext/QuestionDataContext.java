@@ -3,13 +3,21 @@ package databaseServer.datacontext;
 import databaseServer.speicifiables.Specifiable;
 import Models.Answer;
 import Models.Question;
+import org.xml.sax.SAXException;
 import shared.Logging.Logger;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionDataContext extends AbstractDataContext implements IQuestionDataContext {
+
+    public QuestionDataContext() throws ParserConfigurationException, IOException, SAXException {
+        super();
+    }
+
     @Override
     public Question findOne(Specifiable specifiable) {
         return null;

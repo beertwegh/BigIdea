@@ -1,14 +1,21 @@
 package databaseServer.datacontext;
 
 
+import org.xml.sax.SAXException;
 import shared.Logging.Logger;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class HighScoreDataContext extends AbstractDataContext implements IHighScoreDataContext {
+
+    public HighScoreDataContext() throws ParserConfigurationException, IOException, SAXException {
+        super();
+    }
 
     @Override
     public void updateScore(int userId, int score) {

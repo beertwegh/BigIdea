@@ -3,14 +3,14 @@ package databaseServer.datacontext;
 import java.sql.Connection;
 
 abstract class AbstractDataContext {
-    static String connString = "jdbc:mysql://94.211.149.51:171/Toohak?user=bas&password=roggel98";
-    static String queryString;
-    static Connection connection;
+    String connString = "jdbc:mysql://94.211.149.51:171/Toohak?user=bas&password=roggel98";
+    String queryString;
+    Connection connection;
 
-    public AbstractDataContext() {
+    AbstractDataContext() {
     }
 
-    public AbstractDataContext(String differentConnString) {
+    AbstractDataContext(String differentConnString) {
         connString = differentConnString;
     }
 }

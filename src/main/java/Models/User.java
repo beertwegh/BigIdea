@@ -1,6 +1,6 @@
 package Models;
 
-import Utilities.Hashing;
+import utilities.Hashing;
 
 public class User {
     private int id;
@@ -34,7 +34,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = Hashing.get_SHA_512_SecurePassword(password, "salty");
+        this.password = Hashing.getSha512Securepassword(password, "salty");
     }
 
     public String getPassword() {

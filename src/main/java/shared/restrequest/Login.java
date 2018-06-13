@@ -1,7 +1,7 @@
 package shared.restrequest;
 
 
-import Utilities.Hashing;
+import utilities.Hashing;
 
 public class Login {
     private String useremail;
@@ -10,7 +10,7 @@ public class Login {
     public Login(String useremail, String password) {
         if (useremail != null && password != null) {
             this.useremail = useremail;
-            this.password = Hashing.get_SHA_512_SecurePassword(password, "salty");
+            this.password = Hashing.getSha512Securepassword(password, "salty");
         } else {
             throw new IllegalArgumentException("Fill in all fields");
         }

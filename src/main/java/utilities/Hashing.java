@@ -1,4 +1,4 @@
-package Utilities;
+package utilities;
 
 import shared.Logging.Logger;
 
@@ -8,7 +8,11 @@ import java.security.NoSuchAlgorithmException;
 
 public class Hashing {
 
-    public static String get_SHA_512_SecurePassword(String passwordToHash, String salt) {
+    private Hashing() {
+        throw new IllegalArgumentException("Utility class");
+    }
+
+    public static String getSha512Securepassword(String passwordToHash, String salt) {
         String generatedPassword = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");

@@ -3,7 +3,7 @@ package restClient.host;
 import Models.Lobby;
 import Models.Question;
 import Models.User;
-import Utilities.RandomFisher;
+import utilities.RandomFisher;
 import interfaces.IToohakGame;
 import restClient.ToohakGame;
 import restClient.host.websocket.IServerMessageGenerator;

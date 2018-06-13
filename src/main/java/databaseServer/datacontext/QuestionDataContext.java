@@ -14,10 +14,6 @@ import java.util.List;
 
 public class QuestionDataContext extends AbstractDataContext implements IQuestionDataContext {
 
-    public QuestionDataContext() throws ParserConfigurationException, IOException, SAXException {
-        super();
-    }
-
     @Override
     public Question findOne(Specifiable specifiable) {
         return null;

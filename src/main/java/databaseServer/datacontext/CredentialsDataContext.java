@@ -13,10 +13,6 @@ import java.util.List;
 
 public class CredentialsDataContext extends AbstractDataContext implements ICredentialsDataContext {
 
-    public CredentialsDataContext() throws ParserConfigurationException, IOException, SAXException {
-        super();
-    }
-
     @Override
     public User findOne(Specifiable specifiable) {
         try {

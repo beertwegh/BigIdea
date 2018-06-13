@@ -12,6 +12,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.xml.sax.SAXException;
+import shared.restrequest.Login;
 import shared.restrequest.Register;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,7 +25,7 @@ public class AccountHandlerTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Before
-    public void init() throws IOException, SAXException, ParserConfigurationException {
+    public void init() {
         handler = new AccountHandler(new UserRepository(new CredentialsDataContext()));
     }
 
@@ -50,6 +51,23 @@ public class AccountHandlerTest {
     public void testRegisterNullPassword() {
         exception.expect(IllegalArgumentException.class);
         handler.register(new Register("test@gmail.com", "usertest", null));
+    }
 
+    @Test
+    public void testLogin() {
+        Reply reply = handler.login(new Login("usertest", "passtest"));
+        Assert.assertEquals(Status.OK, reply.getStatus());
+    }
+
+    @Test
+    public void testLoginNullUserEmail() {
+        exception.expect(IllegalArgumentException.class);
+        handler.login(new Login(null, "passtest"));
+    }
+
+    @Test
+    public void testLoginNullPass() {
+        exception.expect(IllegalArgumentException.class);
+        handler.login(new Login("usertest", null));
     }
 }

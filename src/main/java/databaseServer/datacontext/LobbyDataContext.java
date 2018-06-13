@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LobbyDataContext extends AbstractDataContext implements ILobbyDataContext {
-    public LobbyDataContext() throws ParserConfigurationException, IOException, SAXException {
-        super();
-    }
 
     @Override
     public Lobby findOne(Specifiable specifiable) {

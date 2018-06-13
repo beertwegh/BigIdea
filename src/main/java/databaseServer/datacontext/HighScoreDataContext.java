@@ -13,9 +13,6 @@ import java.sql.SQLException;
 
 public class HighScoreDataContext extends AbstractDataContext implements IHighScoreDataContext {
 
-    public HighScoreDataContext() throws ParserConfigurationException, IOException, SAXException {
-        super();
-    }
 
     @Override
     public void updateScore(int userId, int score) {

@@ -1,10 +1,11 @@
 package databaseServer.rest.handlers;
 
-import com.google.gson.Gson;
-import databaseServer.rest.response.*;
-import databaseServer.repositories.IUserRepository;
-import databaseServer.speicifiables.UserSpecifiable;
 import Models.User;
+import com.google.gson.Gson;
+import databaseServer.repositories.IUserRepository;
+import databaseServer.rest.response.Reply;
+import databaseServer.rest.response.Status;
+import databaseServer.speicifiables.UserSpecifiable;
 import shared.Logging.Logger;
 import shared.restrequest.Login;
 import shared.restrequest.Register;

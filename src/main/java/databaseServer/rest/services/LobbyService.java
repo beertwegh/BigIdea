@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import databaseServer.rest.handlers.ILobbyHandler;
 import databaseServer.rest.response.Reply;
 
-import javax.annotation.PostConstruct;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;

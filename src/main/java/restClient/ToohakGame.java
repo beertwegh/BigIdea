@@ -1,14 +1,16 @@
 package restClient;
 
-import Models.*;
+import Models.Lobby;
+import Models.User;
 import com.google.gson.Gson;
-import restClient.host.*;
+import interfaces.IGame;
+import interfaces.IToohakGame;
+import restClient.host.HostGame;
+import restClient.host.IHostGame;
 import restClient.player.ClientGame;
 import restClient.player.IClientGame;
 import restClient.restActions.LoginAction;
 import restClient.restActions.RegisterAction;
-import interfaces.IGame;
-import interfaces.IToohakGame;
 import shared.Logging.Logger;
 import shared.MultipleChoice;
 import shared.restrequest.Login;

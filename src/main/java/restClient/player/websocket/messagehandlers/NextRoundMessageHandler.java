@@ -1,7 +1,6 @@
 package restClient.player.websocket.messagehandlers;
 
 import restClient.player.IClientGame;
-import shared.websocket.interfaces.Message;
 
 public class NextRoundMessageHandler {
 

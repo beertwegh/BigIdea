@@ -1,12 +1,9 @@
 package databaseServer.datacontext;
 
-import databaseServer.speicifiables.Specifiable;
 import Models.User;
-import org.xml.sax.SAXException;
+import databaseServer.speicifiables.Specifiable;
 import shared.Logging.Logger;
 
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

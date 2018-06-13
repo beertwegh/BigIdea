@@ -1,6 +1,6 @@
 package databaseServer.datacontext;
 
-import java.sql.*;
+import java.sql.Connection;
 
 abstract class AbstractDataContext {
     static String connString = "jdbc:mysql://94.211.149.51:171/Toohak?user=bas&password=roggel98";

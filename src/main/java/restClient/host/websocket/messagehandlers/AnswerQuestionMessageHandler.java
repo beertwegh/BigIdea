@@ -1,7 +1,6 @@
 package restClient.host.websocket.messagehandlers;
 
 import Models.User;
-import restClient.host.HostGame;
 import restClient.host.IHostGame;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.AnswerQuestion;

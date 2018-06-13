@@ -1,9 +1,9 @@
 package databaseServer.rest.services;
 
-import databaseServer.rest.handlers.IHighScoreHandler;
-import shared.restrequest.SetHighScore;
-import databaseServer.rest.response.Reply;
 import com.google.gson.Gson;
+import databaseServer.rest.handlers.IHighScoreHandler;
+import databaseServer.rest.response.Reply;
+import shared.restrequest.SetHighScore;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;

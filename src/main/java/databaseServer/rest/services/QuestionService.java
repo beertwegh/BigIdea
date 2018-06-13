@@ -2,9 +2,9 @@ package databaseServer.rest.services;
 
 import databaseServer.rest.handlers.IQuestionHandler;
 import databaseServer.rest.response.Reply;
-import com.google.gson.Gson;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
 @Path("/question")

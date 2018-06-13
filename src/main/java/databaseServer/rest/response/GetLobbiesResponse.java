@@ -1,7 +1,6 @@
 package databaseServer.rest.response;
 
 import Models.Lobby;
-import Models.Question;
 
 import java.util.List;
 

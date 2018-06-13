@@ -3,18 +3,12 @@ package userinterface;
 import Models.Lobby;
 import Models.Question;
 import Models.User;
-import databaseServer.repositories.UserRepository;
-import interfaces.IGame;
 import interfaces.IToohakGame;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import restClient.ToohakGame;
-import restClient.host.IHostGame;
-import restClient.player.ClientGame;
-import restClient.player.websocket.ClientWebSocket;
 import shared.Logging.Logger;
 import shared.MultipleChoice;
 

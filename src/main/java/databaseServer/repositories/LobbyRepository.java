@@ -1,7 +1,6 @@
 package databaseServer.repositories;
 
 import Models.Lobby;
-import databaseServer.datacontext.IDataContext;
 import databaseServer.datacontext.ILobbyDataContext;
 import databaseServer.speicifiables.Specifiable;
 

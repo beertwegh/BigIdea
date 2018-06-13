@@ -1,8 +1,8 @@
 package databaseServer.rest.services;
 
-import databaseServer.rest.response.*;
-import databaseServer.rest.handlers.IAccountHandler;
 import com.google.gson.Gson;
+import databaseServer.rest.handlers.IAccountHandler;
+import databaseServer.rest.response.Reply;
 import shared.restrequest.Login;
 import shared.restrequest.Register;
 

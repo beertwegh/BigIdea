@@ -8,8 +8,8 @@ import databaseServer.rest.response.Reply;
 import databaseServer.rest.response.Status;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+import shared.restrequest.Login;
 import shared.restrequest.Register;
 
 public class AccountHandlerTest extends DbCleaner {
@@ -24,6 +24,13 @@ public class AccountHandlerTest extends DbCleaner {
     @Test
     public void testRegister() {
         Reply reply = handler.register(new Register("test", "username", "passtest"));
+        Assert.assertEquals(Status.OK, reply.getStatus());
+    }
+
+    @Test
+    public void testLogin() {
+        handler.register(new Register("test", "username", "passtest"));
+        Reply reply = handler.login(new Login("username", "passtest"));
         Assert.assertEquals(Status.OK, reply.getStatus());
     }
 }

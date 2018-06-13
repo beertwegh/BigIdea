@@ -1,7 +1,8 @@
 package interfaces;
 
 
-import Models.*;
+import Models.Lobby;
+import Models.User;
 import shared.MultipleChoice;
 
 import java.util.List;

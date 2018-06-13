@@ -3,7 +3,6 @@ package restClient.host;
 import Models.Lobby;
 import Models.Question;
 import Models.User;
-import utilities.RandomFisher;
 import interfaces.IToohakGame;
 import restClient.ToohakGame;
 import restClient.host.websocket.IServerMessageGenerator;
@@ -15,6 +14,7 @@ import restClient.restActions.SaveLobby;
 import restClient.restActions.SetHighScoreAction;
 import shared.MultipleChoice;
 import shared.restrequest.SetHighScore;
+import utilities.RandomFisher;
 
 import java.util.ArrayList;
 

@@ -5,7 +5,7 @@ import restClient.host.IHostGame;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.AnswerQuestion;
 
-public class AnswerQuestionMessageHandler{
+public class AnswerQuestionMessageHandler {
 
     private IHostGame game;
 

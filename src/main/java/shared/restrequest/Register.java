@@ -10,8 +10,7 @@ public class Register {
             this.email = email;
             this.username = username;
             this.password = password;
-        }
-        else{
+        } else {
             throw new IllegalArgumentException("Please fill in all fields!");
         }
     }

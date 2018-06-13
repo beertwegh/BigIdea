@@ -12,16 +12,16 @@ import org.junit.Ignore;
 import org.junit.Test;
 import shared.restrequest.Register;
 
-public class AccountHandlerTest {
+public class AccountHandlerTest extends DbCleaner {
     private IAccountHandler handler;
 
     @Before
     public void init() {
-        handler = new AccountHandler(new UserRepository(new CredentialsDataContext("test")));
+        handler = new AccountHandler(new UserRepository(new CredentialsDataContext(testConnString)));
+        emptyTable("Credentials");
     }
 
     @Test
-    @Ignore
     public void testRegister() {
         Reply reply = handler.register(new Register("test", "username", "passtest"));
         Assert.assertEquals(Status.OK, reply.getStatus());

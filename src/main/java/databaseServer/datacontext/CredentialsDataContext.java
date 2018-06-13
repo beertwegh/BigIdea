@@ -80,9 +80,8 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
             return all;
         } catch (SQLException e) {
             Logger.getInstance().log(e);
-        } finally {
         }
-        return null;
+        return all;
     }
 
 }

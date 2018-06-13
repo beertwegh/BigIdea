@@ -44,7 +44,6 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
             return all;
         } catch (SQLException e) {
             Logger.getInstance().log(e);
-        } finally {
         }
         return null;
     }

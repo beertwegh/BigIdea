@@ -6,10 +6,10 @@ public class Answer {
     private boolean correct;
 
     public Answer(String text, boolean correct) {
-        if (text != null || !text.trim().equals("")) {
-            this.text = text;
-        } else {
+        if (text == null || text.trim().equals("")) {
             throw new IllegalArgumentException("text isn't filled in");
+        } else {
+            this.text = text;
         }
         this.correct = correct;
     }

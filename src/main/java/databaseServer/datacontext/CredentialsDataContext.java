@@ -13,6 +13,13 @@ import java.util.List;
 
 public class CredentialsDataContext extends AbstractDataContext implements ICredentialsDataContext {
 
+    public CredentialsDataContext(String differentConnString) {
+        super(differentConnString);
+    }
+
+    public CredentialsDataContext() {
+    }
+
     @Override
     public User findOne(Specifiable specifiable) {
         try {
@@ -53,6 +60,7 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
             connection.close();
         } catch (SQLException e) {
             Logger.getInstance().log(e);
+            throw new IllegalArgumentException("something went wrong");
         }
     }
 

@@ -13,6 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionDataContext extends AbstractDataContext implements IQuestionDataContext {
+    public QuestionDataContext() {
+    }
+
+    public QuestionDataContext(String differentConnString) {
+        super(differentConnString);
+    }
 
     @Override
     public Question findOne(Specifiable specifiable) {

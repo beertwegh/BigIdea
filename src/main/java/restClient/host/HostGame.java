@@ -3,6 +3,7 @@ package restClient.host;
 import Models.Lobby;
 import Models.Question;
 import Models.User;
+import Utilities.RandomFisher;
 import interfaces.IToohakGame;
 import restClient.ToohakGame;
 import restClient.host.websocket.IServerMessageGenerator;
@@ -24,6 +25,7 @@ public class HostGame implements IHostGame {
     ServerWebSocket socket;
     IToohakGame game;
     private IServerMessageGenerator messageGenerator;
+    private RandomFisher random;
 
     public ArrayList<Question> getQuestions() {
         return questions;
@@ -40,11 +42,12 @@ public class HostGame implements IHostGame {
         round = 0;
         socket = new ServerWebSocket(this);
         messageGenerator = new ServerMessageGenerator(socket);
+        random = new RandomFisher(questions.size());
     }
 
     @Override
     public void nextRound() {
-        if (questions.get(round) != null) {
+        if (questions.get(random.next()) != null) {
             messageGenerator.nextRound();
             game.processNextRound(this);
             round++;

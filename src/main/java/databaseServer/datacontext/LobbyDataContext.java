@@ -12,6 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LobbyDataContext extends AbstractDataContext implements ILobbyDataContext {
+    public LobbyDataContext() {
+    }
+
+    public LobbyDataContext(String differentConnString) {
+        super(differentConnString);
+    }
 
     @Override
     public Lobby findOne(Specifiable specifiable) {

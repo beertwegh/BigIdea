@@ -6,12 +6,20 @@ public class Answer {
     private boolean correct;
 
     public Answer(String text, boolean correct) {
-        this.text = text;
+        if (text != null || text.trim().equals("")) {
+            this.text = text;
+        } else {
+            throw new IllegalArgumentException("text isn't filled in");
+        }
         this.correct = correct;
     }
 
     public boolean isCorrect() {
         return correct;
+    }
+
+    public String getText() {
+        return text;
     }
 
     @Override

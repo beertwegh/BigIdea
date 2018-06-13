@@ -13,6 +13,12 @@ import java.sql.SQLException;
 
 public class HighScoreDataContext extends AbstractDataContext implements IHighScoreDataContext {
 
+    public HighScoreDataContext(String differentConnString) {
+        super(differentConnString);
+    }
+
+    public HighScoreDataContext() {
+    }
 
     @Override
     public void updateScore(int userId, int score) {

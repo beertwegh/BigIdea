@@ -8,12 +8,14 @@ public class Lobby {
     private String name;
 
     public Lobby(int id, String ip, String name) {
-
-        this.id = id;
-        this.ip = ip;
-        this.name = name;
+        if (ip == null || name == null) {
+            throw new IllegalArgumentException("all fields have to be filled");
+        } else {
+            this.id = id;
+            this.ip = ip;
+            this.name = name;
+        }
     }
-
 
     public String getName() {
         return name;

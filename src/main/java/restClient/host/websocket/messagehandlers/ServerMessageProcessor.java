@@ -6,7 +6,7 @@ import com.google.common.collect.HashBiMap;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import restClient.host.HostGame;
+import restClient.host.IHostGame;
 import shared.Logging.Logger;
 import shared.websocket.interfaces.IMessageProcessor;
 import shared.websocket.interfaces.Message;
@@ -15,9 +15,9 @@ import shared.websocket.interfaces.actions.IntroduceUser;
 
 public class ServerMessageProcessor implements IMessageProcessor {
 
-    private HostGame game;
+    private IHostGame game;
 
-    public ServerMessageProcessor(HostGame game) {
+    public ServerMessageProcessor(IHostGame game) {
         this.game = game;
     }
 

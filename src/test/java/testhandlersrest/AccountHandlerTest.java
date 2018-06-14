@@ -59,6 +59,22 @@ public class AccountHandlerTest extends DbCleaner {
     }
 
     @Test
+    public void testLoginNonExistent() {
+        Reply reply = handler.login(new Login("username", "passtest"));
+        Assert.assertEquals(Status.NOTFOUND, reply.getStatus());
+    }
+
+    @Test
+    public void testLoginIncorrect() {
+
+        //register account first
+        handler.register(new Register("test", "username", "passtest"));
+
+        Reply reply = handler.login(new Login("username", "passtest1"));
+        Assert.assertEquals(Status.NOACCESS, reply.getStatus());
+    }
+
+    @Test
     public void testLoginNullUserEmail() {
         //register account first
         handler.register(new Register("test", "username", "passtest"));

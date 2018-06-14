@@ -21,4 +21,5 @@ abstract class DbCleaner {
             Logger.getInstance().log(e);
         }
     }
+
 }

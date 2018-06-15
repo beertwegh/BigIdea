@@ -76,9 +76,9 @@ public class ToohakGame implements IToohakGame {
     }
 
     @Override
-    public void clearLobbies() {
+    public String clearLobbies() {
         ClearLobbiesAction action = new ClearLobbiesAction();
-        action.clearLobbies(new ClearLobbies());
+         return action.clearLobbies(new ClearLobbies());
     }
 
     @Override

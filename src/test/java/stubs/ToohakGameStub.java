@@ -1,9 +1,9 @@
 package stubs;
 
-import models.Lobby;
-import models.User;
 import interfaces.IGame;
 import interfaces.IToohakGame;
+import models.Lobby;
+import models.User;
 import shared.MultipleChoice;
 
 import java.util.List;
@@ -25,8 +25,8 @@ public class ToohakGameStub implements IToohakGame {
     }
 
     @Override
-    public void clearLobbies() {
-
+    public String clearLobbies() {
+        return null;
     }
 
     @Override

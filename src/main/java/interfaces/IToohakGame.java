@@ -14,7 +14,7 @@ public interface IToohakGame {
 
     String login(String useremail, String password);
 
-    void clearLobbies();
+    String clearLobbies();
 
     void chooseHostOrClient(boolean host);
 

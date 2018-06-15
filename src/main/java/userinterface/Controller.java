@@ -288,7 +288,7 @@ public class Controller {
     //endregion
 
     public void btnClearLobbiesClicked() {
-        game.clearLobbies();
+        showMessage(game.clearLobbies());
     }
 
     private void showMessage(final String message) {

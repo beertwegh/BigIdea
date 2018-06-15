@@ -30,7 +30,7 @@ public class GetLobbies {
 
     public List<Lobby> getLobbies() {
 
-        final String query = "http://localhost:8090/lobby/getAll";
+        final String query = "http://rest.basvdeertwegh.nl/lobby/getAll";
         HttpGet httpGet = new HttpGet(query);
         List<Lobby> lobbies = null;
         try (CloseableHttpClient httpClient = HttpClients.createDefault();

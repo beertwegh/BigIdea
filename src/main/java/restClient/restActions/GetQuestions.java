@@ -30,7 +30,7 @@ public class GetQuestions {
 
     public List<Question> getQuestions() {
 
-        final String query = "http://localhost:8090/question/getAll";
+        final String query = "http://rest.basvdeertwegh.nl/question/getAll";
 
         // Perform the query
         HttpGet httpGet = new HttpGet(query);

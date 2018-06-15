@@ -23,12 +23,6 @@ import stubs.ToohakGameStub;
 public class ServerMessagingIntegrationTest {
 
 
-    @Before
-    public void init() {
-        Runnable rest = () -> RestService.main(new String[]{});
-        Thread thread = new Thread(rest);
-        thread.start();
-    }
 
     @Test
     public void AnswerQuestionResultTest() {

@@ -19,15 +19,15 @@ public class ServerWebSocket implements IServerWebSocket {
 
     private static ArrayList<Session> sessions = new ArrayList<>();
 
-    private static IMessageProcessor messageHandler;
+    private IMessageProcessor messageHandler;
 
-    public static IMessageProcessor getMessageHandler() {
+    public IMessageProcessor getMessageHandler() {
         return messageHandler;
     }
 
 
     public void setMessageHandler(IMessageProcessor messageHandler) {
-        ServerWebSocket.messageHandler = messageHandler;
+        this.messageHandler = messageHandler;
     }
 
     private IHostGame game;

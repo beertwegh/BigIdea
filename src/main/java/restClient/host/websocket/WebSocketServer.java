@@ -13,6 +13,12 @@ import javax.websocket.server.ServerEndpoint;
 import javax.websocket.server.ServerEndpointConfig;
 
 public class WebSocketServer {
+
+    private WebSocketServer() {
+
+        throw new IllegalArgumentException("Not meant to initialize");
+    }
+
     public static void startWebSocketServer(ServerWebSocket socket, int port) {
 
         IMessageProcessor messageHandler = new ServerMessageProcessor(socket.getGame());

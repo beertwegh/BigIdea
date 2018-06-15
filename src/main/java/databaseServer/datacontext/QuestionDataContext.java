@@ -1,8 +1,8 @@
 package databaseServer.datacontext;
 
+import databaseServer.speicifiables.Specifiable;
 import models.Answer;
 import models.Question;
-import databaseServer.speicifiables.Specifiable;
 import shared.Logging.Logger;
 
 import java.sql.*;
@@ -45,12 +45,12 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
         } catch (SQLException e) {
             Logger.getInstance().log(e);
         }
-        return null;
+        return all;
     }
 
     private List<Answer> getAnswers(int questionId) {
+        List<Answer> answers = new ArrayList<>();
         try {
-            List<Answer> answers = new ArrayList<>();
             Connection connection2 = DriverManager.getConnection(connString);
             String query2 = "SELECT text, correct FROM Answer WHERE questionId = ?";
             try (PreparedStatement stmt = connection2.prepareStatement(query2)) {
@@ -69,7 +69,7 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
         } catch (SQLException e) {
             Logger.getInstance().log(e);
         }
-        return null;
+        return answers;
     }
 
 }

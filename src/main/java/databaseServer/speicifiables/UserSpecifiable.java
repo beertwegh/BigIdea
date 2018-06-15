@@ -1,9 +1,7 @@
 package databaseServer.speicifiables;
 
 
-import models.User;
-
-public class UserSpecifiable implements Specifiable<User> {
+public class UserSpecifiable implements Specifiable {
 
     private String specifiable;
     private String parameter;

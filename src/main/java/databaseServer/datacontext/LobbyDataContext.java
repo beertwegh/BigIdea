@@ -79,7 +79,7 @@ public class LobbyDataContext extends AbstractDataContext implements ILobbyDataC
         } catch (SQLException e) {
             Logger.getInstance().log(e);
         }
-        return null;
+        return all;
     }
 
     @Override

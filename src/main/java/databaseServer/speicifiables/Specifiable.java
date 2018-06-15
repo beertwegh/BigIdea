@@ -1,6 +1,6 @@
 package databaseServer.speicifiables;
 
-public interface Specifiable<T> {
+public interface Specifiable {
 
     String getSpecifiable();
 

@@ -2,7 +2,7 @@ package databaseServer.speicifiables;
 
 import models.Lobby;
 
-public class LobbySpecifiable implements Specifiable<Lobby> {
+public class LobbySpecifiable implements Specifiable {
 
     private String specifibale;
     private String parameter;

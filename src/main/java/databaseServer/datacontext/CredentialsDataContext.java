@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CredentialsDataContext extends AbstractDataContext implements ICredentialsDataContext {
+    private String username = "username";
+    private String email = "email";
 
     public CredentialsDataContext(String differentConnString) {
         super(differentConnString);
@@ -33,9 +35,9 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
                 } else {
                     rset.first();
                     if (rset.getBoolean("admin")) {
-                        return new Admin(rset.getInt("id"), rset.getString("username"), rset.getString("email"), rset.getInt("hs.score"), rset.getString("password"));
+                        return new Admin(rset.getInt("id"), rset.getString(username), rset.getString(email), rset.getInt("hs.score"), rset.getString("password"));
                     }
-                    return new User(rset.getInt("id"), rset.getString("username"), rset.getString("email"), rset.getInt("hs.score"), rset.getString("password"));
+                    return new User(rset.getInt("id"), rset.getString(username), rset.getString(email), rset.getInt("hs.score"), rset.getString("password"));
                 }
             }
         } catch (SQLException e) {
@@ -79,8 +81,8 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
             ResultSet rset = stmt.executeQuery(queryString);
             while (rset.next()) {
                 int id = rset.getInt("id");
-                String email = rset.getString("email");
-                String username = rset.getString("username");
+                String email = rset.getString(this.email);
+                String username = rset.getString(this.username);
                 int score = rset.getInt("score");
                 all.add(new User(id, username, email, score));
             }

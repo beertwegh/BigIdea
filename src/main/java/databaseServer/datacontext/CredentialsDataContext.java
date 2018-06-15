@@ -1,8 +1,8 @@
 package databaseServer.datacontext;
 
+import databaseServer.speicifiables.Specifiable;
 import models.Admin;
 import models.User;
-import databaseServer.speicifiables.Specifiable;
 import shared.Logging.Logger;
 
 import java.sql.*;
@@ -33,7 +33,7 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
                 } else {
                     rset.first();
                     if (rset.getBoolean("admin")) {
-                        return new Admin(rset.getInt("id"), rset.getString("username"), rset.getString("email"), rset.getInt("hs.score"));
+                        return new Admin(rset.getInt("id"), rset.getString("username"), rset.getString("email"), rset.getInt("hs.score"), rset.getString("password"));
                     }
                     return new User(rset.getInt("id"), rset.getString("username"), rset.getString("email"), rset.getInt("hs.score"), rset.getString("password"));
                 }

@@ -1,6 +1,5 @@
 package testhandlersrest;
 
-import models.Lobby;
 import com.google.gson.Gson;
 import databaseServer.datacontext.LobbyDataContext;
 import databaseServer.repositories.LobbyRepository;
@@ -8,6 +7,7 @@ import databaseServer.rest.handlers.LobbyHandler;
 import databaseServer.rest.response.GetLobbiesResponse;
 import databaseServer.rest.response.Reply;
 import databaseServer.rest.response.Status;
+import models.Lobby;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -69,6 +69,19 @@ public class LobbyHandlerTest extends DbCleaner {
         handler.createLobby(new Lobby("0.0.0.0:1234", "name"));
         Reply reply = handler.chooseLobby(new Lobby("1.2.3.4:1234", "name"));
         Assert.assertEquals(Status.NOTFOUND, reply.getStatus());
+    }
+
+    @Test
+    public void testClearLobbies() {
+        handler.createLobby(new Lobby("0.0.0.0:1234", "name"));
+        Reply reply = handler.getLobbies();
+        GetLobbiesResponse entity = gson.fromJson(reply.getMessage(), GetLobbiesResponse.class);
+        Assert.assertEquals(1, entity.getLobbies().size());
+        handler.clearLobbies();
+        reply = handler.getLobbies();
+        entity = gson.fromJson(reply.getMessage(), GetLobbiesResponse.class);
+        Assert.assertEquals(0, entity.getLobbies().size());
+
     }
 
 

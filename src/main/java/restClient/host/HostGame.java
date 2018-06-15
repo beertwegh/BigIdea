@@ -31,6 +31,14 @@ public class HostGame implements IHostGame {
         return questions;
     }
 
+    public void setQuestions(ArrayList<Question> questions) {
+        this.questions = questions;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
+
     public int getRound() {
         return round;
     }

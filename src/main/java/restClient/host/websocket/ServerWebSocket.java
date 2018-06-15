@@ -1,7 +1,7 @@
 package restClient.host.websocket;
 
 import Models.User;
-import restClient.host.HostGame;
+import restClient.host.IHostGame;
 import restClient.host.websocket.messagehandlers.ServerMessageProcessor;
 import shared.Logging.LogLevel;
 import shared.Logging.Logger;
@@ -25,17 +25,18 @@ public class ServerWebSocket implements IServerWebSocket {
         return messageHandler;
     }
 
-    public static void setMessageHandler(IMessageProcessor messageHandler) {
+
+    public void setMessageHandler(IMessageProcessor messageHandler) {
         ServerWebSocket.messageHandler = messageHandler;
     }
 
-    private HostGame game;
+    private IHostGame game;
 
-    public HostGame getGame() {
+    public IHostGame getGame() {
         return game;
     }
 
-    public ServerWebSocket(HostGame game) {
+    public ServerWebSocket(IHostGame game) {
         this.game = game;
     }
 
@@ -71,7 +72,11 @@ public class ServerWebSocket implements IServerWebSocket {
             sendTo(session, "No message found");
             return;
         }
-        messageHandler.handleMessage(message, session.getId());
+        onMessageReceived(message, session.getId());
+    }
+    @Override
+    public void onMessageReceived(String message, String sessionId) {
+        messageHandler.handleMessage(message, sessionId);
     }
 
 

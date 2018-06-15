@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CredentialsDataContext extends AbstractDataContext implements ICredentialsDataContext {
-    private String usernameString = "usernameString";
-    private String emailString = "emailString";
+    private String usernameString = "username";
+    private String emailString = "email";
 
     public CredentialsDataContext(String differentConnString) {
         super(differentConnString);
@@ -31,7 +31,6 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
                 if (!rset.next()) {
                     rset.close();
                     return null;
-
                 } else {
                     rset.first();
                     if (rset.getBoolean("admin")) {
@@ -48,10 +47,8 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
             } catch (SQLException e) {
                 Logger.getInstance().log(e);
             }
-
         }
         return null;
-
     }
 
     @Override
@@ -93,5 +90,4 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
         }
         return all;
     }
-
 }

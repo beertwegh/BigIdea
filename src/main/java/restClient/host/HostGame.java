@@ -21,33 +21,23 @@ import java.util.ArrayList;
 public class HostGame implements IHostGame {
 
     private ArrayList<Question> questions;
-    private int round;
     ServerWebSocket socket;
     IToohakGame game;
     private IServerMessageGenerator messageGenerator;
     private RandomFisher random;
-
+    private int currentRandom;
     public ArrayList<Question> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(ArrayList<Question> questions) {
-        this.questions = questions;
-    }
-
-    public void setRound(int round) {
-        this.round = round;
-    }
-
-    public int getRound() {
-        return round;
+    public int getCurrentRandom() {
+        return currentRandom;
     }
 
     public HostGame(IToohakGame game) {
         this.game = game;
         GetQuestions getQuestions = new GetQuestions();
         questions = (ArrayList<Question>) getQuestions.getQuestions();
-        round = 0;
         socket = new ServerWebSocket(this);
         messageGenerator = new ServerMessageGenerator(socket);
         random = new RandomFisher(questions.size());
@@ -55,10 +45,10 @@ public class HostGame implements IHostGame {
 
     @Override
     public void nextRound() {
-        if (questions.get(random.next()) != null) {
+        currentRandom = random.next();
+        if (questions.get(currentRandom) != null) {
             messageGenerator.nextRound();
             game.processNextRound(this);
-            round++;
         } else {
             gameEnded();
         }
@@ -99,7 +89,7 @@ public class HostGame implements IHostGame {
 
     @Override
     public void processAnswerQuestion(User user, MultipleChoice answer) {
-        boolean correct = questions.get(round - 1).getAnswers().get(answer.getValue()).isCorrect();
+        boolean correct = questions.get(currentRandom).getAnswers().get(answer.getValue()).isCorrect();
         if (correct) {
             messageGenerator.replyAnswerQuestion(true, user);
             SetHighScoreAction action = new SetHighScoreAction();

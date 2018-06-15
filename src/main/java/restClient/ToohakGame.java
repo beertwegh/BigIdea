@@ -36,7 +36,7 @@ public class ToohakGame implements IToohakGame {
     @Override
     public void processNextRound(IGame game) {
         if (game instanceof IHostGame) {
-            application.processNextRoundHost(((HostGame) game).getQuestions().get(((HostGame) game).getRound()));
+            application.processNextRoundHost(((HostGame) game).getQuestions().get(((HostGame) game).getCurrentRandom()));
         } else {
             application.processNextRoundClient();
         }

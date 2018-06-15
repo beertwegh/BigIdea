@@ -32,7 +32,9 @@ public class ServerMessageGenerator implements IServerMessageGenerator {
 
     @Override
     public void endGame() {
-        socket.broadcast("game has ended");
+        Message message = new Message(Action.ENDGAME);
+        String json = gson.toJson(message);
+        socket.broadcast(json);
     }
 
     @Override

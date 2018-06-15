@@ -21,11 +21,12 @@ import java.util.ArrayList;
 public class HostGame implements IHostGame {
 
     private ArrayList<Question> questions;
-    ServerWebSocket socket;
-    IToohakGame game;
+    private ServerWebSocket socket;
+    private IToohakGame game;
     private IServerMessageGenerator messageGenerator;
     private RandomFisher random;
-    private int currentRandom;
+    private Integer currentRandom;
+
     public ArrayList<Question> getQuestions() {
         return questions;
     }
@@ -46,25 +47,21 @@ public class HostGame implements IHostGame {
     @Override
     public void nextRound() {
         currentRandom = random.next();
-        if (questions.get(currentRandom) != null) {
+        if (currentRandom != null) {
             messageGenerator.nextRound();
             game.processNextRound(this);
-        } else {
+        } else
             gameEnded();
-        }
     }
 
     @Override
     public String createLobby(Lobby lobby) {
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String[] split = lobby.getIp().split(":");
-                String portString = split[1];
-                int port = Integer.parseInt(portString);
-                WebSocketServer.startWebSocketServer(socket, port);
-            }
+        Thread thread = new Thread(() -> {
+            String[] split = lobby.getIp().split(":");
+            String portString = split[1];
+            int port = Integer.parseInt(portString);
+            WebSocketServer.startWebSocketServer(socket, port);
         });
         thread.start();
         SaveLobby saveLobby = new SaveLobby();
@@ -80,6 +77,7 @@ public class HostGame implements IHostGame {
     @Override
     public void gameEnded() {
         messageGenerator.endGame();
+        game.processEndGame(this);
     }
 
     @Override
@@ -94,6 +92,8 @@ public class HostGame implements IHostGame {
             messageGenerator.replyAnswerQuestion(true, user);
             SetHighScoreAction action = new SetHighScoreAction();
             action.setHighScore(new SetHighScore(user.getId(), user.getScore() + 10));
+        } else {
+            messageGenerator.replyAnswerQuestion(false, user);
         }
     }
 }

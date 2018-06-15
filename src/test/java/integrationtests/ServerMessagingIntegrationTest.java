@@ -1,4 +1,4 @@
-package gametest;
+package integrationtests;
 
 import com.google.gson.Gson;
 import org.junit.Assert;

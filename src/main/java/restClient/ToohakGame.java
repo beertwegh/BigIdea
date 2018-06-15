@@ -43,6 +43,11 @@ public class ToohakGame implements IToohakGame {
     }
 
     @Override
+    public void nextRound() {
+        game.nextRound();
+    }
+
+    @Override
     public String registerPlayer(String username, String password, String email) {
         RegisterAction action = new RegisterAction();
         return action.register(new Register(email, username, password));
@@ -103,6 +108,15 @@ public class ToohakGame implements IToohakGame {
     @Override
     public void startGame() {
         ((IHostGame) game).startGame();
+    }
+
+    @Override
+    public void processEndGame(IGame game) {
+        if (game instanceof IClientGame)
+            application.processEndGameClient();
+        else {
+            application.processEndGameHost();
+        }
     }
 
     @Override

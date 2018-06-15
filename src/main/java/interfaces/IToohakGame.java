@@ -8,6 +8,8 @@ import shared.MultipleChoice;
 import java.util.List;
 
 public interface IToohakGame {
+    void nextRound();
+
     String registerPlayer(String username, String password, String email);
 
     String login(String useremail, String password);
@@ -29,6 +31,9 @@ public interface IToohakGame {
     User getUser();
 
     void processNextRound(IGame game);
+
+
+    void processEndGame(IGame game);
 
     void processStartGame();
 }

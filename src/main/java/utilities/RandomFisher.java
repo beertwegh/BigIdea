@@ -16,6 +16,9 @@ public class RandomFisher {
     public Integer next() {
         if (count > values.length) {
             return null;
+        } else if (count == values.length) {
+            count++;
+            return values[0];
         } else {
             int rnd = ThreadLocalRandom.current().nextInt(0, values.length - count);
             int next = values[rnd];

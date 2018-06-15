@@ -58,4 +58,9 @@ public class ClientGame implements IClientGame {
     public void processAnswerReply(boolean correct) {
         game.processAnswerReply(correct);
     }
+
+    @Override
+    public void processEndGame() {
+        game.processEndGame(this);
+    }
 }

@@ -10,6 +10,11 @@ import java.util.List;
 
 public class ToohakGameStub implements IToohakGame {
     @Override
+    public void nextRound() {
+
+    }
+
+    @Override
     public String registerPlayer(String username, String password, String email) {
         return null;
     }
@@ -63,6 +68,12 @@ public class ToohakGameStub implements IToohakGame {
     public void processNextRound(IGame game) {
 
     }
+
+    @Override
+    public void processEndGame(IGame game) {
+
+    }
+
 
     @Override
     public void processStartGame() {

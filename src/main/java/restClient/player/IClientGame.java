@@ -18,4 +18,6 @@ public interface IClientGame extends IGame {
     void processStartGame();
 
     void processAnswerReply(boolean correct);
+
+    void processEndGame();
 }

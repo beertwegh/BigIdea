@@ -50,9 +50,15 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lblA" layoutX="66.0" layoutY="185.0" prefHeight="31.0" prefWidth="144.0" text="Answer 1" visible="false" />
-      <Label fx:id="lblD" layoutX="357.0" layoutY="281.0" prefHeight="31.0" prefWidth="144.0" text="Answer 4" visible="false" />
-      <Label fx:id="lblC" layoutX="357.0" layoutY="190.0" prefHeight="31.0" prefWidth="144.0" text="Answer 3" visible="false" />
-      <Label fx:id="lblB" layoutX="66.0" layoutY="281.0" prefHeight="31.0" prefWidth="144.0" text="Answer 2" visible="false" />
+      <Label fx:id="lblA" layoutX="66.0" layoutY="185.0" prefHeight="79.0" prefWidth="144.0" text="Answer 1" visible="false" wrapText="true" />
+      <Label fx:id="lblD" layoutX="357.0" layoutY="281.0" prefHeight="91.0" prefWidth="144.0" text="Answer 4" visible="false" wrapText="true" />
+      <Label fx:id="lblC" layoutX="74.0" layoutY="255.0" prefHeight="109.0" prefWidth="137.0" text="Answer 3" visible="false" wrapText="true" />
+      <Label fx:id="lblB" layoutX="369.0" layoutY="173.0" prefHeight="103.0" prefWidth="153.0" text="Answer 2" visible="false" wrapText="true" />
+      <Button fx:id="btnNextRound" layoutX="471.0" layoutY="333.0" mnemonicParsing="false" onAction="#btnNextRoundClicked" text="Next Round" visible="false" />
+      <Label fx:id="lblEnded" layoutX="56.0" layoutY="144.0" prefHeight="158.0" prefWidth="435.0" text="game has ended" visible="false">
+         <font>
+            <Font size="56.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

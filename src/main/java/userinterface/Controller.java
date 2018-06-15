@@ -66,6 +66,10 @@ public class Controller {
     private Label lblD;
     @FXML
     private Label lblQuestion;
+    @FXML
+    private Button btnNextRound;
+    @FXML
+    private Label lblEnded;
     private IToohakGame game = new ToohakGame(this);
 
 
@@ -190,6 +194,14 @@ public class Controller {
         btnD.setVisible(true);
 
     }
+
+    public void processEndGameClient() {
+        btnA.setVisible(false);
+        btnB.setVisible(false);
+        btnC.setVisible(false);
+        btnD.setVisible(false);
+        showMessage("Game has ended!");
+    }
     //endregion
 
     //region Server/Host
@@ -247,23 +259,35 @@ public class Controller {
     }
 
     public void processNextRoundHost(Question question) {
+        btnNextRound.setVisible(true);
         lblQuestion.setText(question.getText());
         lblA.setText(question.getAnswers().get(0).toString());
         lblB.setText(question.getAnswers().get(1).toString());
         lblC.setText(question.getAnswers().get(2).toString());
         lblD.setText(question.getAnswers().get(3).toString());
     }
+
+    public void btnNextRoundClicked() {
+        game.nextRound();
+    }
+
+    public void processEndGameHost() {
+        lblQuestion.setVisible(false);
+        lblA.setVisible(false);
+        lblB.setVisible(false);
+        lblC.setVisible(false);
+        lblD.setVisible(false);
+        lblEnded.setVisible(true);
+    }
     //endregion
 
     public void showMessage(final String message) {
-        Platform.runLater(new Runnable() {
-            public void run() {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Toohak");
-                alert.setHeaderText("Message");
-                alert.setContentText(message);
-                alert.showAndWait();
-            }
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Toohak");
+            alert.setHeaderText("Message");
+            alert.setContentText(message);
+            alert.showAndWait();
         });
     }
 }

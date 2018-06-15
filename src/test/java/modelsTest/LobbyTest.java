@@ -41,4 +41,10 @@ public class LobbyTest {
         exception.expect(IllegalArgumentException.class);
         Lobby lobby = new Lobby("0.0.0.0:1234", null);
     }
+
+    @Test
+    public void testToString() {
+        Lobby lobby = new Lobby("0.0.0.0:1234", "name");
+        Assert.assertEquals("name", lobby.toString());
+    }
 }

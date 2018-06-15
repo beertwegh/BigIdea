@@ -37,6 +37,7 @@ public class ClientWebSocket implements IClientWebSocket {
         }
     }
 
+    @Override
     public void setMessageHandler(IMessageProcessor handler) {
         this.handler = handler;
     }
@@ -49,15 +50,15 @@ public class ClientWebSocket implements IClientWebSocket {
 
     @OnMessage
     public void onWebSocketText(String message, Session session) {
-        onWebSocketMessageReceived(message, session);
+        onWebSocketMessageReceived(message, session.getId());
     }
 
-    public void onWebSocketMessageReceived(String message, Session session) {
+    public void onWebSocketMessageReceived(String message, String sessionId) {
         if (handler == null) {
             throw new NullPointerException("messageHandler is null");
         }
         if (!message.isEmpty()) {
-            handler.handleMessage(message, session.getId());
+            handler.handleMessage(message, sessionId);
         }
     }
 

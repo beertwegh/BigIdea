@@ -8,8 +8,12 @@ public class Question {
     private List<Answer> answers;
 
     public Question(String text, List<Answer> answers) {
-        this.text = text;
-        this.answers = answers;
+        if (text != null && answers != null) {
+            this.text = text;
+            this.answers = answers;
+        } else {
+            throw new IllegalArgumentException("something went wrong");
+        }
     }
 
     public List<Answer> getAnswers() {

@@ -1,12 +1,9 @@
 package gametest;
 
 import com.google.gson.Gson;
-import databaseServer.rest.RestService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import restClient.ToohakGame;
-import restClient.host.HostGame;
 import restClient.host.IHostGame;
 import restClient.host.websocket.IServerWebSocket;
 import restClient.host.websocket.ServerWebSocket;
@@ -22,8 +19,10 @@ import stubs.ToohakGameStub;
 
 public class ServerMessagingIntegrationTest {
 
-
-
+    @Before
+    public void init() {
+        AppFlowStack.clearStack();
+    }
     @Test
     public void AnswerQuestionResultTest() {
         AnswerQuestion answerQuestion = new AnswerQuestion(MultipleChoice.A);

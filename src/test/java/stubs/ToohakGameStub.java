@@ -46,7 +46,7 @@ public class ToohakGameStub implements IToohakGame {
 
     @Override
     public void processAnswerReply(boolean correct) {
-
+        AppFlowStack.addStack(String.valueOf(correct));
     }
 
     @Override

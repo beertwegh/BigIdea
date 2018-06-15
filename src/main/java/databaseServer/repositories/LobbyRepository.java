@@ -1,8 +1,8 @@
 package databaseServer.repositories;
 
-import Models.Lobby;
 import databaseServer.datacontext.ILobbyDataContext;
 import databaseServer.speicifiables.Specifiable;
+import models.Lobby;
 
 import java.util.List;
 
@@ -27,5 +27,10 @@ public class LobbyRepository implements ILobbyRepository {
     @Override
     public List<Lobby> findAll() {
         return dataContext.findAll();
+    }
+
+    @Override
+    public void clearLobbies() {
+        dataContext.clearLobbies();
     }
 }

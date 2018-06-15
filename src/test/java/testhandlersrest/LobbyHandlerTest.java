@@ -1,6 +1,6 @@
 package testhandlersrest;
 
-import Models.Lobby;
+import models.Lobby;
 import com.google.gson.Gson;
 import databaseServer.datacontext.LobbyDataContext;
 import databaseServer.repositories.LobbyRepository;

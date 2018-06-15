@@ -1,6 +1,6 @@
 package databaseServer.repositories;
 
-import Models.Question;
+import models.Question;
 
 public interface IQuestionRepository extends IRepository<Question> {
 

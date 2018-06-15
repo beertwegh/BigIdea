@@ -1,6 +1,6 @@
 package restClient.restActions;
 
-import Models.Lobby;
+import models.Lobby;
 
 public class SaveLobby extends BaseAction<Lobby> {
     String query = "http://rest.basvdeertwegh.nl/lobby/create";

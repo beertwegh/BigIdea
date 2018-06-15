@@ -1,6 +1,6 @@
 package stubs;
 
-import Models.User;
+import models.User;
 import interfaces.IToohakGame;
 import restClient.host.HostGame;
 import shared.MultipleChoice;

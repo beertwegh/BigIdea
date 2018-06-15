@@ -1,6 +1,6 @@
 package restClient.player;
 
-import Models.Lobby;
+import models.Lobby;
 import interfaces.IToohakGame;
 import restClient.player.websocket.ClientMessageGenerator;
 import restClient.player.websocket.ClientWebSocket;

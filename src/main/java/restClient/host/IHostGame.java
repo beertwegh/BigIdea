@@ -1,7 +1,7 @@
 package restClient.host;
 
-import Models.Lobby;
-import Models.User;
+import models.Lobby;
+import models.User;
 import interfaces.IGame;
 import shared.MultipleChoice;
 

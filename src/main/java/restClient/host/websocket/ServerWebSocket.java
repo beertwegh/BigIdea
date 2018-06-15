@@ -1,6 +1,6 @@
 package restClient.host.websocket;
 
-import Models.User;
+import models.User;
 import restClient.host.IHostGame;
 import restClient.host.websocket.messagehandlers.ServerMessageProcessor;
 import shared.Logging.LogLevel;

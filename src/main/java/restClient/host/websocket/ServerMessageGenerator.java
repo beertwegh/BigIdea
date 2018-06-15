@@ -1,6 +1,6 @@
 package restClient.host.websocket;
 
-import Models.User;
+import models.User;
 import com.google.gson.Gson;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.Action;

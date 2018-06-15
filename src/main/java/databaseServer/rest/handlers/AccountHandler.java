@@ -1,11 +1,13 @@
 package databaseServer.rest.handlers;
 
-import Models.User;
 import com.google.gson.Gson;
 import databaseServer.repositories.IUserRepository;
+import databaseServer.rest.response.LoginResponse;
 import databaseServer.rest.response.Reply;
 import databaseServer.rest.response.Status;
 import databaseServer.speicifiables.UserSpecifiable;
+import models.Admin;
+import models.User;
 import shared.Logging.Logger;
 import shared.restrequest.Login;
 import shared.restrequest.Register;
@@ -28,8 +30,14 @@ public class AccountHandler implements IAccountHandler {
         if (!(user.getPassword()).equals(data.getPassword())) {
             return new Reply(Status.NOACCESS, "Your login credentials were incorrect");
         }
+        LoginResponse response;
+        if (user instanceof Admin) {
+            response = new LoginResponse((Admin) user);
+        } else {
+            response = new LoginResponse(user);
+        }
         Gson gson = new Gson();
-        String json = gson.toJson(user);
+        String json = gson.toJson(response);
         return new Reply(Status.OK, json);
     }
 

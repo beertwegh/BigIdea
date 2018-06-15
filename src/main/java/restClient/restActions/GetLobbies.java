@@ -1,6 +1,6 @@
 package restClient.restActions;
 
-import Models.Lobby;
+import models.Lobby;
 import com.google.gson.Gson;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;

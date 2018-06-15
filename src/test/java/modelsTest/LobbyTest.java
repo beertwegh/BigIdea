@@ -1,6 +1,6 @@
 package modelsTest;
 
-import Models.Lobby;
+import models.Lobby;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;

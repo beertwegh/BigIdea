@@ -60,5 +60,6 @@
             <Font size="56.0" />
          </font>
       </Label>
+      <Button fx:id="btnClearLobbies" layoutX="439.0" layoutY="327.0" mnemonicParsing="false" onAction="#btnClearLobbiesClicked" prefHeight="48.0" prefWidth="120.0" text="Clear lobbies" visible="false" />
     </children>
 </AnchorPane>

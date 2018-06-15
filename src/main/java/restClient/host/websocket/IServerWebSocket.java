@@ -1,6 +1,6 @@
 package restClient.host.websocket;
 
-import Models.User;
+import models.User;
 import shared.websocket.interfaces.IMessageProcessor;
 
 import javax.websocket.Session;

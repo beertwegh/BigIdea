@@ -1,6 +1,6 @@
 package databaseServer.rest.handlers;
 
-import Models.Lobby;
+import models.Lobby;
 import databaseServer.rest.response.Reply;
 
 public interface ILobbyHandler {
@@ -11,4 +11,5 @@ public interface ILobbyHandler {
 
     Reply chooseLobby(Lobby lobby);
 
+    Reply clearLobbies();
 }

@@ -1,6 +1,6 @@
 package databaseServer.datacontext;
 
-import Models.User;
+import models.User;
 
 public interface ICredentialsDataContext extends IDataContext<User> {
 }

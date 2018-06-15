@@ -1,6 +1,6 @@
 package restClient.host.websocket.messagehandlers;
 
-import Models.User;
+import models.User;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.gson.Gson;

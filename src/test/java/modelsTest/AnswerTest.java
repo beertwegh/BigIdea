@@ -1,6 +1,6 @@
 package modelsTest;
 
-import Models.Answer;
+import models.Answer;
 import org.junit.Assert;
 import org.junit.Test;
 

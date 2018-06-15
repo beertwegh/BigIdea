@@ -1,6 +1,6 @@
 package databaseServer.repositories;
 
-import Models.User;
+import models.User;
 import databaseServer.datacontext.ICredentialsDataContext;
 import databaseServer.speicifiables.Specifiable;
 

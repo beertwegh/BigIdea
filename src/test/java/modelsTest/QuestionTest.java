@@ -1,7 +1,7 @@
 package modelsTest;
 
-import Models.Answer;
-import Models.Question;
+import models.Answer;
+import models.Question;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;

@@ -1,6 +1,6 @@
 package databaseServer.speicifiables;
 
-import Models.Lobby;
+import models.Lobby;
 
 public class LobbySpecifiable implements Specifiable<Lobby> {
 

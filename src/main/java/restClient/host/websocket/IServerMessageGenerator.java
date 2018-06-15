@@ -1,6 +1,6 @@
 package restClient.host.websocket;
 
-import Models.User;
+import models.User;
 
 public interface IServerMessageGenerator {
 

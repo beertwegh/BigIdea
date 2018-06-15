@@ -1,6 +1,6 @@
 package shared.websocket.interfaces.actions;
 
-import Models.User;
+import models.User;
 
 public class IntroduceUser implements IAction {
     private User user;

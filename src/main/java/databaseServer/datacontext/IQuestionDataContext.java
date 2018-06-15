@@ -1,6 +1,6 @@
 package databaseServer.datacontext;
 
-import Models.Question;
+import models.Question;
 
 public interface IQuestionDataContext extends IDataContext<Question> {
 

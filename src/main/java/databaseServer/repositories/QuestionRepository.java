@@ -1,6 +1,6 @@
 package databaseServer.repositories;
 
-import Models.Question;
+import models.Question;
 import databaseServer.datacontext.IQuestionDataContext;
 import databaseServer.speicifiables.Specifiable;
 

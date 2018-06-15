@@ -1,12 +1,12 @@
 package databaseServer.rest.handlers;
 
-import Models.Lobby;
 import com.google.gson.Gson;
 import databaseServer.repositories.ILobbyRepository;
 import databaseServer.rest.response.GetLobbiesResponse;
 import databaseServer.rest.response.Reply;
 import databaseServer.rest.response.Status;
 import databaseServer.speicifiables.LobbySpecifiable;
+import models.Lobby;
 
 public class LobbyHandler implements ILobbyHandler
 
@@ -38,6 +38,12 @@ public class LobbyHandler implements ILobbyHandler
             return new Reply(Status.OK, "Connect to lobby");
         }
         return new Reply(Status.NOTFOUND, "Lobby doesn't exist");
+    }
+
+    @Override
+    public Reply clearLobbies() {
+        repository.clearLobbies();
+        return new Reply(Status.OK, "Lobbies have been cleared");
     }
 
 }

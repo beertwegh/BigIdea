@@ -1,7 +1,7 @@
 package databaseServer.datacontext;
 
-import Models.Answer;
-import Models.Question;
+import models.Answer;
+import models.Question;
 import databaseServer.speicifiables.Specifiable;
 import shared.Logging.Logger;
 

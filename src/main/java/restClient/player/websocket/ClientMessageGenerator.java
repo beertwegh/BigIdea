@@ -1,6 +1,6 @@
 package restClient.player.websocket;
 
-import Models.User;
+import models.User;
 import shared.MultipleChoice;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.Action;

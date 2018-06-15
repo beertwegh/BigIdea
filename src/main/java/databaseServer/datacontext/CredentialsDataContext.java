@@ -1,6 +1,7 @@
 package databaseServer.datacontext;
 
-import Models.User;
+import models.Admin;
+import models.User;
 import databaseServer.speicifiables.Specifiable;
 import shared.Logging.Logger;
 
@@ -21,7 +22,7 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
     public User findOne(Specifiable specifiable) {
         try {
             connection = DriverManager.getConnection(connString);
-            queryString = "SELECT id, username, email, password, hs.score FROM Credentials c LEFT JOIN HighScore hs ON c.id = hs.CredentialsId WHERE " + specifiable.getSpecifiable() + " = ?";
+            queryString = "SELECT id, username, email, password, admin, hs.score FROM Credentials c LEFT JOIN HighScore hs ON c.id = hs.CredentialsId WHERE " + specifiable.getSpecifiable() + " = ?";
             PreparedStatement stmt = connection.prepareStatement(queryString);
             stmt.setString(1, specifiable.getParameter());
             try (ResultSet rset = stmt.executeQuery()) {
@@ -31,14 +32,21 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
 
                 } else {
                     rset.first();
-                    User user = new User(rset.getInt("id"), rset.getString("username"), rset.getString("email"), rset.getInt("hs.score"), rset.getString("password"));
-                    connection.close();
-                    rset.close();
-                    return user;
+                    if (rset.getBoolean("admin")) {
+                        return new Admin(rset.getInt("id"), rset.getString("username"), rset.getString("email"), rset.getInt("hs.score"));
+                    }
+                    return new User(rset.getInt("id"), rset.getString("username"), rset.getString("email"), rset.getInt("hs.score"), rset.getString("password"));
                 }
             }
         } catch (SQLException e) {
             Logger.getInstance().log(e);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                Logger.getInstance().log(e);
+            }
+
         }
         return null;
 

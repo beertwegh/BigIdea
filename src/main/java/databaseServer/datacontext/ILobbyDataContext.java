@@ -1,7 +1,9 @@
 package databaseServer.datacontext;
 
-import Models.Lobby;
+import models.Lobby;
 
 public interface ILobbyDataContext extends IDataContext<Lobby> {
+
+    void clearLobbies();
 
 }

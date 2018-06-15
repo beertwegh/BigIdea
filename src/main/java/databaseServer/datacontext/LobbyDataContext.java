@@ -1,7 +1,7 @@
 package databaseServer.datacontext;
 
-import Models.Lobby;
 import databaseServer.speicifiables.Specifiable;
+import models.Lobby;
 import shared.Logging.Logger;
 
 import java.sql.*;
@@ -80,5 +80,19 @@ public class LobbyDataContext extends AbstractDataContext implements ILobbyDataC
             Logger.getInstance().log(e);
         }
         return null;
+    }
+
+    @Override
+    public void clearLobbies() {
+        try {
+            connection = DriverManager.getConnection(connString);
+            queryString = "DELETE FROM Lobby";
+            PreparedStatement stmt = connection.prepareStatement(queryString);
+            stmt.executeUpdate();
+            connection.close();
+
+        } catch (SQLException e) {
+            Logger.getInstance().log(e);
+        }
     }
 }

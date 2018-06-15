@@ -1,13 +1,13 @@
 package userinterface;
 
-import Models.Lobby;
-import Models.Question;
-import Models.User;
 import interfaces.IToohakGame;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import models.Lobby;
+import models.Question;
+import models.User;
 import restClient.ToohakGame;
 import shared.Logging.Logger;
 import shared.MultipleChoice;
@@ -70,6 +70,8 @@ public class Controller {
     private Button btnNextRound;
     @FXML
     private Label lblEnded;
+    @FXML
+    private Button btnClearLobbies;
     private IToohakGame game = new ToohakGame(this);
 
 
@@ -89,7 +91,9 @@ public class Controller {
                 btnHostLobby.setVisible(true);
                 btnJoinLobby.setVisible(true);
                 btnRegister.setVisible(false);
-
+                if (loginResult.contains("admin")) {
+                    btnClearLobbies.setVisible(true);
+                }
             }
         }
     }
@@ -135,6 +139,7 @@ public class Controller {
         btnJoinLobby.setVisible(false);
         btnHostLobby.setVisible(false);
         btnJoinSelectedLobby.setVisible(true);
+        btnClearLobbies.setVisible(false);
     }
 
     public void processAnswerCorrect() {
@@ -213,6 +218,7 @@ public class Controller {
         btnCreateLobby.setVisible(true);
         btnHostLobby.setVisible(false);
         btnJoinLobby.setVisible(false);
+        btnClearLobbies.setVisible(false);
     }
 
     public void btnCreateLobbyClicked() {
@@ -281,7 +287,11 @@ public class Controller {
     }
     //endregion
 
-    public void showMessage(final String message) {
+    public void btnClearLobbiesClicked() {
+        game.clearLobbies();
+    }
+
+    private void showMessage(final String message) {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Toohak");

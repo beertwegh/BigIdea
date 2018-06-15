@@ -1,18 +1,21 @@
 package restClient;
 
-import Models.Lobby;
-import Models.User;
 import com.google.gson.Gson;
+import databaseServer.rest.response.LoginResponse;
 import interfaces.IGame;
 import interfaces.IToohakGame;
+import models.Lobby;
+import models.User;
 import restClient.host.HostGame;
 import restClient.host.IHostGame;
 import restClient.player.ClientGame;
 import restClient.player.IClientGame;
+import restClient.restActions.ClearLobbiesAction;
 import restClient.restActions.LoginAction;
 import restClient.restActions.RegisterAction;
 import shared.Logging.Logger;
 import shared.MultipleChoice;
+import shared.restrequest.ClearLobbies;
 import shared.restrequest.Login;
 import shared.restrequest.Register;
 import userinterface.Controller;
@@ -59,12 +62,23 @@ public class ToohakGame implements IToohakGame {
         String result = action.login(new Login(useremail, password));
         Gson gson = new Gson();
         try {
-            this.user = gson.fromJson(result, User.class);
+            LoginResponse response = gson.fromJson(result, LoginResponse.class);
+            if (response.getAdmin() != null) {
+                this.user = response.getAdmin();
+                return "Login successful - admin";
+            } else
+                this.user = response.getUser();
             return "Login successful";
         } catch (Exception ex) {
             Logger.getInstance().log(ex);
         }
         return result;
+    }
+
+    @Override
+    public void clearLobbies() {
+        ClearLobbiesAction action = new ClearLobbiesAction();
+        action.clearLobbies(new ClearLobbies());
     }
 
     @Override

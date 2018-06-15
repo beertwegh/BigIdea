@@ -1,8 +1,8 @@
 package restClient.host;
 
-import Models.Lobby;
-import Models.Question;
-import Models.User;
+import models.Lobby;
+import models.Question;
+import models.User;
 import interfaces.IToohakGame;
 import restClient.ToohakGame;
 import restClient.host.websocket.IServerMessageGenerator;

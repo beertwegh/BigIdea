@@ -1,9 +1,9 @@
 package databaseServer.rest.services;
 
-import Models.Lobby;
 import com.google.gson.Gson;
 import databaseServer.rest.handlers.ILobbyHandler;
 import databaseServer.rest.response.Reply;
+import models.Lobby;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -43,6 +43,14 @@ public class LobbyService {
         Gson gson = new Gson();
         Lobby lobby = gson.fromJson(data, Lobby.class);
         Reply reply = handler.chooseLobby(lobby);
+        return Response.status(reply.getStatus().getCode()).entity(reply.getMessage()).build();
+    }
+
+    @POST
+    @Path("/clear")
+    @Consumes("application/json")
+    public Response clearLobbies(String data) {
+        Reply reply = handler.clearLobbies();
         return Response.status(reply.getStatus().getCode()).entity(reply.getMessage()).build();
     }
 }

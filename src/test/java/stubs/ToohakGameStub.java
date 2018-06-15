@@ -1,7 +1,7 @@
 package stubs;
 
-import Models.Lobby;
-import Models.User;
+import models.Lobby;
+import models.User;
 import interfaces.IGame;
 import interfaces.IToohakGame;
 import shared.MultipleChoice;
@@ -22,6 +22,11 @@ public class ToohakGameStub implements IToohakGame {
     @Override
     public String login(String useremail, String password) {
         return null;
+    }
+
+    @Override
+    public void clearLobbies() {
+
     }
 
     @Override

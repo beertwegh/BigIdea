@@ -1,12 +1,11 @@
 package restClient.host;
 
+import interfaces.IToohakGame;
 import models.Lobby;
 import models.Question;
 import models.User;
-import interfaces.IToohakGame;
 import restClient.ToohakGame;
 import restClient.host.websocket.IServerMessageGenerator;
-import restClient.host.websocket.ServerMessageGenerator;
 import restClient.host.websocket.ServerWebSocket;
 import restClient.host.websocket.WebSocketServer;
 import restClient.restActions.GetQuestions;
@@ -40,8 +39,13 @@ public class HostGame implements IHostGame {
         GetQuestions getQuestions = new GetQuestions();
         questions = (ArrayList<Question>) getQuestions.getQuestions();
         socket = new ServerWebSocket(this);
-        messageGenerator = new ServerMessageGenerator(socket);
         random = new RandomFisher(questions.size());
+    }
+
+    @Override
+    public void setMessageGenerator(IServerMessageGenerator messageGenerator) {
+        this.messageGenerator = messageGenerator;
+        messageGenerator.setSocket(socket);
     }
 
     @Override

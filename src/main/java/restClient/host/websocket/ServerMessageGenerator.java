@@ -10,10 +10,13 @@ public class ServerMessageGenerator implements IServerMessageGenerator {
     private IServerWebSocket socket;
     private Gson gson;
 
-    public ServerMessageGenerator(IServerWebSocket socket) {
-        this.socket = socket;
+    public ServerMessageGenerator() {
         gson = new Gson();
 
+    }
+    @Override
+    public void setSocket(IServerWebSocket socket) {
+        this.socket = socket;
     }
 
     @Override

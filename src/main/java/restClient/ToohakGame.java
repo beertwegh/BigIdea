@@ -8,6 +8,7 @@ import models.Lobby;
 import models.User;
 import restClient.host.HostGame;
 import restClient.host.IHostGame;
+import restClient.host.websocket.ServerMessageGenerator;
 import restClient.player.ClientGame;
 import restClient.player.IClientGame;
 import restClient.restActions.ClearLobbiesAction;
@@ -78,13 +79,14 @@ public class ToohakGame implements IToohakGame {
     @Override
     public String clearLobbies() {
         ClearLobbiesAction action = new ClearLobbiesAction();
-         return action.clearLobbies(new ClearLobbies());
+        return action.clearLobbies(new ClearLobbies());
     }
 
     @Override
     public void chooseHostOrClient(boolean host) {
         if (host) {
             game = new HostGame(this);
+            ((IHostGame) game).setMessageGenerator(new ServerMessageGenerator());
         } else {
             game = new ClientGame(this);
         }

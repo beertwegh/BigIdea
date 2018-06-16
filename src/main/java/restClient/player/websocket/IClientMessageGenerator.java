@@ -8,4 +8,6 @@ public interface IClientMessageGenerator {
     void introducePlayer(User user);
 
     void answerQuestion(MultipleChoice multipleChoice);
+
+    void setSocket(IClientWebSocket socket);
 }

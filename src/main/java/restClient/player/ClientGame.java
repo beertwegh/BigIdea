@@ -1,8 +1,7 @@
 package restClient.player;
 
-import models.Lobby;
 import interfaces.IToohakGame;
-import restClient.player.websocket.ClientMessageGenerator;
+import models.Lobby;
 import restClient.player.websocket.ClientWebSocket;
 import restClient.player.websocket.IClientMessageGenerator;
 import restClient.player.websocket.messagehandlers.ClientMessageProcessor;
@@ -24,6 +23,11 @@ public class ClientGame implements IClientGame {
     }
 
     @Override
+    public void setMessageGenerator(IClientMessageGenerator messageGenerator) {
+        this.messageGenerator = messageGenerator;
+    }
+
+    @Override
     public void sendAnswer(MultipleChoice answer) {
         messageGenerator.answerQuestion(answer);
     }
@@ -39,8 +43,8 @@ public class ClientGame implements IClientGame {
     public void joinLobby(Lobby lobby) {
         socket = new ClientWebSocket();
         socket.setMessageHandler(new ClientMessageProcessor(this));
-        messageGenerator = new ClientMessageGenerator(socket);
         socket.start(lobby.getIp());
+        messageGenerator.setSocket(socket);
         messageGenerator.introducePlayer(game.getUser());
     }
 

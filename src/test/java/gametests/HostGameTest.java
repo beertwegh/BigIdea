@@ -38,7 +38,7 @@ public class HostGameTest {
         game.startGame();
         Assert.assertEquals(2, AppFlowStack.getStack().size());
         Assert.assertEquals("startgame", AppFlowStack.getStack().get(0));
-        Assert.assertEquals("nextround", AppFlowStack.getStack().get(1));;
+        Assert.assertEquals("nextround", AppFlowStack.getStack().get(1));
     }
 
     @Test
@@ -65,5 +65,14 @@ public class HostGameTest {
         }
         Assert.assertEquals(3, AppFlowStack.getStack().size());
         Assert.assertEquals("false", AppFlowStack.getStack().get(2));
+    }
+
+    @Test
+    public void testGameEnded() {
+        game = new HostGame(new ToohakGameStub());
+        game.setMessageGenerator(new ServerMessageGeneratorStub());
+        game.gameEnded();
+        Assert.assertEquals(1, AppFlowStack.getStack().size());
+        Assert.assertEquals("endgame", AppFlowStack.getStack().get(0));
     }
 }

@@ -12,7 +12,7 @@ public class ServerMessageGeneratorStub implements IServerMessageGenerator {
 
     @Override
     public void startGame() {
-AppFlowStack.addStack("startgame");
+        AppFlowStack.addStack("startgame");
     }
 
     @Override
@@ -22,7 +22,7 @@ AppFlowStack.addStack("startgame");
 
     @Override
     public void endGame() {
-
+        AppFlowStack.addStack("endgame");
     }
 
     @Override

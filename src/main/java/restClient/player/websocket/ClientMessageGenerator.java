@@ -10,8 +10,8 @@ import shared.websocket.interfaces.actions.IntroduceUser;
 public class ClientMessageGenerator implements IClientMessageGenerator {
     private IClientWebSocket socket;
 
-    public ClientMessageGenerator(IClientWebSocket socket) {
-        this.socket = socket;
+    public ClientMessageGenerator() {
+
     }
 
     @Override
@@ -26,5 +26,10 @@ public class ClientMessageGenerator implements IClientMessageGenerator {
         AnswerQuestion answerQuestion = new AnswerQuestion(answer);
         Message message = new Message(Action.ANSWERQUESTION, answerQuestion);
         socket.send(message);
+    }
+
+    @Override
+    public void setSocket(IClientWebSocket socket) {
+        this.socket = socket;
     }
 }

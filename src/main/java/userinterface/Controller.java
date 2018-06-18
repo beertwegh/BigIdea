@@ -8,10 +8,10 @@ import javafx.scene.control.*;
 import models.Lobby;
 import models.Question;
 import models.User;
-import restClient.ToohakGame;
-import restClient.host.HostGame;
-import restClient.player.ClientGame;
-import shared.Logging.Logger;
+import restclient.ToohakGame;
+import restclient.host.HostGame;
+import restclient.player.ClientGame;
+import shared.logging.Logger;
 import shared.MultipleChoice;
 
 import java.net.InetAddress;

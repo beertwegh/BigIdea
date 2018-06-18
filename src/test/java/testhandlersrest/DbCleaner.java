@@ -1,14 +1,14 @@
 package testhandlersrest;
 
-import shared.Logging.Logger;
+import shared.logging.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-abstract class DbCleaner {
-    String testConnString = "jdbc:mysql://94.211.149.51:171/testToohak?user=bas&password=roggel98";
+public abstract class DbCleaner {
+  protected String testConnString = "jdbc:mysql://94.211.149.51:171/testToohak?user=bas&password=roggel98";
 
     void emptyTable(String table) {
         try {

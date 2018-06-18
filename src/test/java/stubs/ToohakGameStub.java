@@ -4,7 +4,7 @@ import interfaces.IGame;
 import interfaces.IToohakGame;
 import models.Lobby;
 import models.User;
-import restClient.player.IClientGame;
+import restclient.player.IClientGame;
 import shared.MultipleChoice;
 
 import java.util.List;

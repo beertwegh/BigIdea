@@ -2,8 +2,8 @@ package stubs;
 
 import interfaces.IToohakGame;
 import models.Lobby;
-import restClient.player.IClientGame;
-import restClient.player.websocket.IClientMessageGenerator;
+import restclient.player.IClientGame;
+import restclient.player.websocket.IClientMessageGenerator;
 import shared.MultipleChoice;
 
 import java.util.List;

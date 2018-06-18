@@ -1,8 +1,8 @@
 package stubs;
 
 import models.User;
-import restClient.player.websocket.IClientMessageGenerator;
-import restClient.player.websocket.IClientWebSocket;
+import restclient.player.websocket.IClientMessageGenerator;
+import restclient.player.websocket.IClientWebSocket;
 import shared.MultipleChoice;
 
 public class ClientMessageGeneratorStub implements IClientMessageGenerator {

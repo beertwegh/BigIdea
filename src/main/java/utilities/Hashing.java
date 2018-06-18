@@ -1,6 +1,6 @@
 package utilities;
 
-import shared.Logging.Logger;
+import shared.logging.Logger;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

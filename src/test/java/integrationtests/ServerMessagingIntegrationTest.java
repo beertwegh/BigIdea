@@ -4,10 +4,10 @@ import com.google.gson.Gson;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import restClient.host.IHostGame;
-import restClient.host.websocket.IServerWebSocket;
-import restClient.host.websocket.ServerWebSocket;
-import restClient.host.websocket.messagehandlers.ServerMessageProcessor;
+import restclient.host.IHostGame;
+import restclient.host.websocket.IServerWebSocket;
+import restclient.host.websocket.ServerWebSocket;
+import restclient.host.websocket.messagehandlers.ServerMessageProcessor;
 import shared.MultipleChoice;
 import shared.websocket.interfaces.IMessageProcessor;
 import shared.websocket.interfaces.Message;
@@ -15,7 +15,6 @@ import shared.websocket.interfaces.actions.Action;
 import shared.websocket.interfaces.actions.AnswerQuestion;
 import stubs.AppFlowStack;
 import stubs.HostGameStub;
-import stubs.ToohakGameStub;
 
 public class ServerMessagingIntegrationTest {
 

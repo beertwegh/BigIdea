@@ -1,10 +1,10 @@
 package testhandlersrest;
 
-import databaseServer.datacontext.HighScoreDataContext;
-import databaseServer.repositories.HighScoreRepository;
-import databaseServer.rest.handlers.HighScoreHandler;
-import databaseServer.rest.response.Reply;
-import databaseServer.rest.response.Status;
+import databaseserver.datacontext.HighScoreDataContext;
+import databaseserver.repositories.HighScoreRepository;
+import databaseserver.rest.handlers.HighScoreHandler;
+import databaseserver.rest.response.Reply;
+import databaseserver.rest.response.Status;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;

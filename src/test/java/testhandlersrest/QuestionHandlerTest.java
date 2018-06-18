@@ -1,12 +1,12 @@
 package testhandlersrest;
 
 import com.google.gson.Gson;
-import databaseServer.datacontext.QuestionDataContext;
-import databaseServer.repositories.QuestionRepository;
-import databaseServer.rest.handlers.QuestionHandler;
-import databaseServer.rest.response.QuestionResponse;
-import databaseServer.rest.response.Reply;
-import databaseServer.rest.response.Status;
+import databaseserver.datacontext.QuestionDataContext;
+import databaseserver.repositories.QuestionRepository;
+import databaseserver.rest.handlers.QuestionHandler;
+import databaseserver.rest.response.QuestionResponse;
+import databaseserver.rest.response.Reply;
+import databaseserver.rest.response.Status;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;

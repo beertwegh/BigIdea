@@ -1,8 +1,7 @@
 package stubs;
 
 import models.User;
-import interfaces.IToohakGame;
-import restClient.host.HostGame;
+import restclient.host.HostGame;
 import shared.MultipleChoice;
 
 public class HostGameStub extends HostGame {

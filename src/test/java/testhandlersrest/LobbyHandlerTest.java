@@ -1,12 +1,12 @@
 package testhandlersrest;
 
 import com.google.gson.Gson;
-import databaseServer.datacontext.LobbyDataContext;
-import databaseServer.repositories.LobbyRepository;
-import databaseServer.rest.handlers.LobbyHandler;
-import databaseServer.rest.response.GetLobbiesResponse;
-import databaseServer.rest.response.Reply;
-import databaseServer.rest.response.Status;
+import databaseserver.datacontext.LobbyDataContext;
+import databaseserver.repositories.LobbyRepository;
+import databaseserver.rest.handlers.LobbyHandler;
+import databaseserver.rest.response.GetLobbiesResponse;
+import databaseserver.rest.response.Reply;
+import databaseserver.rest.response.Status;
 import models.Lobby;
 import org.junit.Assert;
 import org.junit.Before;

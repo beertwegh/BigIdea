@@ -3,7 +3,7 @@ package gametests;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import restClient.ToohakGame;
+import restclient.ToohakGame;
 import stubs.AppFlowStack;
 import stubs.ClientGameStub;
 import stubs.HostGameStub;

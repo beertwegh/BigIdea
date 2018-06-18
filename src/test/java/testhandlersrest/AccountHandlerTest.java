@@ -1,11 +1,11 @@
 package testhandlersrest;
 
-import databaseServer.datacontext.CredentialsDataContext;
-import databaseServer.repositories.UserRepository;
-import databaseServer.rest.handlers.AccountHandler;
-import databaseServer.rest.handlers.IAccountHandler;
-import databaseServer.rest.response.Reply;
-import databaseServer.rest.response.Status;
+import databaseserver.datacontext.CredentialsDataContext;
+import databaseserver.repositories.UserRepository;
+import databaseserver.rest.handlers.AccountHandler;
+import databaseserver.rest.handlers.IAccountHandler;
+import databaseserver.rest.response.Reply;
+import databaseserver.rest.response.Status;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;

@@ -5,7 +5,7 @@ import models.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import restClient.host.HostGame;
+import restclient.host.HostGame;
 import shared.MultipleChoice;
 import stubs.AppFlowStack;
 import stubs.ServerMessageGeneratorStub;

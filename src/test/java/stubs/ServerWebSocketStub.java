@@ -1,7 +1,7 @@
 package stubs;
 
 import models.User;
-import restClient.host.websocket.IServerWebSocket;
+import restclient.host.websocket.IServerWebSocket;
 import shared.websocket.interfaces.IMessageProcessor;
 
 import javax.websocket.Session;

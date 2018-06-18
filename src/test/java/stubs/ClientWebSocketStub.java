@@ -1,7 +1,7 @@
 package stubs;
 
 import com.google.gson.Gson;
-import restClient.player.websocket.IClientWebSocket;
+import restclient.player.websocket.IClientWebSocket;
 import shared.websocket.interfaces.IMessageProcessor;
 
 public class ClientWebSocketStub implements IClientWebSocket {

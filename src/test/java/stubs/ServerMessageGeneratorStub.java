@@ -1,8 +1,8 @@
 package stubs;
 
 import models.User;
-import restClient.host.websocket.IServerMessageGenerator;
-import restClient.host.websocket.IServerWebSocket;
+import restclient.host.websocket.IServerMessageGenerator;
+import restclient.host.websocket.IServerWebSocket;
 
 public class ServerMessageGeneratorStub implements IServerMessageGenerator {
     @Override

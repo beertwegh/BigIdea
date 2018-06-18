@@ -2,8 +2,6 @@ package restClient.player.websocket;
 
 import shared.websocket.interfaces.IMessageProcessor;
 
-import javax.websocket.Session;
-
 public interface IClientWebSocket {
     void start(String ip);
 

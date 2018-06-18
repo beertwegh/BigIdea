@@ -8,6 +8,7 @@ public class EndGameMessageHandler {
     public EndGameMessageHandler(IClientGame game) {
         this.game = game;
     }
+
     public void endGame() {
         game.processEndGame();
     }

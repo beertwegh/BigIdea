@@ -72,6 +72,7 @@ public class ClientWebSocket implements IClientWebSocket {
         session = null;
     }
 
+    @Override
     public void send(Object object) {
         Gson gson = new Gson();
         String jsontosend = gson.toJson(object);

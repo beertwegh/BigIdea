@@ -1,4 +1,4 @@
-package restClient.restActions;
+package restClient.restactions;
 
 import com.google.gson.Gson;
 import org.apache.http.HttpEntity;

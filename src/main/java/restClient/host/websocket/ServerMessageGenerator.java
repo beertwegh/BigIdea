@@ -1,7 +1,7 @@
 package restClient.host.websocket;
 
-import models.User;
 import com.google.gson.Gson;
+import models.User;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.Action;
 import shared.websocket.interfaces.actions.ReplyAnswerQuestion;
@@ -14,6 +14,7 @@ public class ServerMessageGenerator implements IServerMessageGenerator {
         gson = new Gson();
 
     }
+
     @Override
     public void setSocket(IServerWebSocket socket) {
         this.socket = socket;

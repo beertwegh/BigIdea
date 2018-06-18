@@ -74,6 +74,7 @@ public class ServerWebSocket implements IServerWebSocket {
         }
         onMessageReceived(message, session.getId());
     }
+
     @Override
     public void onMessageReceived(String message, String sessionId) {
         messageHandler.handleMessage(message, sessionId);

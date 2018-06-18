@@ -1,7 +1,7 @@
 package databaseServer.rest.handlers;
 
-import models.Lobby;
 import databaseServer.rest.response.Reply;
+import models.Lobby;
 
 public interface ILobbyHandler {
 

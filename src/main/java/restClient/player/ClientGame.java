@@ -5,7 +5,7 @@ import models.Lobby;
 import restClient.player.websocket.ClientWebSocket;
 import restClient.player.websocket.IClientMessageGenerator;
 import restClient.player.websocket.messagehandlers.ClientMessageProcessor;
-import restClient.restActions.GetLobbies;
+import restClient.restactions.GetLobbies;
 import shared.MultipleChoice;
 
 import java.util.List;

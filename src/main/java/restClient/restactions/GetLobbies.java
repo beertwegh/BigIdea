@@ -1,7 +1,7 @@
-package restClient.restActions;
+package restClient.restactions;
 
-import models.Lobby;
 import com.google.gson.Gson;
+import models.Lobby;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;

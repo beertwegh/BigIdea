@@ -1,11 +1,11 @@
 package restClient.host.websocket.messagehandlers;
 
-import models.User;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import models.User;
 import restClient.host.IHostGame;
 import shared.Logging.Logger;
 import shared.websocket.interfaces.IMessageProcessor;

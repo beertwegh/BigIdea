@@ -1,4 +1,4 @@
-package restClient.restActions;
+package restClient.restactions;
 
 import shared.restrequest.Login;
 

@@ -1,8 +1,8 @@
 package restClient.host;
 
+import interfaces.IGame;
 import models.Lobby;
 import models.User;
-import interfaces.IGame;
 import restClient.host.websocket.IServerMessageGenerator;
 import shared.MultipleChoice;
 

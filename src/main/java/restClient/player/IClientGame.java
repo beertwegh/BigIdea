@@ -1,7 +1,7 @@
 package restClient.player;
 
-import models.Lobby;
 import interfaces.IGame;
+import models.Lobby;
 import restClient.player.websocket.IClientMessageGenerator;
 import shared.MultipleChoice;
 

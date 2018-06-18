@@ -17,11 +17,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.servlet.ServletContainer;
-import org.xml.sax.SAXException;
 import shared.Logging.Logger;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 
 public class RestService {
 

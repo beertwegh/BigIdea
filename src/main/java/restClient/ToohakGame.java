@@ -12,9 +12,9 @@ import restClient.host.websocket.ServerMessageGenerator;
 import restClient.player.ClientGame;
 import restClient.player.IClientGame;
 import restClient.player.websocket.ClientMessageGenerator;
-import restClient.restActions.ClearLobbiesAction;
-import restClient.restActions.LoginAction;
-import restClient.restActions.RegisterAction;
+import restClient.restactions.ClearLobbiesAction;
+import restClient.restactions.LoginAction;
+import restClient.restactions.RegisterAction;
 import shared.Logging.Logger;
 import shared.MultipleChoice;
 import shared.restrequest.ClearLobbies;
@@ -105,7 +105,7 @@ public class ToohakGame implements IToohakGame {
 
     @Override
     public void joinLobby(Lobby lobby) {
-        ((IClientGame)game).setMessageGenerator(new ClientMessageGenerator());
+        ((IClientGame) game).setMessageGenerator(new ClientMessageGenerator());
         ((IClientGame) game).joinLobby(lobby);
     }
 

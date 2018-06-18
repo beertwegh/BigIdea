@@ -19,7 +19,7 @@ import java.net.UnknownHostException;
 
 public class Controller {
 
-    private final static String emptyFieldsMsg = "Please fill in all fields!";
+    private static final String EMPTY_FIELDS_MSG = "Please fill in all fields!";
     @FXML
     private TextField tbUserEmail;
     @FXML
@@ -82,7 +82,7 @@ public class Controller {
         String useremail = tbUserEmail.getText();
         String password = tbPassword.getText();
         if (useremail.trim().equals("") || password.trim().equals("")) {
-            showMessage(emptyFieldsMsg);
+            showMessage(EMPTY_FIELDS_MSG);
         } else {
             String loginResult = game.login(useremail, password);
             showMessage(loginResult);
@@ -106,7 +106,7 @@ public class Controller {
         String password = tbPassword.getText();
         String email = tbRegisterEmail.getText();
         if (username.trim().equals("") || password.trim().equals("") || email.trim().equals("")) {
-            showMessage(emptyFieldsMsg);
+            showMessage(EMPTY_FIELDS_MSG);
         } else {
             String result = game.registerPlayer(username, password, email);
             if (result.equals("Account has been made")) {
@@ -226,7 +226,7 @@ public class Controller {
     public void btnCreateLobbyClicked() {
 
         if (tbLobbyName.getText().trim().equals("") || tbIp.getText().trim().equals("")) {
-            showMessage(emptyFieldsMsg);
+            showMessage(EMPTY_FIELDS_MSG);
         } else {
             InetAddress ownIP = null;
             try {

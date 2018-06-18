@@ -31,7 +31,7 @@ public class ServerMessagingIntegrationTest {
         Gson gson = new Gson();
         String json = gson.toJson(message);
 
-        IHostGame hostGame = new HostGameStub(new ToohakGameStub());
+        IHostGame hostGame = new HostGameStub();
         IMessageProcessor processor = new ServerMessageProcessor(hostGame);
         IServerWebSocket socket = new ServerWebSocket(hostGame);
         socket.setMessageHandler(processor);

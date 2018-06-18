@@ -17,11 +17,12 @@ public class ClientGameTest {
     @Before
     public void init() {
         AppFlowStack.clearStack();
+        game = new ClientGame();
+        game.setIToohakGame(new ToohakGameStub());
     }
 
     @Test
     public void testJoinLobby() {
-        game = new ClientGame(new ToohakGameStub());
         game.setMessageGenerator(new ClientMessageGeneratorStub());
         game.joinLobby(new Lobby("0.0.0.0:1234", "name"));
         Assert.assertEquals(1, AppFlowStack.getStack().size());
@@ -30,7 +31,6 @@ public class ClientGameTest {
 
     @Test
     public void testAnswerQuestion() {
-        game = new ClientGame(new ToohakGameStub());
         game.setMessageGenerator(new ClientMessageGeneratorStub());
         game.sendAnswer(MultipleChoice.A);
         Assert.assertEquals(1, AppFlowStack.getStack().size());

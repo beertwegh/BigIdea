@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import restClient.host.HostGame;
-import restClient.host.IHostGame;
 import shared.MultipleChoice;
 import stubs.AppFlowStack;
 import stubs.ServerMessageGeneratorStub;
@@ -15,16 +14,17 @@ import stubs.ToohakGameStub;
 import java.util.List;
 
 public class HostGameTest {
-    private IHostGame game;
+    private HostGame game;
 
     @Before
     public void init() {
         AppFlowStack.clearStack();
+        game = new HostGame();
+        game.setIToohakGame(new ToohakGameStub());
     }
 
     @Test
     public void testNextRound() {
-        game = new HostGame(new ToohakGameStub());
         game.setMessageGenerator(new ServerMessageGeneratorStub());
         game.nextRound();
         Assert.assertEquals(1, AppFlowStack.getStack().size());
@@ -33,7 +33,6 @@ public class HostGameTest {
 
     @Test
     public void testStartGame() {
-        game = new HostGame(new ToohakGameStub());
         game.setMessageGenerator(new ServerMessageGeneratorStub());
         game.startGame();
         Assert.assertEquals(2, AppFlowStack.getStack().size());
@@ -44,7 +43,6 @@ public class HostGameTest {
     @Test
     public void testProcessAnswerQuestion() {
         User user = new User(0, "username", "test@gmail.com", 0);
-        HostGame game = new HostGame(new ToohakGameStub());
         game.setMessageGenerator(new ServerMessageGeneratorStub());
         game.nextRound();
         List<Answer> answers = game.getQuestions().get(game.getCurrentRandom()).getAnswers();
@@ -69,7 +67,6 @@ public class HostGameTest {
 
     @Test
     public void testGameEnded() {
-        game = new HostGame(new ToohakGameStub());
         game.setMessageGenerator(new ServerMessageGeneratorStub());
         game.gameEnded();
         Assert.assertEquals(1, AppFlowStack.getStack().size());

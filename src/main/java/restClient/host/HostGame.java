@@ -34,8 +34,7 @@ public class HostGame implements IHostGame {
         return currentRandom;
     }
 
-    public HostGame(IToohakGame game) {
-        this.game = game;
+    public HostGame() {
         GetQuestions getQuestions = new GetQuestions();
         questions = (ArrayList<Question>) getQuestions.getQuestions();
         socket = new ServerWebSocket(this);
@@ -56,6 +55,11 @@ public class HostGame implements IHostGame {
             game.processNextRound(this);
         } else
             gameEnded();
+    }
+
+    @Override
+    public void setIToohakGame(IToohakGame game) {
+        this.game = game;
     }
 
     @Override

@@ -26,7 +26,8 @@ public class ClientMessagingIntegrationTest {
     @Before
     public void init() {
         AppFlowStack.clearStack();
-        clientGame = new ClientGame(new ToohakGameStub());
+        clientGame = new ClientGame();
+        clientGame.setIToohakGame(new ToohakGameStub());
         processor = new ClientMessageProcessor(clientGame);
         socket = new ClientWebSocket();
         socket.setMessageHandler(processor);

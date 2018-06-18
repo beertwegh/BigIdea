@@ -31,9 +31,10 @@ public class ToohakGameStub implements IToohakGame {
     }
 
     @Override
-    public void chooseHostOrClient(boolean host) {
+    public void chooseHostOrClient(IGame game) {
 
     }
+
 
     @Override
     public List<Lobby> refreshLobbies() {

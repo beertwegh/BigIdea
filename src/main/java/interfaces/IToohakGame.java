@@ -16,7 +16,8 @@ public interface IToohakGame {
 
     String clearLobbies();
 
-    void chooseHostOrClient(boolean host);
+
+    void chooseHostOrClient(IGame game);
 
     List<Lobby> refreshLobbies();
 

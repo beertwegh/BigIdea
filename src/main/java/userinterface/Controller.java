@@ -9,6 +9,8 @@ import models.Lobby;
 import models.Question;
 import models.User;
 import restClient.ToohakGame;
+import restClient.host.HostGame;
+import restClient.player.ClientGame;
 import shared.Logging.Logger;
 import shared.MultipleChoice;
 
@@ -133,7 +135,7 @@ public class Controller {
     //region Client/Player
 
     public void btnJoinLobbyClicked() {
-        game.chooseHostOrClient(false);
+        game.chooseHostOrClient(new ClientGame());
         lobbyList.setItems(FXCollections.observableArrayList(game.refreshLobbies()));
         lobbyList.setVisible(true);
         btnJoinLobby.setVisible(false);
@@ -212,7 +214,7 @@ public class Controller {
     //region Server/Host
 
     public void btnHostLobbyClicked() {
-        game.chooseHostOrClient(true);
+        game.chooseHostOrClient(new HostGame());
         tbIp.setVisible(true);
         tbLobbyName.setVisible(true);
         btnCreateLobby.setVisible(true);

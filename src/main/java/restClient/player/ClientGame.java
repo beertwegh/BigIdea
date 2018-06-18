@@ -18,9 +18,6 @@ public class ClientGame implements IClientGame {
 
     private IClientMessageGenerator messageGenerator;
 
-    public ClientGame(IToohakGame game) {
-        this.game = game;
-    }
 
     @Override
     public void setMessageGenerator(IClientMessageGenerator messageGenerator) {
@@ -56,6 +53,11 @@ public class ClientGame implements IClientGame {
     @Override
     public void nextRound() {
         game.processNextRound(this);
+    }
+
+    @Override
+    public void setIToohakGame(IToohakGame game) {
+        this.game = game;
     }
 
     @Override

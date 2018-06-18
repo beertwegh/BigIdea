@@ -1,4 +1,4 @@
 package shared.restrequest;
 
-public interface ClearLobbies {
+public class ClearLobbies {
 }

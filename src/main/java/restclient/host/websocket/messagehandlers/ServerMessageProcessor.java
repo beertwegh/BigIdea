@@ -48,7 +48,7 @@ public class ServerMessageProcessor implements IMessageProcessor {
         return userSessions.inverse().get(user);
     }
 
-    private User getUserBySessionId(String sessionId) {
+    public User getUserBySessionId(String sessionId) {
         return userSessions.get(sessionId);
     }
 }

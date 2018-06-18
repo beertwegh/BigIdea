@@ -14,4 +14,8 @@ public class HostGameStub extends HostGame {
     public void nextRound() {
         AppFlowStack.addStack("nextround");
     }
+    @Override
+    public void processPlayerJoined(User user) {
+        AppFlowStack.addStack(user.getUsername());
+    }
 }

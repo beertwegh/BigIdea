@@ -19,7 +19,7 @@ import java.net.UnknownHostException;
 
 public class Controller {
 
-    private final String emptyFieldsMsg = "Please fill in all fields!";
+    private final static String emptyFieldsMsg = "Please fill in all fields!";
     @FXML
     private TextField tbUserEmail;
     @FXML

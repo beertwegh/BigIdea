@@ -61,7 +61,6 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
                         answers.add(new Answer(text, correct));
                     }
                     connection2.close();
-                    rset.close();
                     return answers;
                 }
             }

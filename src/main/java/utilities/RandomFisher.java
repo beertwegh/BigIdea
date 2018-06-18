@@ -3,7 +3,7 @@ package utilities;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomFisher {
-    private int values[];
+    private int[] values;
     private int count = 1;
 
     public RandomFisher(int size) {

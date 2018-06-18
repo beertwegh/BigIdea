@@ -16,6 +16,7 @@ import shared.restrequest.SetHighScore;
 import utilities.RandomFisher;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HostGame implements IHostGame {
 
@@ -26,7 +27,7 @@ public class HostGame implements IHostGame {
     private RandomFisher random;
     private Integer currentRandom;
 
-    public ArrayList<Question> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 

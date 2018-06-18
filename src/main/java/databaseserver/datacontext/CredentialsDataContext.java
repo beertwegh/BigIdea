@@ -69,24 +69,6 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
 
     @Override
     public List<User> findAll() {
-        List<User> all = new ArrayList<>();
-        try {
-            connection = DriverManager.getConnection(connString);
-            queryString = "SELECT id, username, email, hs.score FROM Credentials c LEFT JOIN HighScore hs ON c.id = hs.CredentialsId";
-            Statement stmt = connection.createStatement();
-            ResultSet rset = stmt.executeQuery(queryString);
-            while (rset.next()) {
-                int id = rset.getInt("id");
-                String email = rset.getString(this.emailString);
-                String username = rset.getString(this.usernameString);
-                int score = rset.getInt("score");
-                all.add(new User(id, username, email, score));
-            }
-            connection.close();
-            return all;
-        } catch (SQLException e) {
-            Logger.getInstance().log(e);
-        }
-        return all;
+       throw new UnsupportedOperationException("not a feature");
     }
 }

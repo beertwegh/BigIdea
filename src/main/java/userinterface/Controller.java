@@ -11,8 +11,8 @@ import models.User;
 import restclient.ToohakGame;
 import restclient.host.HostGame;
 import restclient.player.ClientGame;
-import shared.logging.Logger;
 import shared.MultipleChoice;
+import shared.logging.Logger;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

@@ -5,7 +5,6 @@ import models.Answer;
 import models.Question;
 import shared.logging.Logger;
 
-import java.io.UnsupportedEncodingException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

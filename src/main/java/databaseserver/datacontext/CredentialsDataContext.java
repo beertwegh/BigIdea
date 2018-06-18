@@ -5,8 +5,10 @@ import models.Admin;
 import models.User;
 import shared.logging.Logger;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 public class CredentialsDataContext extends AbstractDataContext implements ICredentialsDataContext {
@@ -69,6 +71,6 @@ public class CredentialsDataContext extends AbstractDataContext implements ICred
 
     @Override
     public List<User> findAll() {
-       throw new UnsupportedOperationException("not a feature");
+        throw new UnsupportedOperationException("not a feature");
     }
 }

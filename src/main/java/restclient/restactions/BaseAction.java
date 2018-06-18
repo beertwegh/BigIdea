@@ -13,10 +13,10 @@ import shared.logging.Logger;
 
 import java.io.IOException;
 
-public abstract class BaseAction<T> {
+public interface BaseAction<T> {
 
 
-    public String baseMethod(T data, String query) {
+    default String baseMethod(T data, String query) {
 
         HttpPost httpPost = new HttpPost(query);
         Gson gson = new Gson();
@@ -26,8 +26,7 @@ public abstract class BaseAction<T> {
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
              CloseableHttpResponse response = httpClient.execute(httpPost)) {
             HttpEntity entity = response.getEntity();
-            final String entityString = EntityUtils.toString(entity);
-            return entityString;
+            return EntityUtils.toString(entity);
         } catch (IOException e) {
             Logger.getInstance().log(e);
         }

@@ -14,8 +14,6 @@ public class ClientGame implements IClientGame {
 
     private IToohakGame game;
 
-    private ClientWebSocket socket;
-
     private IClientMessageGenerator messageGenerator;
 
 
@@ -38,7 +36,7 @@ public class ClientGame implements IClientGame {
 
     @Override
     public void joinLobby(Lobby lobby) {
-        socket = new ClientWebSocket();
+        ClientWebSocket socket = new ClientWebSocket();
         socket.setMessageHandler(new ClientMessageProcessor(this));
         socket.start(lobby.getIp());
         messageGenerator.setSocket(socket);

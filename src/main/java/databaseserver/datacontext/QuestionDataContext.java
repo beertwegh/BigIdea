@@ -40,7 +40,6 @@ public class QuestionDataContext extends AbstractDataContext implements IQuestio
                 all.add(question);
             }
             connection.close();
-            rset.close();
             return all;
         } catch (SQLException e) {
             Logger.getInstance().log(e);

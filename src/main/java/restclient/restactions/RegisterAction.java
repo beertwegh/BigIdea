@@ -2,11 +2,11 @@ package restclient.restactions;
 
 import shared.restrequest.Register;
 
-public class RegisterAction extends BaseAction<Register> {
+public class RegisterAction implements BaseAction<Register> {
 
     String query = "http://rest.basvdeertwegh.nl/account/register";
 
     public String register(Register data) {
-        return super.baseMethod(data, query);
+        return baseMethod(data, query);
     }
 }

@@ -12,17 +12,17 @@ public class ServerMessageGeneratorStub implements IServerMessageGenerator {
 
     @Override
     public void startGame() {
-        AppFlowStack.addStack("startgame");
+        AppFlowStack.addStack("startgameGenerated");
     }
 
     @Override
     public void nextRound() {
-        AppFlowStack.addStack("nextround");
+        AppFlowStack.addStack("nextroundGenerated");
     }
 
     @Override
     public void endGame() {
-        AppFlowStack.addStack("endgame");
+        AppFlowStack.addStack("endgameGenerated");
     }
 
     @Override

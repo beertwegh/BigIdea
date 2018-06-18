@@ -28,7 +28,7 @@ public class HostGameTest {
         game.setMessageGenerator(new ServerMessageGeneratorStub());
         game.nextRound();
         Assert.assertEquals(1, AppFlowStack.getStack().size());
-        Assert.assertEquals("nextround", AppFlowStack.getStack().get(0));
+        Assert.assertEquals("nextroundGenerated", AppFlowStack.getStack().get(0));
     }
 
     @Test
@@ -37,8 +37,8 @@ public class HostGameTest {
         game.setMessageGenerator(new ServerMessageGeneratorStub());
         game.startGame();
         Assert.assertEquals(2, AppFlowStack.getStack().size());
-        Assert.assertEquals("startgame", AppFlowStack.getStack().get(0));
-        Assert.assertEquals("nextround", AppFlowStack.getStack().get(1));
+        Assert.assertEquals("startgameGenerated", AppFlowStack.getStack().get(0));
+        Assert.assertEquals("nextroundGenerated", AppFlowStack.getStack().get(1));
     }
 
     @Test
@@ -73,6 +73,6 @@ public class HostGameTest {
         game.setMessageGenerator(new ServerMessageGeneratorStub());
         game.gameEnded();
         Assert.assertEquals(1, AppFlowStack.getStack().size());
-        Assert.assertEquals("endgame", AppFlowStack.getStack().get(0));
+        Assert.assertEquals("endgameGenerated", AppFlowStack.getStack().get(0));
     }
 }

@@ -4,6 +4,7 @@ import interfaces.IGame;
 import interfaces.IToohakGame;
 import models.Lobby;
 import models.User;
+import restClient.player.IClientGame;
 import shared.MultipleChoice;
 
 import java.util.List;
@@ -71,17 +72,19 @@ public class ToohakGameStub implements IToohakGame {
 
     @Override
     public void processNextRound(IGame game) {
-
+        if (game instanceof IClientGame)
+            AppFlowStack.addStack("nextround");
     }
 
     @Override
     public void processEndGame(IGame game) {
-
+        if(game instanceof IClientGame)
+        AppFlowStack.addStack("endgame");
     }
 
 
     @Override
     public void processStartGame() {
-
+        AppFlowStack.addStack("startgame");
     }
 }

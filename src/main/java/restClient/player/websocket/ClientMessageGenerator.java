@@ -10,10 +10,6 @@ import shared.websocket.interfaces.actions.IntroduceUser;
 public class ClientMessageGenerator implements IClientMessageGenerator {
     private IClientWebSocket socket;
 
-    public ClientMessageGenerator() {
-
-    }
-
     @Override
     public void introducePlayer(User user) {
         IntroduceUser introduceUser = new IntroduceUser(user);

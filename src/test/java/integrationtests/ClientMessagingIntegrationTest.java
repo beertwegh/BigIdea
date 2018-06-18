@@ -13,13 +13,23 @@ import shared.websocket.interfaces.IMessageProcessor;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.Action;
 import shared.websocket.interfaces.actions.ReplyAnswerQuestion;
+import shared.websocket.interfaces.actions.StartGame;
 import stubs.AppFlowStack;
 import stubs.ToohakGameStub;
 
 public class ClientMessagingIntegrationTest {
+
+    private IClientGame clientGame;
+    private IMessageProcessor processor;
+    private IClientWebSocket socket;
+
     @Before
     public void init() {
         AppFlowStack.clearStack();
+        clientGame = new ClientGame(new ToohakGameStub());
+        processor = new ClientMessageProcessor(clientGame);
+        socket = new ClientWebSocket();
+        socket.setMessageHandler(processor);
     }
 
     @Test
@@ -29,14 +39,45 @@ public class ClientMessagingIntegrationTest {
         Gson gson = new Gson();
         String json = gson.toJson(message);
 
-        IClientGame clientGame = new ClientGame(new ToohakGameStub());
-        IMessageProcessor processor = new ClientMessageProcessor(clientGame);
-        IClientWebSocket socket = new ClientWebSocket();
-        socket.setMessageHandler(processor);
         socket.onWebSocketMessageReceived(json, "1");
 
         Assert.assertEquals(1, AppFlowStack.getStack().size());
         Assert.assertEquals("true", AppFlowStack.getStack().get(0));
+    }
 
+    @Test
+    public void StartGameResponseTest() {
+        StartGame startGame = new StartGame();
+        Message message = new Message(Action.STARTGAME, startGame);
+        Gson gson = new Gson();
+        String json = gson.toJson(message);
+
+        socket.onWebSocketMessageReceived(json, "1");
+
+        Assert.assertEquals(1, AppFlowStack.getStack().size());
+        Assert.assertEquals("startgame", AppFlowStack.getStack().get(0));
+    }
+
+    @Test
+    public void NextRoundResponseTest() {
+        Message message = new Message(Action.NEXTROUND);
+        Gson gson = new Gson();
+        String json = gson.toJson(message);
+
+        socket.onWebSocketMessageReceived(json, "1");
+
+        Assert.assertEquals(1, AppFlowStack.getStack().size());
+        Assert.assertEquals("nextround", AppFlowStack.getStack().get(0));
+    }
+    @Test
+    public void EndGameResponseTest() {
+        Message message = new Message(Action.ENDGAME);
+        Gson gson = new Gson();
+        String json = gson.toJson(message);
+
+        socket.onWebSocketMessageReceived(json, "1");
+
+        Assert.assertEquals(1, AppFlowStack.getStack().size());
+        Assert.assertEquals("endgame", AppFlowStack.getStack().get(0));
     }
 }

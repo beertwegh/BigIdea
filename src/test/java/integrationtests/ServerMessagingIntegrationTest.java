@@ -23,6 +23,7 @@ public class ServerMessagingIntegrationTest {
     public void init() {
         AppFlowStack.clearStack();
     }
+
     @Test
     public void AnswerQuestionResultTest() {
         AnswerQuestion answerQuestion = new AnswerQuestion(MultipleChoice.A);

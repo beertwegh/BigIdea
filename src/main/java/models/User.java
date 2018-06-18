@@ -11,30 +11,58 @@ public class User {
 
     public User(int id, String username, String email, Integer score, String password) {
         this.id = id;
-        this.username = username;
-        this.email = email;
-        if (score == null)
-            this.score = 0;
-        else
-            this.score = score;
-        this.password = password;
+        setUsername(username);
+        setEmail(email);
+        setScore(score);
+        setPasswordUnhashed(password);
     }
 
-    public User(int id, String username, String email, int score) {
+    public User(int id, String username, String email, Integer score) {
         this.id = id;
-        this.username = username;
-        this.email = email;
+        setUsername(username);
+        setEmail(email);
         this.score = score;
     }
 
     public User(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
+        setUsername(username);
+        setEmail(email);
         setPassword(password);
     }
 
+    private void setUsername(String username) {
+        if (username == null) {
+            throw new IllegalArgumentException("username is null");
+        } else
+            this.username = username;
+    }
+
+    private void setEmail(String email) {
+        if (email == null) {
+            throw new IllegalArgumentException("email is null");
+        } else
+            this.email = email;
+    }
+
+    public void setScore(Integer score) {
+        if (score == null)
+            this.score = 0;
+        else
+            this.score = score;
+    }
+
+    private void setPasswordUnhashed(String password) {
+        if (password == null)
+            throw new IllegalArgumentException("password cant be null");
+        else
+            this.password = password;
+    }
+
     public void setPassword(String password) {
-        this.password = Hashing.getSha512Securepassword(password, "salty");
+        if (password != null)
+            this.password = Hashing.getSha512Securepassword(password, "salty");
+        else
+            throw new IllegalArgumentException("password can't be null");
     }
 
     public String getPassword() {

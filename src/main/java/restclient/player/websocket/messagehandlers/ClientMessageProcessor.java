@@ -1,10 +1,7 @@
 package restclient.player.websocket.messagehandlers;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import restclient.player.IClientGame;
-import shared.logging.Logger;
 import shared.websocket.interfaces.IMessageProcessor;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.ReplyAnswerQuestion;
@@ -19,15 +16,7 @@ public class ClientMessageProcessor implements IMessageProcessor {
     @Override
     public void handleMessage(String json, String sessionId) {
         Gson gson = new Gson();
-        Message message = null;
-        JsonParser jsonParser = new JsonParser();
-        JsonObject jsonObject = jsonParser.parse(json).getAsJsonObject();
-        try {
-            message = gson.fromJson(jsonObject, Message.class);
-        } catch (Exception ex) {
-            Logger.getInstance().log(ex);
-        }
-
+        Message message = gson.fromJson(json, Message.class);
         if (message == null) {
             throw new IllegalArgumentException("message can't be null");
         }

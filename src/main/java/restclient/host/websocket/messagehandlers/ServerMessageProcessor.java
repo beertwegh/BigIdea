@@ -3,11 +3,8 @@ package restclient.host.websocket.messagehandlers;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import models.User;
 import restclient.host.IHostGame;
-import shared.logging.Logger;
 import shared.websocket.interfaces.IMessageProcessor;
 import shared.websocket.interfaces.Message;
 import shared.websocket.interfaces.actions.AnswerQuestion;
@@ -26,15 +23,8 @@ public class ServerMessageProcessor implements IMessageProcessor {
     @Override
     public void handleMessage(String json, String sessionId) {
         Gson gson = new Gson();
-        Message message = null;
-        JsonParser jsonParser = new JsonParser();
-        JsonObject jsonObject = jsonParser.parse(json).getAsJsonObject();
+        Message message = gson.fromJson(json, Message.class);
 
-        try {
-            message = gson.fromJson(jsonObject, Message.class);
-        } catch (Exception ex) {
-            Logger.getInstance().log(ex);
-        }
         if (message == null) {
             throw new IllegalArgumentException("message can't be null");
         }
